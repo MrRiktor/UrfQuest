@@ -187,7 +187,7 @@ GameObject:
   - 114: {fileID: 11477946}
   - 114: {fileID: 11466112}
   m_Layer: 5
-  m_Name: TSUI_MainPrefab
+  m_Name: TSUI_Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
