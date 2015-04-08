@@ -10,16 +10,52 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class TeamSelectModel : MonoBehaviour {
+/// <summary>
+/// Maintains the data that controlls
+/// the TeamSelectView
+/// </summary>
+public class TeamSelectModel : MonoBehaviour
+{
+    #region Variables
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    private List<MatchDetail> matchDetails = new List<MatchDetail>( );
+
+    private MatchDetail selectedMatchDetail;
+
+    #endregion
+
+    #region Accessors/Mutators
+
+    #endregion
+
+    #region Unity Methods
+
+    /// <summary>
+    /// Triggered when the game object this scrip
+    /// is attached to is enabled
+    /// </summary>
+    void OnEnable( )
+    {
+        //API Call to grab Matches and Their data
+    }
+
+    #endregion
+
+    #region private methods
+
+    private void APICallSuccessHandler( )
+    {
+        //Fill out data
+    }
+
+    private void AddMatchDetail( MatchDetail matchDetail )
+    {
+        //TODO Send Message to controller
+        matchDetails.Add( matchDetail );
+    }
+
+    #endregion
+
 }

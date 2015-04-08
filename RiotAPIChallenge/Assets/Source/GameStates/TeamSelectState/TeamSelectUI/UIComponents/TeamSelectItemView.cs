@@ -1,7 +1,7 @@
 ﻿#region File Header
 
 /**
- *   File Name:                 IGameStat.cs
+ *   File Name:                 TeamSelectItemView.cs
  *   Author:                    Vincent Biancardi
  *   Creation Date:             April 8, 2015
  */
@@ -18,7 +18,7 @@ using System;
 /// A UI Team Item that gets dynamically created when the users
 /// needs to select a team from random match ID's
 /// </summary>
-public class TeamSelectItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class TeamSelectItemView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     #region variables
 
@@ -47,12 +47,12 @@ public class TeamSelectItem : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     #endregion
 
 
-    private static TeamSelectItem currentItem = null; //Keeps track of the currently selected TeamSelectItem
+    private static TeamSelectItemView currentItem = null; //Keeps track of the currently selected TeamSelectItem
     #endregion
 
     #region Accessors/Mutators
 
-    public static TeamSelectItem CurrentItem
+    public static TeamSelectItemView CurrentItem
     {
         get
         {
@@ -62,16 +62,54 @@ public class TeamSelectItem : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     #endregion
 
-    #region Initilization
+    #region UI Visual Updates
 
-    public void InitData( TeamSelectData data )
+    /// <summary>
+    /// Triggered when the models match Id changes
+    /// </summary>
+    public void OnMatchIdChange( Int32 newID )
     {
-        titleText.text = "Match ID: " + data.MatchId;
-        championIcon1.sprite = Resources.Load<Sprite>( "Icons/champion/" + data.GetChampion( 0 ) );
-        championIcon2.sprite = Resources.Load<Sprite>( "Icons/champion/" + data.GetChampion( 1 ) );
-        championIcon3.sprite = Resources.Load<Sprite>( "Icons/champion/" + data.GetChampion( 2 ) );
-        championIcon4.sprite = Resources.Load<Sprite>( "Icons/champion/" + data.GetChampion( 3 ) );
-        championIcon5.sprite = Resources.Load<Sprite>( "Icons/champion/" + data.GetChampion( 4 ) );
+        titleText.text = "Match ID: " + newID;
+    }
+
+    /// <summary>
+    /// Triggered when the models champion Id 1 changes
+    /// </summary>
+    public void OnChampionId1Change( Int32 newID )
+    {
+       // championIcon1.sprite = SpriteManager.ChampionIcons [ newID ];
+    }
+
+    /// <summary>
+    /// Triggered when the models champion Id 2 changes
+    /// </summary>
+    public void OnChampionId2Change( Int32 newID )
+    {
+        // championIcon2.sprite = SpriteManager.ChampionIcons [ newID ];
+    }
+
+    /// <summary>
+    /// Triggered when the models champion Id 3 changes
+    /// </summary>
+    public void OnChampionId3Change( Int32 newID )
+    {
+        // championIcon3.sprite = SpriteManager.ChampionIcons [ newID ];
+    }
+
+    /// <summary>
+    /// Triggered when the models champion Id 4 changes
+    /// </summary>
+    public void OnChampionId4Change( Int32 newID )
+    {
+        // championIcon4.sprite = SpriteManager.ChampionIcons [ newID ];
+    }
+
+    /// <summary>
+    /// Triggered when the models champion Id 5 changes
+    /// </summary>
+    public void OnChampionId5Change( Int32 newID )
+    {
+        // championIcon5.sprite = SpriteManager.ChampionIcons [ newID ];
     }
 
     #endregion

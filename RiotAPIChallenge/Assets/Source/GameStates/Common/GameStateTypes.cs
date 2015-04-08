@@ -1,7 +1,7 @@
 ﻿#region File Header
 
 /**
- *   File Name:                 IGameStat.cs
+ *   File Name:                 GameStateTypes.cs
  *   Author:                    Vincent Biancardi
  *   Creation Date:             April 8, 2015
  */

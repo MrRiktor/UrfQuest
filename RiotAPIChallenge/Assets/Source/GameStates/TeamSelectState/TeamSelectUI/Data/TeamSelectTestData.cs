@@ -1,7 +1,7 @@
 ﻿#region File Header
 
 /**
- *   File Name:                 IGameStat.cs
+ *   File Name:                 TeamSelectTestData.cs
  *   Author:                    Vincent Biancardi
  *   Creation Date:             April 8, 2015
  */
@@ -28,7 +28,7 @@ public class TeamSelectTestData : MonoBehaviour
     // Use this for initialization
     void Start( )
     {
-        TeamSelectData data1 = new TeamSelectData( 111111, "Ahri", "Bard", "Darius", "Fiora", "Hecarim" );
+        /*TeamSelectData data1 = new TeamSelectData( 111111, "Ahri", "Bard", "Darius", "Fiora", "Hecarim" );
         TeamSelectData data2 = new TeamSelectData( 222222, "Akali", "Blitzcrank", "Diana", "Fizz", "Heimerdinger" );
         TeamSelectData data3 = new TeamSelectData( 333333, "Alistar", "Brand", "DrMundo", "Galio", "Irelia" );
         TeamSelectData data4 = new TeamSelectData( 444444, "Amumu", "Braum", "Draven", "Gangplank", "Janna" );
@@ -78,7 +78,7 @@ public class TeamSelectTestData : MonoBehaviour
         item = ( GameObject )Instantiate( TSUI_TeamPrefab, Vector3.zero, Quaternion.identity );
         itemData = item.GetComponent<TeamSelectItem>( );
         itemData.InitData( data8 );
-        view.AddItem( item );
+        view.AddItem( item );*/
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿#region File Header
 
 /**
- *   File Name:                 IGameStat.cs
+ *   File Name:                 TeamSelectController.cs
  *   Author:                    Vincent Biancardi
  *   Creation Date:             April 8, 2015
  */
@@ -11,15 +11,22 @@
 using UnityEngine;
 using System.Collections;
 
-public class TeamSelectController : MonoBehaviour {
+public class TeamSelectController : MonoBehaviour
+{
+    #region Variables
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    [SerializeField]
+    private TeamSelectModel model;
+
+    [SerializeField]
+    private TeamSelectView view;
+
+    #endregion
+
+    #region Messenger Handlers
+        
+    //Tell View about data changes
+
+    #endregion
+
 }

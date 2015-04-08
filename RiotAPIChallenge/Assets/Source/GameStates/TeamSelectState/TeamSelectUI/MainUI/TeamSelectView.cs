@@ -1,7 +1,7 @@
 ﻿#region File Header
 
 /**
- *   File Name:                 IGameStat.cs
+ *   File Name:                 TeamSelectView.cs
  *   Author:                    Vincent Biancardi
  *   Creation Date:             April 8, 2015
  */
@@ -32,14 +32,16 @@ public class TeamSelectView : MonoBehaviour
     /// Adds a UI Game Object to the grid
     /// </summary>
     /// <param name="item">the item being added</param>
-    public void AddItem( GameObject item )
+    public void OnAddMatchDetail( MatchDetail matchDetail )
     {
-        if ( item == null || item.GetComponent<TeamSelectItem>() == null )
+        //TODO Create Item set items model data attach item
+
+        /*if ( item == null || item.GetComponent<TeamSelectItemView>() == null )
             return;
 
         item.transform.SetParent( Grid.transform );
         item.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        item.transform.localPosition = Vector3.zero;
+        item.transform.localPosition = Vector3.zero;*/
 
     }
 
