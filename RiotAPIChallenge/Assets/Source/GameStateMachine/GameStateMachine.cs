@@ -9,17 +9,88 @@
 #endregion
 
 using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 
-public class GameStateMachine : MonoBehaviour {
+public class GameStateMachine : MonoBehaviour
+{
+    #region Variables
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    [SerializeField]
+    private GameObject [] gameStates;
+
+    private Dictionary<GameStateTypes, BaseGameState> states = new Dictionary<GameStateTypes, BaseGameState>( );
+
+    private BaseGameState curState;
+    private BaseGameState prevState;
+
+    #endregion
+
+    #region Unity Methods
+
+    /// <summary>
+    /// Initialize the game states
+    /// </summary>
+    void Awake( )
+    {
+        if ( gameStates == null )
+        {
+            throw new ArgumentNullException("There are no game states");
+        }
+
+        for ( Int32 i = 0; i < gameStates.Length; i++ )
+        {
+            BaseGameState gameState = gameStates [ i ].GetComponent<BaseGameState>( );
+            states.Add( gameState.StateType, gameState );
+        }
+
+        OnStateChange( GameStateTypes.TEAMSELECT );
+    }
+
+    /// <summary>
+    /// Triggered when the game object this scrip
+    /// is attached to is enabled
+    /// </summary>
+    void OnEnable( )
+    {
+        Messenger<GameStateTypes>.AddListener( MessengerEventTypes.GAME_STATE_CHANGE, OnStateChange );
+    }
+
+    /// <summary>
+    /// Triggered when the game object this scrip
+    /// is attached to is disabled
+    /// </summary>
+    void OnDisable( )
+    {
+        Messenger<GameStateTypes>.RemoveListener( MessengerEventTypes.GAME_STATE_CHANGE, OnStateChange );
+    }
+
+    #endregion
+
+    #region Private Helper Methods
+
+    /// <summary>
+    /// Changes the game state
+    /// </summary>
+    /// <param name="stateType">which state to transition to</param>
+    private void OnStateChange( GameStateTypes stateType )
+    {
+        //Clean up the previous state
+        if ( prevState != null )
+        {
+            prevState.OnExitState( );
+        }
+
+        //Update the previous state
+        prevState = curState;
+
+        //Update the current state
+        curState = states[stateType];
+
+        //Init the current state
+        curState.OnEnterState( );
+    }
+
+    #endregion
 }
