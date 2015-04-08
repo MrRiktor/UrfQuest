@@ -13,6 +13,11 @@ public class TeamSelectView : MonoBehaviour
 
     #region UI Methods
 
+    public void UpdateScrollSize( )
+    {
+        scrollBar.size = scrollRect.GetComponent<RectTransform>().rect.height/scrollRect.content.rect.height;
+    }
+
     /// <summary>
     /// Adds a UI Game Object to the grid
     /// </summary>
@@ -26,9 +31,6 @@ public class TeamSelectView : MonoBehaviour
         item.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         item.transform.localPosition = Vector3.zero;
 
-        //scrollRect.verticalNormalizedPosition = 0;
-        //scrollBar.value = 0;
-        //scrollBar.Rebuild( CanvasUpdate.MaxUpdateValue );
     }
 
     #endregion

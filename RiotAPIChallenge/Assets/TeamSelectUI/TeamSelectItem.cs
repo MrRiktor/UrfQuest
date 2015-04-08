@@ -57,7 +57,6 @@ public class TeamSelectItem : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void InitData( TeamSelectData data )
     {
         titleText.text = "Match ID: " + data.MatchId;
-        Debug.LogWarning( "Icons/champion/" + data.GetChampion( 0 ) );
         championIcon1.sprite = Resources.Load<Sprite>( "Icons/champion/" + data.GetChampion( 0 ) );
         championIcon2.sprite = Resources.Load<Sprite>( "Icons/champion/" + data.GetChampion( 1 ) );
         championIcon3.sprite = Resources.Load<Sprite>( "Icons/champion/" + data.GetChampion( 2 ) );
