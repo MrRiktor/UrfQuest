@@ -5,6 +5,79 @@ using System.Text;
 
 public class ParticipantStats
 {
+    #region Private Constants
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class PropertyNames
+    {
+        public static readonly String Assists = "assists";
+        public static readonly String ChampLevel = "champLevel";
+        public static readonly String CombatPlayerScore = "combatPlayerScore";
+        public static readonly String Deaths = "deaths";
+        public static readonly String DoubleKills = "doubleKills";
+        public static readonly String FirstBloodAssist = "firstBloodAssist";
+        public static readonly String FirstBloodKill = "firstBloodKill";
+        public static readonly String FirstInhibitorAssist = "firstInhibitorAssist";
+        public static readonly String FirstInhibitorKill = "firstInhibitorKill";
+        public static readonly String FirstTowerAssist = "firstTowerAssist";
+        public static readonly String FirstTowerKill = "firstTowerKill";
+        public static readonly String GoldEarned = "goldEarned";
+        public static readonly String GoldSpent = "goldSpent";
+        public static readonly String InhibitorKills = "inhibitorKills";
+        public static readonly String Item0 = "item0";
+        public static readonly String Item1 = "item1";
+        public static readonly String Item2 = "item2";
+        public static readonly String Item3 = "item3";
+        public static readonly String Item4 = "item4";
+        public static readonly String Item5 = "item5";
+        public static readonly String Item6 = "item6";
+        public static readonly String KillingSprees = "killingSprees";
+        public static readonly String Kills = "kills";
+        public static readonly String LargestCriticalStrike = "largestCriticalStrike";
+        public static readonly String LargestKillingSpree = "largestKillingSpree";
+        public static readonly String LargestMultiKill = "largestMultiKill";
+        public static readonly String MagicDamageDealt = "magicDamageDealt";
+        public static readonly String MagicDamageDealtToChampions = "magicDamageDealtToChampions";
+        public static readonly String MagicDamageTaken = "magicDamageTaken";
+        public static readonly String MinionsKilled = "minionsKilled";
+        public static readonly String NeutralMinionsKilled = "neutralMinionsKilled";
+        public static readonly String NeutralMinionsKilledEnemyJungle = "neutralMinionsKilledEnemyJungle";
+        public static readonly String NeutralMinionsKilledTeamJungle = "neutralMinionsKilledTeamJungle";
+        public static readonly String NodeCapture = "nodeCapture";
+        public static readonly String NodeCaptureAssist = "nodeCaptureAssist";
+        public static readonly String NodeNeutralize = "nodeNeutralize";
+        public static readonly String NodeNeutralizeAssist = "nodeNeutralizeAssist";
+        public static readonly String ObjectivePlayerScore = "objectivePlayerScore";
+        public static readonly String PentaKills = "pentaKills";
+        public static readonly String PhysicalDamageDealt = "physicalDamageDealt";
+        public static readonly String PhysicalDamageDealtToChampions = "physicalDamageDealtToChampions";
+        public static readonly String PhysicalDamageTaken = "physicalDamageTaken";
+        public static readonly String QuadraKills = "quadraKills";
+        public static readonly String SightWardsBoughtInGame = "sightWardsBoughtInGame";
+        public static readonly String TeamObjective = "teamObjective";
+        public static readonly String TotalDamageDealt = "totalDamageDealt";
+        public static readonly String TotalDamageDealtToChampions = "totalDamageDealtToChampions";
+        public static readonly String TotalDamageTaken = "totalDamageTaken";
+        public static readonly String TotalHeal = "totalHeal";
+        public static readonly String TotalPlayerScore = "totalPlayerScore";
+        public static readonly String TotalScoreRank = "totalScoreRank";
+        public static readonly String TotalTimeCrowdControlDealt = "totalTimeCrowdControlDealt";
+        public static readonly String TotalUnitsHealed = "totalUnitsHealed";
+        public static readonly String TowerKills = "towerKills";
+        public static readonly String TripleKills = "tripleKills";
+        public static readonly String TrueDamageDealt = "trueDamageDealt";
+        public static readonly String TrueDamageDealtToChampions = "trueDamageDealtToChampions";
+        public static readonly String TrueDamageTaken = "trueDamageTaken";
+        public static readonly String VisionWardsBoughtInGame = "visionWardsBoughtInGame";
+        public static readonly String WardsKilled = "wardsKilled";
+        public static readonly String WardsPlaced = "wardsPlaced";
+        public static readonly String Winner = "winner";       
+    }
+
+    #endregion
+
     #region Private Member Variables
         
     /// <summary>

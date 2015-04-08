@@ -17,7 +17,7 @@ public class Player
 
     #endregion
 
-    #region Private Memeber Variables
+    #region Private Member Variables
     
     /// <summary>
     /// Match history URI

@@ -5,6 +5,27 @@ using System.Text;
 
 public class Participant
 {
+    #region Private Constants
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class PropertyNames
+    {
+        public static readonly String ChampionId = "championId";
+        public static readonly String HighestAchievedSeasonTier = "highestAchievedSeasonTier";
+        public static readonly String Masteries = "masteries";
+        public static readonly String ParticipantId = "participantId";
+        public static readonly String Runes = "runes";
+        public static readonly String Spell1Id = "spell1Id";
+        public static readonly String Spell2Id = "spell2Id";
+        public static readonly String Stats = "stats";
+        public static readonly String TeamId = "teamId";
+        public static readonly String Timeline = "timeline";
+    }
+
+    #endregion
+
     #region Private Member Variables
 
     /// <summary>
@@ -21,7 +42,7 @@ public class Participant
     /// <summary>
     /// List of mastery information
     /// </summary>
-    //private List<Mastery> masteries;
+    //private Mastery[] masteries;
 
     /// <summary>
     /// Participant ID
@@ -31,7 +52,7 @@ public class Participant
     /// <summary>
     /// List of rune information
     /// </summary>
-    // private List<Rune> runes;
+    //private Rune[] runes;
 
     /// <summary>
     /// First summoner spell ID
@@ -171,7 +192,7 @@ public class Participant
     /// <summary>
     /// Participant statistics
     /// </summary>
-    /*public PartipantStats Stats
+    public ParticipantStats Stats
     {
         get 
         {
@@ -181,7 +202,7 @@ public class Participant
         {
             stats = value;
         }
-    }*/
+    }
 
     /// <summary>
     /// Team ID

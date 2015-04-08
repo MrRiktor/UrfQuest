@@ -49,12 +49,12 @@ public static class RiotAPIConstants
     /// <summary>
     /// 
     /// </summary>
-    private static String Observer_Prefix = "https://na.api.pvp.net/observer-mode/rest/";
+    //private static String Observer_Prefix = "https://na.api.pvp.net/observer-mode/rest/";
 
     /// <summary>
     /// 
     /// </summary>
-    private static String Shard_Prefix = "http://status.leagueoflegends.com/shards/";
+    //private static String Shard_Prefix = "http://status.leagueoflegends.com/shards/";
 
     #region Public Methods
 

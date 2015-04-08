@@ -29,7 +29,7 @@ namespace Assets.Source.JSON
         {
             if ( obj is MatchDetail )
             {
-                MatchDetail matchDetail = obj as MatchDetail;
+                Debug.Log( "Test" );
             } 
         }
 

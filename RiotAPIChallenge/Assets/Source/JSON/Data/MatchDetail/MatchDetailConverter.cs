@@ -15,7 +15,7 @@ public class MatchDetailConverter : JsonConverter
 
         #region MapId Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.MapId] is int)
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.MapId ) && propToValueMap[MatchDetail.PropertyNames.MapId] is int )
         {
             matchDetail.MapId = (int)propToValueMap[MatchDetail.PropertyNames.MapId];
         }
@@ -24,7 +24,7 @@ public class MatchDetailConverter : JsonConverter
 
         #region MatchCreation Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.MatchCreation] is long)
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.MatchCreation ) && propToValueMap[MatchDetail.PropertyNames.MatchCreation] is long )
         {
             matchDetail.MatchCreation = (long)propToValueMap[MatchDetail.PropertyNames.MatchCreation];
         }
@@ -33,12 +33,12 @@ public class MatchDetailConverter : JsonConverter
 
         #region MatchDuration Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.MatchDuration] is int)
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.MatchDuration ) && propToValueMap[MatchDetail.PropertyNames.MatchDuration] is int )
         {
             matchDetail.MatchDuration = (int)propToValueMap[MatchDetail.PropertyNames.MatchDuration];
         }
 
-        else if (propToValueMap[MatchDetail.PropertyNames.MatchDuration] is long)
+        else if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.MatchDuration ) && propToValueMap[MatchDetail.PropertyNames.MatchDuration] is long )
         {
             matchDetail.MatchDuration = (long)propToValueMap[MatchDetail.PropertyNames.MatchDuration];
         }
@@ -47,12 +47,12 @@ public class MatchDetailConverter : JsonConverter
         
         #region MatchId Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.MatchId] is int )
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.MatchId ) && propToValueMap[MatchDetail.PropertyNames.MatchId] is int )
         {
             matchDetail.MatchId = (int)propToValueMap[MatchDetail.PropertyNames.MatchId];
         }
 
-        else if ( propToValueMap[MatchDetail.PropertyNames.MatchId] is long)
+        else if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.MatchId ) && propToValueMap[MatchDetail.PropertyNames.MatchId] is long )
         {
             matchDetail.MatchId = (long)propToValueMap[MatchDetail.PropertyNames.MatchId];
         }
@@ -61,7 +61,7 @@ public class MatchDetailConverter : JsonConverter
 
         #region MatchMode Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.MatchMode] is String)
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.MatchMode ) && propToValueMap[MatchDetail.PropertyNames.MatchMode] is String )
         {
             matchDetail.MatchMode = (String)propToValueMap[MatchDetail.PropertyNames.MatchMode];
         }
@@ -70,7 +70,7 @@ public class MatchDetailConverter : JsonConverter
 
         #region MatchType Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.MatchType] is String)
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.MatchType ) && propToValueMap[MatchDetail.PropertyNames.MatchType] is String )
         {
             matchDetail.MatchType = (String)propToValueMap[MatchDetail.PropertyNames.MatchType];
         }
@@ -79,7 +79,7 @@ public class MatchDetailConverter : JsonConverter
         
         #region MatchVersion Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.MatchVersion] is String)
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.MatchVersion ) && propToValueMap[MatchDetail.PropertyNames.MatchVersion] is String )
         {
             matchDetail.MatchVersion = (String)propToValueMap[MatchDetail.PropertyNames.MatchVersion];
         }
@@ -88,31 +88,53 @@ public class MatchDetailConverter : JsonConverter
 
         #region ParticipantIdentities Property !!!!!!!!!(Not yet implemented)!!!!!!!!!!!!!
 
-        /*if (propToValueMap[MatchDetail.PropertyNames.ParticipantIdentities] is String)
+        if ( propToValueMap.ContainsKey( MatchDetail.PropertyNames.ParticipantIdentities ) && propToValueMap[MatchDetail.PropertyNames.ParticipantIdentities] is Dictionary<string,Object>[] )
         {
-            matchDetail.ParticipantIdentities = (String)propToValueMap[MatchDetail.PropertyNames.ParticipantIdentities];
-        }*/
+            Dictionary<String, Object>[] participantIdentitiesPropValueMaps = (Dictionary<String, Object>[])propToValueMap[MatchDetail.PropertyNames.ParticipantIdentities];
+
+            if( participantIdentitiesPropValueMaps.Length > 0 )
+            {
+                ParticipantIdentity[] participantIdentities = new ParticipantIdentity[participantIdentitiesPropValueMaps.Length];
+
+                for( int mapIndex = 0; mapIndex < participantIdentitiesPropValueMaps.Length; ++mapIndex )
+                {
+                    Dictionary<String, Object> participantIdentitiesPropValueMap = participantIdentitiesPropValueMaps[mapIndex];
+                    ParticipantIdentity participantIdentity = ParticipantIdentityConverter.DictionaryToParticipantIdentity( participantIdentitiesPropValueMap );
+                    participantIdentities[mapIndex] = participantIdentity;
+                }
+
+                matchDetail.ParticipantIdentities = participantIdentities;
+            }
+        }
 
         #endregion
         
-        #region Participants Property !!!!!!!!!!!!(Not Yet Implemented)!!!!!!!
+        #region Participants Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.Participants] != null)
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.Participants ) && propToValueMap[MatchDetail.PropertyNames.Participants] is Dictionary<string, object>[] )
         {
-            object obj = propToValueMap[MatchDetail.PropertyNames.Participants];
+            Dictionary<String, Object>[] participantPropValueMaps = (Dictionary<String, Object>[])propToValueMap[MatchDetail.PropertyNames.Participants];
 
-            Dictionary<System.String, System.Object> subObj = new Dictionary<System.String, System.Object>();
+            if( participantPropValueMaps.Length > 0 )
+            {
+                Participant[] participants = new Participant[participantPropValueMaps.Length];
 
-            subObj = obj as Dictionary<System.String, System.Object>;
+                for( int mapIndex = 0; mapIndex < participantPropValueMaps.Length; ++mapIndex )
+                {
+                    Dictionary<String, Object> participantPropValueMap = participantPropValueMaps[mapIndex];
+                    Participant participant = ParticipantConverter.DictionaryToParticipant( participantPropValueMap );
+                    participants[mapIndex] = participant;
+                }
 
-            //matchDetail.Participants = (List<Participant>)propToValueMap[MatchDetail.PropertyNames.Participants];
+                matchDetail.Participants = participants;
+            }
         }
 
         #endregion
         
         #region PlatformId Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.PlatformId] is String)
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.PlatformId ) && propToValueMap[MatchDetail.PropertyNames.PlatformId] is String )
         {
             matchDetail.PlatformId = (String)propToValueMap[MatchDetail.PropertyNames.PlatformId];
         }
@@ -121,7 +143,7 @@ public class MatchDetailConverter : JsonConverter
 
         #region QueueType Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.QueueType] is String)
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.QueueType ) && propToValueMap[MatchDetail.PropertyNames.QueueType] is String )
         {
             matchDetail.QueueType = (String)propToValueMap[MatchDetail.PropertyNames.QueueType];
         }
@@ -130,7 +152,7 @@ public class MatchDetailConverter : JsonConverter
         
         #region Region Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.Region] is String)
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.Region ) && propToValueMap[MatchDetail.PropertyNames.Region] is String )
         {
             matchDetail.Region = (String)propToValueMap[MatchDetail.PropertyNames.Region];
         }
@@ -139,7 +161,7 @@ public class MatchDetailConverter : JsonConverter
         
         #region Season Property
 
-        if (propToValueMap[MatchDetail.PropertyNames.Season] is String)
+        if( propToValueMap.ContainsKey( MatchDetail.PropertyNames.Season ) && propToValueMap[MatchDetail.PropertyNames.Season] is String )
         {
             matchDetail.Season = (String)propToValueMap[MatchDetail.PropertyNames.Season];
         }
@@ -148,7 +170,7 @@ public class MatchDetailConverter : JsonConverter
         
         #region Teams Property !!!!!!!!!(Not Yet IMPLEMENTED)!!!!!!!!!!!!!!!!
 
-       /* if (propToValueMap[MatchDetail.PropertyNames.Teams] is String)
+        /* if (propToValueMap.ContainsKey(MatchDetail.PropertyNames.Teams) && propToValueMap[MatchDetail.PropertyNames.Teams] is String)
         {
             matchDetail.Teams = (String)propToValueMap[MatchDetail.PropertyNames.Teams];
         }*/
@@ -157,7 +179,7 @@ public class MatchDetailConverter : JsonConverter
 
         #region Timeline Property !!!!!!!!!(Not Yet IMPLEMENTED)!!!!!!!!!!!!!!!!
 
-        /*if (propToValueMap[MatchDetail.PropertyNames.Timeline] is String)
+        /*if (propToValueMap.ContainsKey(MatchDetail.PropertyNames.Timeline) && propToValueMap[MatchDetail.PropertyNames.Timeline] is String)
         {
             matchDetail.Timeline = (String)propToValueMap[MatchDetail.PropertyNames.Timeline];
         }*/

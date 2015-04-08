@@ -69,12 +69,12 @@ public class MatchDetail
     /// <summary>
     /// Participant identity information
     /// </summary>
-    private List<ParticipantIdentity> participantIdentities;	
+    private ParticipantIdentity[] participantIdentities;	
         
     /// <summary>
     /// Participant information
     /// </summary>
-    private List<Participant> participants;
+    private Participant[] participants;
         
     /// <summary>
     /// Platform ID of the match
@@ -234,7 +234,7 @@ public class MatchDetail
     /// <summary>
     /// Participant identity information
     /// </summary>
-    public List<ParticipantIdentity> ParticipantIdentities
+    public ParticipantIdentity[] ParticipantIdentities
     {
         get
         {
@@ -249,7 +249,7 @@ public class MatchDetail
     /// <summary>
     /// Participant information
     /// </summary>
-    public List<Participant> Participants
+    public Participant[] Participants
     {
         get
         {
@@ -377,6 +377,5 @@ public class MatchDetail
 
         return new MatchDetail();
     }
-
 }
 
