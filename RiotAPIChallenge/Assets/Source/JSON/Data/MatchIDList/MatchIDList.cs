@@ -56,8 +56,7 @@ public class MatchIDList
     }
 
     #endregion
-
-
+    
     /// <summary>
     /// 
     /// </summary>
@@ -76,5 +75,4 @@ public class MatchIDList
 
         return new MatchIDList();
     }
-
 }

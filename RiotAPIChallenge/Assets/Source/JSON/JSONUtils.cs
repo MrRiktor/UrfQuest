@@ -58,6 +58,7 @@ public class JSONUtils
         JsonConverter[] converters = new JsonConverter[]
         {
             new MatchIDListConverter(),
+            new MatchDetailConverter(),
         };
 
         return converters;
