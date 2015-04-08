@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿#region File Header
+
+/**
+ *   File Name:                 IGameStat.cs
+ *   Author:                    Vincent Biancardi
+ *   Creation Date:             April 8, 2015
+ */
+
+#endregion
+
+using UnityEngine;
 using System.Collections;
 using System;
 

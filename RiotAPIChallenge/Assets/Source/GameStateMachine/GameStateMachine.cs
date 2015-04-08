@@ -11,7 +11,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class TeamSelectController : MonoBehaviour {
+public class GameStateMachine : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
