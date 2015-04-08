@@ -42,7 +42,15 @@ public class GameStateMachine : MonoBehaviour
         for ( Int32 i = 0; i < gameStates.Length; i++ )
         {
             BaseGameState gameState = gameStates [ i ].GetComponent<BaseGameState>( );
-            states.Add( gameState.StateType, gameState );
+
+            if ( gameState == null )
+            {
+                Debug.LogError( "A Game State in the editor does not have the appropriate BaseGameState Attached to it" );
+            }
+            else
+            {
+                states.Add( gameState.StateType, gameState );
+            }
         }
 
         OnStateChange( GameStateTypes.TEAMSELECT );
