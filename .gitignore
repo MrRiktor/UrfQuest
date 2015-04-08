@@ -49,3 +49,8 @@ Library
 /RiotAPIChallenge/UnityVS.RiotAPIChallenge.sln
 /RiotAPIChallenge/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll
 /RiotAPIChallenge/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll.meta
+obj
+/RiotAPIChallenge/Build/Build.unity3d
+/RiotAPIChallenge/Build/Build.html
+/RiotAPIChallenge/UnityVS.RiotAPIChallenge.CSharp.csproj
+/RiotAPIChallenge/UnityVS.RiotAPIChallenge.v12.suo
