@@ -49,6 +49,58 @@ public static class RiotAPIConstants
     /// <summary>
     /// 
     /// </summary>
+    private static String DD_API_Prefix = "http://ddragon.leagueoflegends.com/cdn/";
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private static String DD_Version = "5.2.1/";
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ChampionName"></param>
+    /// <param name="skinIndex"></param>
+    /// <returns></returns>
+    public static String CHAMPION_PORTRAIT_HYPERLINK(String ChampionName="Aatrox", byte skinIndex = 0)
+    {
+        // Example:  http//ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg
+        return DD_API_Prefix + "img/champion/loading/" + ChampionName + "_" + skinIndex.ToString() + ".jpg";
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ChampionName"></param>
+    /// <returns></returns>
+    public static String CHAMPION_ICON_HYPERLINK( String ChampionName="Aatrox" )
+    {
+        // Example: http//ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/Aatrox.png
+        return DD_API_Prefix + DD_Version + "img/champion/" + ChampionName + ".png";
+    }
+
+    /// <summary>
+    /// Returns a link to a champions details JSON string.
+    /// </summary>
+    /// <param name="id"> The champion ID. </param>
+    /// <param name="region"> The region we are looking to grab from. </param>
+    /// <returns></returns>
+    public static String CHAMPION_STATIC_DATA( int id=17, ChampData champData=ChampData.minimal, Region region=Region.NorthAmerica )
+    {
+        // EXAMPLE: https;//global.api.pvp.net/api/lol/static-data/na/v1.2/champion/30?api_key=1069372c-3d2d-4734-964c-53434511b8f8
+        if (champData == ChampData.minimal)
+        {
+            return API_Prefix + "static-data/" + regionMap[region] + "/" + "v1.2/champion/" + id.ToString() + "&api_key=" + API_KEY_SUFFIX;
+        }
+        else 
+        {
+            return API_Prefix + "static-data/" + regionMap[region] + "/" + "v1.2/champion/" + id.ToString() + "?champData=" + champData.ToString() + "&api_key=" + API_KEY_SUFFIX;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     //private static String Observer_Prefix = "https://na.api.pvp.net/observer-mode/rest/";
 
     /// <summary>

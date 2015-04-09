@@ -59,6 +59,7 @@ public class JSONUtils
         {
             new MatchIDListConverter(),
             new MatchDetailConverter(),
+            new ChampionConverter(),
         };
 
         return converters;
