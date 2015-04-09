@@ -53,7 +53,7 @@ public class GameStateMachine : MonoBehaviour
             }
         }
 
-        OnStateChange( GameStateTypes.TEAMSELECT );
+        OnStateChange( GameStateTypes.BATTLE );
     }
 
     /// <summary>

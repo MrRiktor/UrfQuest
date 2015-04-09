@@ -95,8 +95,10 @@ GameObject:
   - 224: {fileID: 22419856}
   - 222: {fileID: 22288658}
   - 114: {fileID: 11465322}
-  - 114: {fileID: 11426988}
   - 114: {fileID: 11401114}
+  - 114: {fileID: 11489552}
+  - 114: {fileID: 11484446}
+  - 114: {fileID: 11409628}
   m_Layer: 5
   m_Name: TSUI_TeamItem
   m_TagString: Untagged
@@ -177,7 +179,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11426988}
+      - m_Target: {fileID: 0}
         m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
@@ -191,7 +193,7 @@ MonoBehaviour:
         m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &11426988
+--- !u!114 &11409628
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -199,16 +201,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 177234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1e427e5c281d6743948bd23ee138419, type: 3}
+  m_Script: {fileID: 11500000, guid: e0b7a7c0b0af60549983f1af1a1ceac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainBackground: {fileID: 11465322}
-  titleText: {fileID: 11438932}
-  championIcon1: {fileID: 11438996}
-  championIcon2: {fileID: 11478938}
-  championIcon3: {fileID: 11474896}
-  championIcon4: {fileID: 11467854}
-  championIcon5: {fileID: 11456844}
 --- !u!114 &11438932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -361,6 +356,37 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11484446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1e427e5c281d6743948bd23ee138419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainBackground: {fileID: 11465322}
+  titleText: {fileID: 11438932}
+  championIcon1: {fileID: 11438996}
+  championIcon2: {fileID: 11478938}
+  championIcon3: {fileID: 11474896}
+  championIcon4: {fileID: 11467854}
+  championIcon5: {fileID: 11456844}
+--- !u!114 &11489552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 177234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fade4d1d6f6ffe409ebdade26a81763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 0}
+  view: {fileID: 0}
 --- !u!114 &11497880
 MonoBehaviour:
   m_ObjectHideFlags: 1

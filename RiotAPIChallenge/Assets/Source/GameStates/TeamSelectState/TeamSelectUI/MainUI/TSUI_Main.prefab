@@ -460,9 +460,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8efb005e1056c46a3fe49ad8d2d7fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Grid: {fileID: 11437906}
+  grid: {fileID: 11437906}
   scrollRect: {fileID: 11472078}
   scrollBar: {fileID: 11498256}
+  TeamSelectItem: {fileID: 177234, guid: 7bf8e9df21fa7c24fb69233317a81692, type: 2}
 --- !u!114 &11469204
 MonoBehaviour:
   m_ObjectHideFlags: 1

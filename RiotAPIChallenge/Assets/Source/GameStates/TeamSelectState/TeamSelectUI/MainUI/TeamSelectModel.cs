@@ -24,6 +24,8 @@ public class TeamSelectModel : MonoBehaviour
 
     private MatchDetail selectedMatchDetail;
 
+    private Participant selectedParticipant;
+
     #endregion
 
     #region Accessors/Mutators

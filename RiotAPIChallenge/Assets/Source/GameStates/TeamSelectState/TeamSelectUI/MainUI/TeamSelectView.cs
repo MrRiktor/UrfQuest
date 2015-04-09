@@ -14,12 +14,21 @@ using UnityEngine.UI;
 
 public class TeamSelectView : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField]
-    private GridLayoutGroup Grid;
+    private GridLayoutGroup grid;
+    
     [SerializeField]
     private ScrollRect scrollRect;
+    
     [SerializeField]
     private Scrollbar scrollBar;
+
+    [SerializeField]
+    private GameObject TeamSelectItem;
+
+    #endregion
 
     #region UI Methods
 
