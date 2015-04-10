@@ -137,15 +137,15 @@ public sealed class ChampionDBManager : MonoBehaviour
 
     private void PushChampionPortraitRequest( string name )
     {
+        championImageQueue.Add( name + "portrait" );
         StartCoroutine(GrabChampionPortraits(name));
-        championImageQueue.Add(name + "portrait");
     }
 
 
     private void PushChampionIconRequest(string name)
     {
+        championImageQueue.Add( name + "icon" );
         StartCoroutine(GrabChampionIcons(name));
-        championImageQueue.Add(name + "icon");
     }
 
     /// <summary>
