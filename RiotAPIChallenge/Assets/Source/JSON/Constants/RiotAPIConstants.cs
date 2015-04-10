@@ -8,16 +8,16 @@ using System.Text;
 /// </summary>
 public enum Region
 {
-    NorthAmerica = 0,
-    Brazil,
-    EUNordicAndEast,
-    EuropeWest,
-    Korea,
-    LatinAmericaNorth,
-    LatinAmericaSouth,
-    Oceania,
-    Russia,
-    Turkey,
+    na = 0, // NorthAmerica
+    br,     // Brazil
+    eune,   // EUNordicAndEast
+    euw,    // EuropeWest
+    kr,     // Korea
+    lan,    // LatinAmericaNorth
+    las,    // LatinAmericaSouth
+    oce,    // Oceania
+    ru,     // Russia
+    tr,     // Turkey
 }
 
 /// <summary>
@@ -25,20 +25,6 @@ public enum Region
 /// </summary>
 public static class RiotAPIConstants
 {
-    private static Dictionary<Region, String> regionMap = new Dictionary<Region, String>
-    {
-        { Region.NorthAmerica, "na"},
-        { Region.Brazil, "br"},
-        { Region.EUNordicAndEast, "eune"},
-        { Region.EuropeWest, "euw"},
-        { Region.Korea, "kr"},
-        { Region.LatinAmericaNorth, "lan"},
-        { Region.LatinAmericaSouth, "las"},
-        { Region.Oceania, "oce"},
-        { Region.Russia, "ru"},
-        { Region.Turkey, "tr"}
-    };
-
     private static String API_KEY_SUFFIX = "1069372c-3d2d-4734-964c-53434511b8f8";
 
     /// <summary>
@@ -51,10 +37,22 @@ public static class RiotAPIConstants
     /// </summary>
     private static String DD_API_Prefix = "http://ddragon.leagueoflegends.com/cdn/";
 
+    private static String Global_API_Prefix = "https://global.api.pvp.net/api/lol/";
+
     /// <summary>
     /// 
     /// </summary>
-    private static String DD_Version = "5.2.1/";
+    private static String DD_Version = "5.5.2/";
+    
+    /// <summary>
+    /// 
+    /// </summary>
+    //private static String Observer_Prefix = "https://na.api.pvp.net/observer-mode/rest/";
+
+    /// <summary>
+    /// 
+    /// </summary>
+    //private static String Shard_Prefix = "http://status.leagueoflegends.com/shards/";
 
     /// <summary>
     /// 
@@ -85,28 +83,18 @@ public static class RiotAPIConstants
     /// <param name="id"> The champion ID. </param>
     /// <param name="region"> The region we are looking to grab from. </param>
     /// <returns></returns>
-    public static String CHAMPION_STATIC_DATA( int id=17, ChampData champData=ChampData.minimal, Region region=Region.NorthAmerica )
+    public static String CHAMPION_STATIC_DATA( int id=17, ChampData champData=ChampData.minimal, Region region=Region.na )
     {
         // EXAMPLE: https;//global.api.pvp.net/api/lol/static-data/na/v1.2/champion/30?api_key=1069372c-3d2d-4734-964c-53434511b8f8
         if (champData == ChampData.minimal)
         {
-            return API_Prefix + "static-data/" + regionMap[region] + "/" + "v1.2/champion/" + id.ToString() + "&api_key=" + API_KEY_SUFFIX;
+            return API_Prefix + "static-data/" + region.ToString() + "/" + "v1.2/champion/" + id.ToString() + "&api_key=" + API_KEY_SUFFIX;
         }
         else 
         {
-            return API_Prefix + "static-data/" + regionMap[region] + "/" + "v1.2/champion/" + id.ToString() + "?champData=" + champData.ToString() + "&api_key=" + API_KEY_SUFFIX;
+            return API_Prefix + "static-data/" + region.ToString() + "/" + "v1.2/champion/" + id.ToString() + "?champData=" + champData.ToString() + "&api_key=" + API_KEY_SUFFIX;
         }
     }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    //private static String Observer_Prefix = "https://na.api.pvp.net/observer-mode/rest/";
-
-    /// <summary>
-    /// 
-    /// </summary>
-    //private static String Shard_Prefix = "http://status.leagueoflegends.com/shards/";
 
     #region Public Methods
 
@@ -122,19 +110,19 @@ public static class RiotAPIConstants
         UnityEngine.Debug.Log(beginDate);
 
         // https;//na.api.pvp.net//api/lol/{region}/v4.1/game/ids?beginDate={beginDate}&api_key=API_KEY_SUFFIX
-        return API_Prefix + regionMap[region] + "/" + "v4.1/game/ids?beginDate=" + beginDate + "&api_key=" + API_KEY_SUFFIX;
+        return API_Prefix + region.ToString() + "/" + "v4.1/game/ids?beginDate=" + beginDate + "&api_key=" + API_KEY_SUFFIX;
     }
 
-    public static String CHAMPIONv1_2(Region region)
+    public static String CHAMPIONv1_2(Region region, ChampData champData)
     {
-        // https;//na.api.pvp.net/api/lol/na/v1.2/champion?api_key=API_KEY_SUFFIX
-        return API_Prefix + regionMap[region] + "/" + "v1.2/champion/" + "?api_key=" + API_KEY_SUFFIX;
+        // https;//global.api.pvp.net/api/lol/static-data/na/v1.2/champion?champData=stats&api_key=API_KEY_SUFFIX
+        return Global_API_Prefix + "static-data/" + region.ToString() + "/" + "v1.2/champion?champData=" + champData.ToString() + "&api_key=" + API_KEY_SUFFIX;
     }
 
     public static String MATCHv2_2(Region region, long matchID)
     {
         // "/api/lol/{region}/v2.2/match/{matchID}?api_key=API_KEY_SUFFIX"
-        return API_Prefix + regionMap[region] + "/" + "v2.2/match/" + matchID + "?api_key=" + API_KEY_SUFFIX;
+        return API_Prefix + region.ToString() + "/" + "v2.2/match/" + matchID + "?api_key=" + API_KEY_SUFFIX;
     }
 
     #endregion

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 
 public delegate void CallbackSuccessHandler( object Object );
@@ -35,7 +34,7 @@ public class FetchMatchIDList : MonoBehaviour
     {
         Fetch fetch = new Fetch(success,
                                 failure, 
-                                RiotAPIConstants.API_CHALLENGE_MATCH_LIST( Region.NorthAmerica, EpochTime.ToEpoch( date ) ),
+                                RiotAPIConstants.API_CHALLENGE_MATCH_LIST( Region.na, EpochTime.ToEpoch( date ) ),
                                 MatchIDList.fromJSON
                                 );
         return fetch.WaitForUrlData();
@@ -89,8 +88,6 @@ public class FetchMatchIDList : MonoBehaviour
 
         using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"Assets/Resources/MatchIDList/MatchIDList.txt", true))
         {
-            
-
             foreach (long matchID in obj.IDList)
             {
                 Debug.Log("MatchID Written - MatchID: " + matchID);

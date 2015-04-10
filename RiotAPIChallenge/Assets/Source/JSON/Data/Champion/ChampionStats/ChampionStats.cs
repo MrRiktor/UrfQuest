@@ -282,5 +282,21 @@ public class ChampionStats
     }
 
     #endregion
+
+    public static ChampionStats fromJSON(object rawResponse)
+    {
+        if (rawResponse is String)
+        {
+            String json = (String)rawResponse;
+            JsonFx.Json.JsonReader reader = JSONUtils.getJsonReader(json);
+
+            ChampionStats championStats = new ChampionStats();
+            championStats = reader.Deserialize<ChampionStats>();
+
+            return championStats;
+        }
+
+        return new ChampionStats();
+    }
 }
 

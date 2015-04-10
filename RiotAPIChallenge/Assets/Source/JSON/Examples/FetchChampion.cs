@@ -25,7 +25,7 @@ class FetchChampion : MonoBehaviour
     public IEnumerator GetChampionByID( int championID )
     {
         //Fetch fetch = new Fetch(success, failure, RiotAPIConstants.MATCHv2_2(Region.NorthAmerica, 1787569113), MatchDetail.fromJSON);
-        Fetch fetch = new Fetch(success, failure, RiotAPIConstants.CHAMPION_STATIC_DATA(championID, ChampData.image, Region.NorthAmerica), Champion.fromJSON);
+        Fetch fetch = new Fetch(success, failure, RiotAPIConstants.CHAMPION_STATIC_DATA(championID, ChampData.image, Region.na), Champion.fromJSON);
 
         return fetch.WaitForUrlData();
     }

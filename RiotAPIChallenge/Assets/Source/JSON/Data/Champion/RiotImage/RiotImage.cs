@@ -55,6 +55,16 @@ public class RiotImage
     /// </summary>
     private int y;
 
+    /// <summary>
+    /// The actual icon image pulled from Data Dragon
+    /// </summary>
+    private UnityEngine.Sprite icon;
+
+    /// <summary>
+    /// The actual portrait image pulled from Data Dragon
+    /// </summary>
+    private UnityEngine.Sprite portrait;
+
     #endregion
 
     #region Accessors/Modifiers
@@ -169,6 +179,36 @@ public class RiotImage
         set
         {
             y = value;
+        }
+    }
+
+    /// <summary>
+    /// The actual icon image pulled from Data Dragon
+    /// </summary>
+    public UnityEngine.Sprite Icon
+    {
+        get
+        {
+            return this.icon;
+        }
+        set
+        {
+            icon = value;
+        }
+    }
+
+    /// <summary>
+    /// The actual portrait image pulled from Data Dragon
+    /// </summary>
+    public UnityEngine.Sprite Portrait
+    {
+        get
+        {
+            return this.portrait;
+        }
+        set
+        {
+            portrait = value;
         }
     }
 

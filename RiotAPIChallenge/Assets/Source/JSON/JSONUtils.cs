@@ -59,7 +59,14 @@ public class JSONUtils
         {
             new MatchIDListConverter(),
             new MatchDetailConverter(),
+            new ChampionDBConverter(),
             new ChampionConverter(),
+            new ChampionStatsConverter(),
+            new RiotImageConverter(),
+            new ParticipantConverter(),
+            new ParticipantIdentityConverter(),
+            new ParticipantStatsConverter(),
+            new PlayerConverter(),
         };
 
         return converters;
