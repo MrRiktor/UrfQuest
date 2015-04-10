@@ -78,10 +78,10 @@ public class TeamSelectItem : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         titleText.text = matchID.ToString( );
         championIcon1.sprite = champIcon1;
-        championIcon2.sprite = champIcon1;
-        championIcon3.sprite = champIcon1;
-        championIcon4.sprite = champIcon1;
-        championIcon5.sprite = champIcon1;
+        championIcon2.sprite = champIcon2;
+        championIcon3.sprite = champIcon3;
+        championIcon4.sprite = champIcon4;
+        championIcon5.sprite = champIcon5;
     }
 
     #endregion

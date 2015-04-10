@@ -87,9 +87,9 @@ public class GameStateMachine : MonoBehaviour
     private void OnStateChange( GameStateTypes stateType )
     {
         //Clean up the previous state
-        if ( prevState != null )
+        if ( curState != null )
         {
-            prevState.OnExitState( );
+            curState.OnExitState( );
         }
 
         //Update the previous state
