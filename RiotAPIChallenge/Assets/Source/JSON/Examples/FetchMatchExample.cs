@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-class FetchMatch : MonoBehaviour
+class FetchMatchExample : MonoBehaviour
 {
     [SerializeField]
     private long [] matchIDs = { 1783499038,

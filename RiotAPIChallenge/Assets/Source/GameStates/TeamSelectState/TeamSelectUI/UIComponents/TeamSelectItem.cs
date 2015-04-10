@@ -18,7 +18,7 @@ using System;
 /// A UI Team Item that gets dynamically created when the users
 /// needs to select a team from random match ID's
 /// </summary>
-public class TeamSelectItemView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class TeamSelectItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     #region variables
 
@@ -26,10 +26,10 @@ public class TeamSelectItemView : MonoBehaviour, IPointerEnterHandler, IPointerE
     private Color32 COLOR_DARK_GREY = new Color32( 64, 64, 64, 255 );
     private Color32 COLOR_LIGHT_GREY = new Color32( 128, 128, 128, 255 );
 
+    private Int64 matchID;
+
     [SerializeField]
     private Image mainBackground; //The background image we will be changing on select and hover
-
-    #region Init Data
 
     [SerializeField]
     private Text titleText; //The title of the team
@@ -44,15 +44,13 @@ public class TeamSelectItemView : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField]
     private Image championIcon5;
 
-    #endregion
-
-
-    private static TeamSelectItemView currentItem = null; //Keeps track of the currently selected TeamSelectItem
+    private static TeamSelectItem currentItem = null; //Keeps track of the currently selected TeamSelectItem
+   
     #endregion
 
     #region Accessors/Mutators
 
-    public static TeamSelectItemView CurrentItem
+    public static TeamSelectItem CurrentItem
     {
         get
         {
@@ -62,54 +60,28 @@ public class TeamSelectItemView : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     #endregion
 
-    #region UI Visual Updates
+    #region Initialization
 
     /// <summary>
-    /// Triggered when the models match Id changes
+    /// Updates the visual item with the passed
+    /// in data
     /// </summary>
-    public void OnMatchIdChange( Int32 newID )
+    /// <param name="matchId">Id the party is attached to</param>
+    /// <param name="champIcon1">postion 1 champion</param>
+    /// <param name="champIcon2">postion 2 champion</param>
+    /// <param name="champIcon3">postion 3 champion</param>
+    /// <param name="champIcon4">postion 4 champion</param>
+    /// <param name="champIcon5">postion 5 champion</param>
+    public void InitData( Int64 matchID, Sprite champIcon1, Sprite champIcon2, Sprite champIcon3, Sprite champIcon4, Sprite champIcon5 )
     {
-        titleText.text = "Match ID: " + newID;
-    }
+        this.matchID = matchID;
 
-    /// <summary>
-    /// Triggered when the models champion Id 1 changes
-    /// </summary>
-    public void OnChampionId1Change( Int32 newID )
-    {
-       // championIcon1.sprite = SpriteManager.ChampionIcons [ newID ];
-    }
-
-    /// <summary>
-    /// Triggered when the models champion Id 2 changes
-    /// </summary>
-    public void OnChampionId2Change( Int32 newID )
-    {
-        // championIcon2.sprite = SpriteManager.ChampionIcons [ newID ];
-    }
-
-    /// <summary>
-    /// Triggered when the models champion Id 3 changes
-    /// </summary>
-    public void OnChampionId3Change( Int32 newID )
-    {
-        // championIcon3.sprite = SpriteManager.ChampionIcons [ newID ];
-    }
-
-    /// <summary>
-    /// Triggered when the models champion Id 4 changes
-    /// </summary>
-    public void OnChampionId4Change( Int32 newID )
-    {
-        // championIcon4.sprite = SpriteManager.ChampionIcons [ newID ];
-    }
-
-    /// <summary>
-    /// Triggered when the models champion Id 5 changes
-    /// </summary>
-    public void OnChampionId5Change( Int32 newID )
-    {
-        // championIcon5.sprite = SpriteManager.ChampionIcons [ newID ];
+        titleText.text = matchID.ToString( );
+        championIcon1.sprite = champIcon1;
+        championIcon2.sprite = champIcon1;
+        championIcon3.sprite = champIcon1;
+        championIcon4.sprite = champIcon1;
+        championIcon5.sprite = champIcon1;
     }
 
     #endregion
@@ -155,6 +127,7 @@ public class TeamSelectItemView : MonoBehaviour, IPointerEnterHandler, IPointerE
                 CurrentItem.Reset( );
 
             currentItem = this;
+            Messenger<Int64>.Broadcast( MessengerEventTypes.TSUI_PARTY_SELECTED, matchID );
 
             mainBackground.color = COLOR_GOLD;
         }

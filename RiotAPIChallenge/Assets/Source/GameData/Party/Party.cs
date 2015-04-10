@@ -9,6 +9,7 @@ public class Party
 
     List<PartyMember> partyMembers = new List<PartyMember>();
 
+    private long matchID;
     private long teamTotalAttack;
     private long teamTotalHealth;
     private long teamTotalMovementSpeed;
@@ -47,6 +48,21 @@ public class Party
         get
         {
             return (this.teamTotalHealth / partyMembers.Count);
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public long MatchID
+    {
+        get
+        {
+            return matchID;
+        }
+        set
+        {
+            matchID = value;
         }
     }
 

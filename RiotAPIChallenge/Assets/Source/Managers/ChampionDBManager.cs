@@ -93,8 +93,6 @@ public sealed class ChampionDBManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this);
-
-        StartCoroutine(InitializeChampionDatabase(Region.na, ChampData.all));
     }
 
     /// <summary>
@@ -102,7 +100,7 @@ public sealed class ChampionDBManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-
+        StartCoroutine( InitializeChampionDatabase( Region.na, ChampData.all ) );
     }
 
     /// <summary>

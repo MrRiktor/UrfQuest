@@ -11,20 +11,23 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
 /// Maintains the data that controlls
 /// the TeamSelectView
 /// </summary>
-public class TeamSelectModel : MonoBehaviour
+public class TeamSelectModel : FetchMatch
 {
     #region Variables
 
-    private List<MatchDetail> matchDetails = new List<MatchDetail>( );
+    private List<Party> parties = new List<Party>( );
 
-    private MatchDetail selectedMatchDetail;
+    private Party selectedParty;
 
-    private Participant selectedParticipant;
+    private PartyMember selectedPartyMember;
+
+    private Boolean initFinalized = false;
 
     #endregion
 
@@ -35,27 +38,59 @@ public class TeamSelectModel : MonoBehaviour
     #region Unity Methods
 
     /// <summary>
-    /// Triggered when the game object this scrip
-    /// is attached to is enabled
+    /// Grab a pool of match ID's 
+    /// on startup
     /// </summary>
-    void OnEnable( )
+    void Start( )
     {
-        //API Call to grab Matches and Their data
+        if ( ChampionDBManager.GetInstance( ).ChampionDBReady )
+        {
+            AddMatchID( 1783499038 );
+            AddMatchID( 1783499704 );
+            AddMatchID( 1783499709 );
+            AddMatchID( 1783499209 );
+            AddMatchID( 1783517364 );
+            initFinalized = true;
+        }
+    }
+
+    /// <summary>
+    /// This is temporary until
+    /// we have an intro scene
+    /// </summary>
+    void Update( )
+    {
+        if ( !initFinalized && ChampionDBManager.GetInstance( ).ChampionDBReady )
+        {
+            AddMatchID( 1783499038 );
+            AddMatchID( 1783499704 );
+            AddMatchID( 1783499709 );
+            AddMatchID( 1783499209 );
+            AddMatchID( 1783517364 );
+            initFinalized = true;
+        }
     }
 
     #endregion
 
-    #region private methods
+    #region Public Methods
 
-    private void APICallSuccessHandler( )
+    /// <summary>
+    /// Updates the selected party
+    /// </summary>
+    /// <param name="matchID">the matchid of the selected party</param>
+    public void PartyChange( Int64 matchID )
     {
-        //Fill out data
-    }
+        for ( Int32 i = 0; i < parties.Count; i++ )
+        {
+            Party party = parties [ i ];
 
-    private void AddMatchDetail( MatchDetail matchDetail )
-    {
-        //TODO Send Message to controller
-        matchDetails.Add( matchDetail );
+            if ( party != null && matchID.Equals( party.MatchID ) )
+            {
+                selectedParty = party;
+                break;
+            }
+        }
     }
 
     #endregion

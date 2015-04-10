@@ -8,11 +8,9 @@ public static class MessengerEventTypes
     //Game State Machine
     public const String GAME_STATE_CHANGE = "game_state_change";
 
-    //TeamSelectItem
-    public const String TSI_MATCHID_CHANGE = "tsi_matchid_change";
-    public const String TSI_CHAMPIONID1_CHANGE = "tsi_championid1_change";
-    public const String TSI_CHAMPIONID2_CHANGE = "tsi_championid1_change";
-    public const String TSI_CHAMPIONID3_CHANGE = "tsi_championid1_change";
-    public const String TSI_CHAMPIONID4_CHANGE = "tsi_championid1_change";
-    public const String TSI_CHAMPIONID5_CHANGE = "tsi_championid1_change";
+    //TeamSelect
+    public const String TSUI_ADD_PARTY = "tsui_add_party";
+    public const String TSUI_PARTY_SELECTED = "tsui_party_selected";
+    public const String TSUI_PARTY_MEMBER_SELECTED = "tsui_party_member_selected";
+    
 }

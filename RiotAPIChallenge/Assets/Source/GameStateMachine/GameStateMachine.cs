@@ -34,6 +34,8 @@ public class GameStateMachine : MonoBehaviour
     /// </summary>
     void Awake( )
     {
+        JSONUtils.initJsonObjectConversion( );
+
         if ( gameStates == null )
         {
             throw new ArgumentNullException("There are no game states");
@@ -53,7 +55,7 @@ public class GameStateMachine : MonoBehaviour
             }
         }
 
-        OnStateChange( GameStateTypes.BATTLE );
+        OnStateChange( GameStateTypes.INTRO );
     }
 
     /// <summary>
