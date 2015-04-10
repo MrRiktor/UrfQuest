@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 public class Party
 {
@@ -19,11 +20,11 @@ public class Party
     /// <summary>
     /// 
     /// </summary>
-    public List<PartyMember> PartyMembers
+    public ReadOnlyCollection<PartyMember> PartyMembers
     {
         get
         {
-            return partyMembers;
+            return partyMembers.AsReadOnly();
         }
     }
 
