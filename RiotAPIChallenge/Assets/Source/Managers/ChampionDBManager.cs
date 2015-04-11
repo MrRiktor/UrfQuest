@@ -126,26 +126,7 @@ public sealed class ChampionDBManager : MonoBehaviour
     {
         this.championDB = obj as ChampionDB;
         
-        foreach(KeyValuePair<string, Champion> champion in championDB.Data)
-        {
-            PushChampionPortraitRequest(champion.Key.ToString());
-            PushChampionIconRequest(champion.Key.ToString());
-        }
-
         championDBInitialized = true;
-    }
-
-    private void PushChampionPortraitRequest( string name )
-    {
-        championImageQueue.Add( name + "portrait" );
-        StartCoroutine(GrabChampionPortraits(name));
-    }
-
-
-    private void PushChampionIconRequest(string name)
-    {
-        championImageQueue.Add( name + "icon" );
-        StartCoroutine(GrabChampionIcons(name));
     }
 
     /// <summary>
@@ -169,47 +150,6 @@ public sealed class ChampionDBManager : MonoBehaviour
 
         return fetch.WaitForUrlData();
     }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator GrabChampionPortraits( string name )
-    {
-        WWW www = new WWW(RiotAPIConstants.CHAMPION_PORTRAIT_HYPERLINK(name));
-
-        yield return www;
-
-        if (!string.IsNullOrEmpty(www.error))
-        {
-            Debug.LogError("Error: " + www.error + " - Champion '" + name + "' has no portrait available.");
-        }
-
-        Sprite newSprite = Sprite.Create(www.texture, new Rect(0f, 0f, www.texture.width, www.texture.height), new Vector2(0.5f, 0.5f), 128f);
-
-        championDB.Data[name].Image.Portrait = newSprite;
-
-        championImageQueue.Remove(name + "portrait");
-    }
-
-    private IEnumerator GrabChampionIcons( string name )
-    {
-        WWW www = new WWW(RiotAPIConstants.CHAMPION_ICON_HYPERLINK(name));
-        
-        yield return www;
-
-        if (!string.IsNullOrEmpty(www.error))
-        {
-            Debug.LogError("Error: " + www.error + " - Champion '" + name + "' has no icon available.");
-        }
-
-        Sprite newSprite = Sprite.Create(www.texture, new Rect(0f, 0f, www.texture.width, www.texture.height), new Vector2(0.0f, 0.0f), 128f);
-
-        championDB.Data[name].Image.Icon = newSprite;
-
-        championImageQueue.Remove(name + "icon");
-    }
-
 
     #endregion
 }

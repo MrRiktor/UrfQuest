@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public abstract class Being
 {
@@ -119,8 +120,20 @@ public abstract class Being
         healthPool = (long)BattleStatCalculator.HealthCalculation( participant.Stats.TotalDamageTaken, participant.Stats.Deaths );
         movementSpeed = (long)champion.Stats.Movespeed;
 
-        icon = champion.Image.Icon;
-        portrait = champion.Image.Portrait;
+        //string key = champion.Key[]
+        
+        Texture2D texture = Resources.Load("Icons/champion/" + champion.Key) as Texture2D;
+
+        if (texture != null)
+        {
+            icon = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 128f);
+        }
+
+        texture = Resources.Load("Images/champion/loading/" + champion.Key + "_0") as Texture2D;
+        if (texture != null)
+        {
+            portrait = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 128f); ;
+        }
     }
     
     /*public Being( Enemy enemy )

@@ -153,7 +153,12 @@ public class Champion
             info = value;
         }
     }*/
-
+    
+    /// <summary>
+    /// The string used to get the champion images and index champion stats in the champion DB.
+    /// Important Note: Wukong's key is "Monkeyking" as well as other champions with spaces in their 
+    /// names will have a no space name.
+    /// </summary>
     public string Key
     {
         get
