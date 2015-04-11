@@ -13,14 +13,26 @@ public class PartyMember : Being
         
     #region Accessors/Modifiers
 
+    public ParticipantStats Stats
+    {
+        get
+        {
+            return stats;
+        }
+    }
+
+    #endregion
+
+    #region Constructors
+
     public PartyMember() : base()
     {
         
     }
 
     public PartyMember( Participant participant ) : base ( participant )
-    {        
-
+    {
+        stats = participant.Stats;
     }
 
     #endregion

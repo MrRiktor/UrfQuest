@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using System.Xml.Serialization;
 
 public abstract class Being
 {
@@ -23,6 +24,7 @@ public abstract class Being
     /// <summary>
     /// 
     /// </summary>
+    [XmlAttribute]
     public String BeingName
     {
         get 
@@ -89,6 +91,7 @@ public abstract class Being
         {
             return icon;
         }
+        set { icon = value; }
     }
 
     /// <summary>
@@ -100,6 +103,7 @@ public abstract class Being
         {
             return portrait;
         }
+        set { portrait = value; }
     }
 
     #endregion
@@ -123,10 +127,5 @@ public abstract class Being
         icon = champion.Image.Icon;
 
         portrait = champion.Image.Portrait;
-    }
-    
-    /*public Being( Enemy enemy )
-    {
-
-    }*/
+    }    
 }
