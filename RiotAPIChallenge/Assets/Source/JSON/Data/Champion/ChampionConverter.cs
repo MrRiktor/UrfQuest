@@ -65,7 +65,7 @@ public class ChampionConverter : JsonConverter
             Dictionary<String, Object> riotImagePropValueMap = (Dictionary<String, Object>)propToValueMap[Champion.PropertyNames.Image];
             RiotImage riotImage = RiotImageConverter.DictionaryToRiotImage(riotImagePropValueMap);
 
-           UnityEngine.Texture2D texture = UnityEngine.Resources.Load("Icons/champion/" + champion.Key) as UnityEngine.Texture2D;
+            UnityEngine.Texture2D texture = UnityEngine.Resources.Load("Icons/champion/" + champion.Key) as UnityEngine.Texture2D;
 
             if (texture != null)
             {

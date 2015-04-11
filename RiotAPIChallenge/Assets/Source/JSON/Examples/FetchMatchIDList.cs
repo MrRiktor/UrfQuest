@@ -15,8 +15,12 @@ public class FetchMatchIDList : MonoBehaviour
         JSONUtils.initJsonObjectConversion();
 
         System.DateTime date = System.DateTime.Now;
-        
-        StartCoroutine( getMatchIDList( DateMath.RoundDateToFive( date ) ) );
+
+        for (int i = 0; i < 40; ++i)
+        {
+            StartCoroutine(getMatchIDList(DateMath.RoundDateToFive(date)));
+            date = date.AddMinutes(-6);
+        }
 	}
 	
 	// Update is called once per frame

@@ -6,6 +6,7 @@ public class GameData
 
     private static Int32 currentLevel=0;
     private static Party currentParty;
+    private static StageMap stageMap = null;
 
     #endregion
 
@@ -32,6 +33,20 @@ public class GameData
         set
         {
             currentParty = value;
+        }
+    }
+
+    public static StageMap StageMap
+    {
+        get
+        {
+            if(stageMap == null)
+            {
+                stageMap = new StageMap();
+                stageMap.Initialize();
+            }
+
+            return stageMap;
         }
     }
 
