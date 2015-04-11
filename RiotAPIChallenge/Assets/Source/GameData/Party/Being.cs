@@ -119,21 +119,10 @@ public abstract class Being
                                                                 participant.Stats.Assists);
         healthPool = (long)BattleStatCalculator.HealthCalculation( participant.Stats.TotalDamageTaken, participant.Stats.Deaths );
         movementSpeed = (long)champion.Stats.Movespeed;
-
-        //string key = champion.Key[]
         
-        Texture2D texture = Resources.Load("Icons/champion/" + champion.Key) as Texture2D;
+        icon = champion.Image.Icon;
 
-        if (texture != null)
-        {
-            icon = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 128f);
-        }
-
-        texture = Resources.Load("Images/champion/loading/" + champion.Key + "_0") as Texture2D;
-        if (texture != null)
-        {
-            portrait = Sprite.Create(texture, new Rect(0f, 0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 128f); ;
-        }
+        portrait = champion.Image.Portrait;
     }
     
     /*public Being( Enemy enemy )
