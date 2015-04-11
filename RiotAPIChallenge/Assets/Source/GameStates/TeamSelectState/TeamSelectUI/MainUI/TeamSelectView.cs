@@ -37,6 +37,11 @@ public class TeamSelectView : MonoBehaviour
         scrollBar.size = scrollRect.GetComponent<RectTransform>().rect.height/scrollRect.content.rect.height;
     }
 
+    public void OnSubmit( )
+    {
+        Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.PROGRESSION );
+    }
+
     /// <summary>
     /// Adds a UI Game Object to the grid
     /// </summary>

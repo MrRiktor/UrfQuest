@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class IntroView : MonoBehaviour {
+public class IntroView : MonoBehaviour
+{
 
     /// <summary>
     /// Handles the play button press
