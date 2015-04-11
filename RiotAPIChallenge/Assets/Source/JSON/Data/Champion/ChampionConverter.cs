@@ -75,7 +75,7 @@ public class ChampionConverter : JsonConverter
             texture = UnityEngine.Resources.Load("Images/champion/loading/" + champion.Key + "_0") as UnityEngine.Texture2D;
             if (texture != null)
             {
-                //riotImage.Portrait = UnityEngine.Sprite.Create(texture, new UnityEngine.Rect(0f, 0f, texture.width, texture.height), new UnityEngine.Vector2(0.5f, 0.5f), 128f); ;
+                riotImage.Portrait = UnityEngine.Sprite.Create(texture, new UnityEngine.Rect(0f, 0f, texture.width, texture.height), new UnityEngine.Vector2(0.5f, 0.5f), 128f); ;
             }
 
             champion.Image = riotImage;
