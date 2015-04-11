@@ -11,6 +11,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class TeamSelectView : MonoBehaviour
 {
@@ -28,19 +29,36 @@ public class TeamSelectView : MonoBehaviour
     [SerializeField]
     private GameObject TeamSelectItem;
 
+    [SerializeField]
+    private Button continueButton;
+
+    [SerializeField]
+    private Image champ1Portrait;
+
+    [SerializeField]
+    private Image champ2Portrait;
+
+    [SerializeField]
+    private Image champ3Portrait;
+
+    [SerializeField]
+    private Image champ4Portrait;
+
+    [SerializeField]
+    private Image champ5Portrait;
+
+    #endregion
+
+    #region Unity Methods
+
+    void Start( )
+    {
+        continueButton.gameObject.SetActive( false );
+    }
+
     #endregion
 
     #region UI Methods
-
-    public void UpdateScrollSize( )
-    {
-        scrollBar.size = scrollRect.GetComponent<RectTransform>().rect.height/scrollRect.content.rect.height;
-    }
-
-    public void OnSubmit( )
-    {
-        Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.PROGRESSION );
-    }
 
     /// <summary>
     /// Adds a UI Game Object to the grid
@@ -60,6 +78,25 @@ public class TeamSelectView : MonoBehaviour
         item.transform.SetParent( grid.transform );
         item.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         item.transform.localPosition = Vector3.zero;
+        
+        if ( scrollRect.verticalScrollbar.size == 1 )
+            scrollBar.gameObject.SetActive( false );
+        else
+            scrollBar.gameObject.SetActive( true );
+    }
+
+    public void UpdateParty( Party party )
+    {
+        champ1Portrait.sprite = party.PartyMembers [ 0 ].Portrait;
+        champ2Portrait.sprite = party.PartyMembers [ 1 ].Portrait;
+        champ3Portrait.sprite = party.PartyMembers [ 2 ].Portrait;
+        champ4Portrait.sprite = party.PartyMembers [ 3 ].Portrait;
+        champ5Portrait.sprite = party.PartyMembers [ 4 ].Portrait;
+    }
+
+    public void EnableContinue( )
+    {
+        continueButton.gameObject.SetActive( true );
     }
 
     #endregion

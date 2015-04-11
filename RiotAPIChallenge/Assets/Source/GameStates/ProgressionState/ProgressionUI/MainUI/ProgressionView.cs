@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ProgressionView : MonoBehaviour {
+public class ProgressionView : MonoBehaviour
+{
 
     /// <summary>
     /// Handles the play button press

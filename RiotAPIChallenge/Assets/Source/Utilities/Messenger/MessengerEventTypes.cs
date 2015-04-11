@@ -11,6 +11,7 @@ public static class MessengerEventTypes
     //TeamSelect
     public const String TSUI_ADD_PARTY = "tsui_add_party";
     public const String TSUI_PARTY_SELECTED = "tsui_party_selected";
+    public const String TSUI_PARTY_UPDATE = "tsui_party_update";
     public const String TSUI_PARTY_MEMBER_SELECTED = "tsui_party_member_selected";
     
 }

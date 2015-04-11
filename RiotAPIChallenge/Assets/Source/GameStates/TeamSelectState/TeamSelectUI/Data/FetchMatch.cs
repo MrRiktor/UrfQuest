@@ -6,7 +6,7 @@ using UnityEngine;
 public class FetchMatch : MonoBehaviour
 {
     private List<Int64> matchIDs = new List<Int64>( );
-    private List<Party> parties = new List<Party>( );
+    protected List<Party> parties = new List<Party>( );
 
     /// <summary>
     /// Adds a match ID and Fetches the 

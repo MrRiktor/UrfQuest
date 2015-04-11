@@ -21,8 +21,6 @@ public class TeamSelectModel : FetchMatch
 {
     #region Variables
 
-    private List<Party> parties = new List<Party>( );
-
     private Party selectedParty;
 
     private PartyMember selectedPartyMember;
@@ -50,6 +48,12 @@ public class TeamSelectModel : FetchMatch
             AddMatchID( 1783499709 );
             AddMatchID( 1783499209 );
             AddMatchID( 1783517364 );
+
+            AddMatchID( 1787566261 );
+            AddMatchID( 1787568249 );
+            AddMatchID( 1787568426 );
+            AddMatchID( 1787579044 );
+            AddMatchID( 1787608607 );
             initFinalized = true;
         }
     }
@@ -67,8 +71,36 @@ public class TeamSelectModel : FetchMatch
             AddMatchID( 1783499709 );
             AddMatchID( 1783499209 );
             AddMatchID( 1783517364 );
+
+            AddMatchID( 1787566261 );
+            AddMatchID( 1787568249 );
+            AddMatchID( 1787568426 );
+            AddMatchID( 1787579044 );
+            AddMatchID( 1787608607 );
             initFinalized = true;
         }
+    }
+
+    #endregion
+
+    #region Interaction Handlers
+
+    /// <summary>
+    /// On Sumbit Press
+    /// </summary>
+    public void OnSubmit( )
+    {
+        GameData.CurrentParty = selectedParty;
+        Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.PROGRESSION );
+    }
+
+
+    /// <summary>
+    /// On Cancel Press
+    /// </summary>
+    public void OnCancel( )
+    {
+        Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.INTRO );
     }
 
     #endregion
@@ -88,6 +120,7 @@ public class TeamSelectModel : FetchMatch
             if ( party != null && matchID.Equals( party.MatchID ) )
             {
                 selectedParty = party;
+                Messenger<Party>.Broadcast( MessengerEventTypes.TSUI_PARTY_UPDATE, selectedParty );
                 break;
             }
         }
