@@ -65,6 +65,12 @@ public class ChampionDBConverter : JsonConverter
                 Champion champion = ChampionConverter.DictionaryToChampion(championDict.Value as Dictionary<String, Object>);
                 
                 championDB.Data.Add(championDict.Key, champion);
+
+                if ( !propToValueMap.ContainsKey( ChampionDB.PropertyNames.Keys ) )
+                {
+                    championDB.Keys.Add(champion.Id.ToString(), championDict.Key);
+                }
+
             }
         }
 
