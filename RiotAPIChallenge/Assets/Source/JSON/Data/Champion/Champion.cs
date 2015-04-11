@@ -56,7 +56,7 @@ public class Champion
     private string blurb;
     private string[] enemytips;
     private int id;
-    private RiotImage image;
+    private RiotImage image = new RiotImage();
     //private Info info;
     private string key;
     private string lore;
@@ -66,7 +66,7 @@ public class Champion
     //private Recommended[] recommended;
     //private Skins[] skins;
     //private ChampionSpells[] spells;
-    private ChampionStats stats;
+    private ChampionStats stats = new ChampionStats();
     private string[] tags;
     private string title;
 
@@ -126,10 +126,18 @@ public class Champion
     {
         get
         {
+            if (this.image == null)
+            {
+                this.image = new RiotImage();
+            }
             return image;
         }
         set
         {
+            if( this.image == null )
+            {
+                this.image = new RiotImage();
+            }
             image = value;
         }
     }
