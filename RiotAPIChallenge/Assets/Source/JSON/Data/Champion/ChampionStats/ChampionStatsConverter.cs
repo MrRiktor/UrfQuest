@@ -13,9 +13,9 @@ public class ChampionStatsConverter : JsonConverter
     {
         ChampionStats championStats = new ChampionStats();
 
-        #region Allytips Property
+        #region Armor Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Armor] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Armor) && propToValueMap[ChampionStats.PropertyNames.Armor] is double)
         {
             championStats.Armor = (double)propToValueMap[ChampionStats.PropertyNames.Armor];
         }
@@ -24,7 +24,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Armorperlevel Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Armorperlevel] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Armorperlevel) && propToValueMap[ChampionStats.PropertyNames.Armorperlevel] is double)
         {
             championStats.Armorperlevel = (double)propToValueMap[ChampionStats.PropertyNames.Armorperlevel];
         }
@@ -33,7 +33,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Attackdamage Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Attackdamage] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Attackdamage) && propToValueMap[ChampionStats.PropertyNames.Attackdamage] is double)
         {
             championStats.Attackdamage = (double)propToValueMap[ChampionStats.PropertyNames.Attackdamage];
         }
@@ -42,7 +42,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Attackdamageperlevel Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Attackdamageperlevel] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Attackdamageperlevel) && propToValueMap[ChampionStats.PropertyNames.Attackdamageperlevel] is double)
         {
             championStats.Attackdamageperlevel = (double)propToValueMap[ChampionStats.PropertyNames.Attackdamageperlevel];
         }
@@ -51,7 +51,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Attackrange Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Attackrange] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Attackrange) && propToValueMap[ChampionStats.PropertyNames.Attackrange] is double)
         {
             championStats.Attackrange = (double)propToValueMap[ChampionStats.PropertyNames.Attackrange];
         }
@@ -60,7 +60,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Attackspeedoffset Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Attackspeedoffset] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Attackspeedoffset) && propToValueMap[ChampionStats.PropertyNames.Attackspeedoffset] is double)
         {
             championStats.Attackspeedoffset = (double)propToValueMap[ChampionStats.PropertyNames.Attackspeedoffset];
         }
@@ -69,7 +69,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Attackspeedperlevel Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Attackspeedperlevel] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Attackspeedperlevel) && propToValueMap[ChampionStats.PropertyNames.Attackspeedperlevel] is double)
         {
             championStats.Attackspeedperlevel = (double)propToValueMap[ChampionStats.PropertyNames.Attackspeedperlevel];
         }
@@ -78,7 +78,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Crit Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Crit] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Crit) && propToValueMap[ChampionStats.PropertyNames.Crit] is double)
         {
             championStats.Crit = (double)propToValueMap[ChampionStats.PropertyNames.Crit];
         }
@@ -87,7 +87,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Critperlevel Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Critperlevel] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Critperlevel) && propToValueMap[ChampionStats.PropertyNames.Critperlevel] is double)
         {
             championStats.Critperlevel = (double)propToValueMap[ChampionStats.PropertyNames.Critperlevel];
         }
@@ -96,7 +96,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Hp Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Hp] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Hp) && propToValueMap[ChampionStats.PropertyNames.Hp] is double)
         {
             championStats.Hp = (double)propToValueMap[ChampionStats.PropertyNames.Hp];
         }
@@ -105,7 +105,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Hpperlevel Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Hpperlevel] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Hpperlevel) && propToValueMap[ChampionStats.PropertyNames.Hpperlevel] is double)
         {
             championStats.Hpperlevel = (double)propToValueMap[ChampionStats.PropertyNames.Hpperlevel];
         }
@@ -114,7 +114,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Hpregen Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Hpregen] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Hpregen) && propToValueMap[ChampionStats.PropertyNames.Hpregen] is double)
         {
             championStats.Hpregen = (double)propToValueMap[ChampionStats.PropertyNames.Hpregen];
         }
@@ -123,7 +123,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Hpregenperlevel Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Hpregenperlevel] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Hpregenperlevel) && propToValueMap[ChampionStats.PropertyNames.Hpregenperlevel] is double)
         {
             championStats.Hpregenperlevel = (double)propToValueMap[ChampionStats.PropertyNames.Hpregenperlevel];
         }
@@ -132,7 +132,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Movespeed Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Movespeed] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Movespeed) && propToValueMap[ChampionStats.PropertyNames.Movespeed] is double)
         {
             championStats.Movespeed = (double)propToValueMap[ChampionStats.PropertyNames.Movespeed];
         }
@@ -141,7 +141,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Mp Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Mp] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Mp) && propToValueMap[ChampionStats.PropertyNames.Mp] is double)
         {
             championStats.Mp = (double)propToValueMap[ChampionStats.PropertyNames.Mp];
         }
@@ -150,7 +150,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Mpperlevel Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Mpperlevel] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Mpperlevel) && propToValueMap[ChampionStats.PropertyNames.Mpperlevel] is double)
         {
             championStats.Mpperlevel = (double)propToValueMap[ChampionStats.PropertyNames.Mpperlevel];
         }
@@ -159,7 +159,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Mpregen Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Mpregen] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Mpregen) && propToValueMap[ChampionStats.PropertyNames.Mpregen] is double)
         {
             championStats.Mpregen = (double)propToValueMap[ChampionStats.PropertyNames.Mpregen];
         }
@@ -168,7 +168,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Mpregenperlevel Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Mpregenperlevel] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Mpregenperlevel) && propToValueMap[ChampionStats.PropertyNames.Mpregenperlevel] is double)
         {
             championStats.Mpregenperlevel = (double)propToValueMap[ChampionStats.PropertyNames.Mpregenperlevel];
         }
@@ -177,7 +177,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Spellblock Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Spellblock] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Spellblock) && propToValueMap[ChampionStats.PropertyNames.Spellblock] is double)
         {
             championStats.Spellblock = (double)propToValueMap[ChampionStats.PropertyNames.Spellblock];
         }
@@ -186,7 +186,7 @@ public class ChampionStatsConverter : JsonConverter
 
         #region Spellblockperlevel Property
 
-        if (propToValueMap[ChampionStats.PropertyNames.Spellblockperlevel] is double)
+        if (propToValueMap.ContainsKey(ChampionStats.PropertyNames.Spellblockperlevel) && propToValueMap[ChampionStats.PropertyNames.Spellblockperlevel] is double)
         {
             championStats.Spellblockperlevel = (double)propToValueMap[ChampionStats.PropertyNames.Spellblockperlevel];
         }

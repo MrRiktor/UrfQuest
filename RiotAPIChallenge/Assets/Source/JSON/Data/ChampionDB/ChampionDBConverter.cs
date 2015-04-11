@@ -66,25 +66,6 @@ public class ChampionDBConverter : JsonConverter
                 
                 championDB.Data.Add(championDict.Key, champion);
             }
-
-    /*        if (championPropValueMaps.Count > 0)
-            {
-                Champion[] champions = new Champion[championPropValueMaps.Count];
-
-                for (int i = 0; i < championPropValueMap.Count; ++i)
-                { 
-
-
-                }
-
-                    foreach (Champion champion in championPropValueMap)
-                    {
-                        champions[champion.Name] = champion;
-                    }
-                
-
-                championDB.Data = champions;
-            }*/
         }
 
         #endregion
