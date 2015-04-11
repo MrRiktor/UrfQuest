@@ -34,7 +34,7 @@ public class TeamSelectController : MonoBehaviour
     {
         //From Model
         Messenger<Party>.AddListener( MessengerEventTypes.TSUI_ADD_PARTY, OnPartyAdd );
-        Messenger<Party>.AddListener( MessengerEventTypes.TSUI_PARTY_UPDATE, OnPartyUpdate );
+        Messenger<Party, MaxPartyStats>.AddListener( MessengerEventTypes.TSUI_PARTY_UPDATE, OnPartyUpdate );
 
         //FromView
         Messenger<Int64>.AddListener( MessengerEventTypes.TSUI_PARTY_SELECTED, OnPartySelect );
@@ -48,7 +48,7 @@ public class TeamSelectController : MonoBehaviour
     {
         //From Model
         Messenger<Party>.RemoveListener( MessengerEventTypes.TSUI_ADD_PARTY, OnPartyAdd );
-        Messenger<Party>.RemoveListener( MessengerEventTypes.TSUI_PARTY_UPDATE, OnPartyUpdate );
+        Messenger<Party, MaxPartyStats>.RemoveListener( MessengerEventTypes.TSUI_PARTY_UPDATE, OnPartyUpdate );
 
         //FromView
         Messenger<Int64>.RemoveListener( MessengerEventTypes.TSUI_PARTY_SELECTED, OnPartySelect );
@@ -62,9 +62,9 @@ public class TeamSelectController : MonoBehaviour
     /// Updates the visuals for selected party
     /// </summary>
     /// <param name="party"></param>
-    private void OnPartyUpdate( Party party )
+    private void OnPartyUpdate( Party party, MaxPartyStats maxPartyStats )
     {
-        view.UpdateParty( party );
+        view.UpdateParty( party, maxPartyStats );
     }
 
     /// <summary>

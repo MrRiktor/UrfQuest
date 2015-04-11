@@ -7,6 +7,7 @@ public class FetchMatch : MonoBehaviour
 {
     private List<Int64> matchIDs = new List<Int64>( );
     protected List<Party> parties = new List<Party>( );
+    protected MaxPartyStats maxPartyStats = new MaxPartyStats( );
 
     /// <summary>
     /// Adds a match ID and Fetches the 
@@ -58,13 +59,48 @@ public class FetchMatch : MonoBehaviour
             }
 
             Debug.LogWarning( "Party Averages - Attack: " + party.AttackAverage + " | Health: " + party.HealthAverage + " | MovementSpeed: " + party.MovementSpeedAverage );
-            Messenger<Party>.Broadcast( MessengerEventTypes.TSUI_ADD_PARTY, party );
             parties.Add( party );
+            CalculateMaxStats( );
+            Messenger<Party>.Broadcast( MessengerEventTypes.TSUI_ADD_PARTY, party );
         }
     }
 
     private void failure( string message )
     {
         Debug.LogError( message );
+    }
+
+    private void CalculateMaxStats( )
+    {
+        for ( Int32 i = 0; i < parties.Count; i++ )
+        {
+            Party party = parties [ i ];
+
+            if ( (party.AttackAverage*5) > maxPartyStats.MaxTeamAttack )
+            {
+                maxPartyStats.MaxTeamAttack = ( party.AttackAverage * 5 );
+            }
+
+            if ( (party.HealthAverage*5) > maxPartyStats.MaxTeamHealthPool )
+            {
+                maxPartyStats.MaxTeamHealthPool = ( party.HealthAverage * 5 );
+            }
+
+            for ( Int32 j = 0; j < 5; j++ )
+            {
+                PartyMember partyMember = party.PartyMembers [ j ];
+
+                if ( partyMember.AttackDamage > maxPartyStats.MaxPlayerAttack )
+                {
+                    maxPartyStats.MaxPlayerAttack = partyMember.AttackDamage;
+                }
+
+                if ( partyMember.HealthPool > maxPartyStats.MaxPlayerHealthPool )
+                {
+                    maxPartyStats.MaxPlayerHealthPool = partyMember.HealthPool;
+                }
+
+            }
+        }
     }
 }

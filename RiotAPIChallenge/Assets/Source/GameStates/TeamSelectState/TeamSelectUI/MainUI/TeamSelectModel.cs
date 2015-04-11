@@ -120,7 +120,7 @@ public class TeamSelectModel : FetchMatch
             if ( party != null && matchID.Equals( party.MatchID ) )
             {
                 selectedParty = party;
-                Messenger<Party>.Broadcast( MessengerEventTypes.TSUI_PARTY_UPDATE, selectedParty );
+                Messenger<Party, MaxPartyStats>.Broadcast( MessengerEventTypes.TSUI_PARTY_UPDATE, selectedParty, maxPartyStats );
                 break;
             }
         }
