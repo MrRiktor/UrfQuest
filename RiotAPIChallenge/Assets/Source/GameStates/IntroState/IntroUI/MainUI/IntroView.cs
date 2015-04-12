@@ -11,57 +11,47 @@ public class IntroView : MonoBehaviour
     private Button playButton;
 
     [SerializeField]
+    private GameObject Spinner;
+
+    [SerializeField]
+    private Image loadingImage;
+
+    [SerializeField]
     private Text loadingText;
 
-    private List<String> loadingSuffix = new List<String>();
-    private Int32 loadingSuffixIndx = 0;
-    private Boolean loadingIncrement = true;
-    private const Int32 LOADING_INDX_MAX = 3;
+    [SerializeField]
+    private List<Sprite> imgAnim = new List<Sprite>();
+
     private Single elapsedTime = 0.0f;
+    private Int32 imgIndx = 0;
+    private ChampionDBManager championDBManager;
 
     #region Unity Methods
 
     void Start( )
     {
-        loadingSuffix.Add( " " );
-        loadingSuffix.Add( " . " );
-        loadingSuffix.Add( " . . " );
-        loadingSuffix.Add( " . . . " );
-
+        loadingImage.sprite = imgAnim [ imgIndx ];
+        championDBManager = ChampionDBManager.GetInstance( );
     }
 
     void Update()
     {
-        if ( ChampionDBManager.GetInstance( ).ChampionDBReady && !playButton.gameObject.activeSelf )
+        if ( championDBManager.ChampionDBReady && !playButton.gameObject.activeSelf )
         {
             playButton.gameObject.SetActive( true );
-            loadingText.gameObject.SetActive( false );
+            Spinner.SetActive( false );
         }
         else if ( !playButton.gameObject.activeSelf )
         {
-            loadingText.text = "Loading" + loadingSuffix [ loadingSuffixIndx ];
-
             elapsedTime += Time.deltaTime;
-            if ( elapsedTime >= 0.25f )
+            if ( elapsedTime >= 0.05f )
             {
-                if ( loadingIncrement )
-                    loadingSuffixIndx++;
-                else
-                    loadingSuffixIndx--;
+                imgIndx++;
+                if ( imgIndx >= imgAnim.Count )
+                    imgIndx = 0;
 
+                loadingImage.sprite = imgAnim [ imgIndx ];
                 elapsedTime = 0.0f;
-            }
-
-            if ( loadingSuffixIndx < 0 )
-            {
-                loadingSuffixIndx++;
-                loadingIncrement = true;
-            }
-
-            if ( loadingSuffixIndx > LOADING_INDX_MAX )
-            {
-                loadingSuffixIndx--;
-                loadingIncrement = false;
             }
         }
     }

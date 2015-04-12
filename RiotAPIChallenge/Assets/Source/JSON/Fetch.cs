@@ -34,6 +34,7 @@ public class Fetch
         if ( !string.IsNullOrEmpty( www.error ) && ( failureCallback != null ) )
         {
             failureCallback( www.error );
+            Debug.LogError( www.error );
         }
         else
         {
