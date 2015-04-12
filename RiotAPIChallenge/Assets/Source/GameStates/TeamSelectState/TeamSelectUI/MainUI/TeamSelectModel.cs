@@ -23,13 +23,21 @@ public class TeamSelectModel : FetchMatch
 
     private Party selectedParty;
 
-    private PartyMember selectedPartyMember;
+    private Int32 selectedPartyMemberIndex = 0;
 
     private Boolean initFinalized = false;
 
     #endregion
 
     #region Accessors/Mutators
+
+    public Party SelectedParty
+    {
+        get
+        {
+            return selectedParty;
+        }
+    }
 
     #endregion
 
@@ -121,9 +129,16 @@ public class TeamSelectModel : FetchMatch
             {
                 selectedParty = party;
                 Messenger<Party, MaxPartyStats>.Broadcast( MessengerEventTypes.TSUI_PARTY_UPDATE, selectedParty, maxPartyStats );
+                Messenger<ParticipantStats>.Broadcast( MessengerEventTypes.TSUI_PARTY_MEMBER_UPDATE, selectedParty.PartyMembers [ selectedPartyMemberIndex ].Stats );
                 break;
             }
         }
+    }
+
+    public void PartyMemberChange( Int32 playerIndex )
+    {
+        selectedPartyMemberIndex = playerIndex;
+        Messenger<ParticipantStats>.Broadcast( MessengerEventTypes.TSUI_PARTY_MEMBER_UPDATE, selectedParty.PartyMembers [ playerIndex ].Stats );
     }
 
     #endregion

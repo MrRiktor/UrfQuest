@@ -17,14 +17,18 @@ public class TeamSelectView : MonoBehaviour
 {
     #region Variables
 
+    private static Color32 COLOR_GOLD = new Color32( 255, 223, 0, 255 );
+    private static Color32 COLOR_DARK_GREY = new Color32( 64, 64, 64, 255 );
+    private static Color32 COLOR_LIGHT_GREY = new Color32( 128, 128, 128, 255 );
+
     //Left Side Scroll 
 
     [SerializeField]
     private GridLayoutGroup grid;
-    
+
     [SerializeField]
     private ScrollRect scrollRect;
-    
+
     [SerializeField]
     private Scrollbar scrollBar;
 
@@ -33,6 +37,9 @@ public class TeamSelectView : MonoBehaviour
 
     [SerializeField]
     private Button continueButton;
+
+    [SerializeField]
+    private GameObject StatListPanel;
 
 
     //Main UIs to Activate
@@ -48,6 +55,21 @@ public class TeamSelectView : MonoBehaviour
 
 
     //Right Side
+
+    [SerializeField]
+    private Image champ1PortraitBackground;
+
+    [SerializeField]
+    private Image champ2PortraitBackground;
+
+    [SerializeField]
+    private Image champ3PortraitBackground;
+
+    [SerializeField]
+    private Image champ4PortraitBackground;
+
+    [SerializeField]
+    private Image champ5PortraitBackground;
 
     [SerializeField]
     private Image champ1Portrait;
@@ -100,6 +122,104 @@ public class TeamSelectView : MonoBehaviour
     [SerializeField]
     private Image teamHealthMeter;
 
+    //Right Side Stats
+
+    [SerializeField]
+    private Text Kills;
+    [SerializeField]
+    private Text Assists;
+    [SerializeField]
+    private Text Deaths;
+
+    [SerializeField]
+    private Text GoldEarned;
+
+    [SerializeField]
+    private Text LargestCriticalStrike;
+
+    [SerializeField]
+    private Text PhysicalDamageDealtToChampions;
+    [SerializeField]
+    private Text PhysicalDamageDealt;
+    [SerializeField]
+    private Text PhysicalDamageTaken;
+
+    [SerializeField]
+    private Text MagicDamageDealtToChampions;
+    [SerializeField]
+    private Text MagicDamageDealt;
+    [SerializeField]
+    private Text MagicDamageTaken;
+
+    [SerializeField]
+    private Text TrueDamageDealtToChampions;
+    [SerializeField]
+    private Text TrueDamageDealt;
+    [SerializeField]
+    private Text TrueDamageTaken;
+
+    [SerializeField]
+    private Text TotalDamageDealtToChampions;
+    [SerializeField]
+    private Text TotalDamageDealt;
+    [SerializeField]
+    private Text TotalDamageTaken;
+    [SerializeField]
+    private Text TotalHeal;
+
+    [SerializeField]
+    private Text KillingSprees;
+    [SerializeField]
+    private Text LargestKillingSpree;
+
+    [SerializeField]
+    private Text LargestMultiKill;
+    [SerializeField]
+    private Text DoubleKills;
+    [SerializeField]
+    private Text TripleKills;
+    [SerializeField]
+    private Text QuadraKills;
+    [SerializeField]
+    private Text PentaKills;
+    [SerializeField]
+    private Text UnrealKills;
+
+    [SerializeField]
+    private Text MinionsKilled;
+    //[SerializeField]
+    //private Text NeutralMinionsKilled;
+    //[SerializeField]
+    //private Text NeutralMinionsKilledEnemyJungle;
+    //[SerializeField]
+    //private Text NeutralMinionsKilledTeamJungle;
+
+    [SerializeField]
+    private Text WardsKilled;
+    [SerializeField]
+    private Text WardsPlaced;
+
+    private static Image currentSelectedPlayer;
+
+    private static Image CurrentSelectedPlayer
+    {
+        get
+        {
+            return currentSelectedPlayer;
+        }
+    }
+
+    private static void SetCurrentSelectedPlayer( Int32 index, Image backgroundImage )
+    {
+        if ( currentSelectedPlayer != null )
+        {
+            currentSelectedPlayer.color = Color.black;
+        }
+        currentSelectedPlayer = backgroundImage;
+        Messenger<Int32>.Broadcast( MessengerEventTypes.TSUI_PARTY_MEMBER_SELECTED, index );
+        currentSelectedPlayer.color = COLOR_GOLD;
+    }
+
     #endregion
 
     #region Unity Methods
@@ -114,28 +234,78 @@ public class TeamSelectView : MonoBehaviour
     #region UI Methods
 
     /// <summary>
+    /// On Champion 1 Portrait Selected
+    /// </summary>
+    public void OnChampion1Press( )
+    {
+        SetCurrentSelectedPlayer( 0, champ1PortraitBackground );
+    }
+
+    /// <summary>
+    /// On Champion 2 Portrait Selected
+    /// </summary>
+    public void OnChampion2Press( )
+    {
+        SetCurrentSelectedPlayer( 1, champ2PortraitBackground );
+    }
+
+    /// <summary>
+    /// On Champion 3 Portrait Selected
+    /// </summary>
+    public void OnChampion3Press( )
+    {
+        SetCurrentSelectedPlayer( 2, champ3PortraitBackground );
+    }
+
+    /// <summary>
+    /// On Champion 4 Portrait Selected
+    /// </summary>
+    public void OnChampion4Press( )
+    {
+        SetCurrentSelectedPlayer( 3, champ4PortraitBackground );
+    }
+
+    /// <summary>
+    /// On Champion 5 Portrait Selected
+    /// </summary>
+    public void OnChampion5Press( )
+    {
+        SetCurrentSelectedPlayer( 4, champ5PortraitBackground );
+    }
+
+    /// <summary>
     /// Adds a UI Game Object to the grid
     /// </summary>
     /// <param name="item">the item being added</param>
     public void AddParty( Party party )
     {
         GameObject item = ( GameObject )Instantiate( TeamSelectItem, Vector3.zero, Quaternion.identity );
-        
+
         if ( item == null || item.GetComponent<TeamSelectItem>( ) == null )
             return;
 
         TeamSelectItem itemScript = item.GetComponent<TeamSelectItem>( );
-        itemScript.InitData( party.MatchID, party.PartyMembers[0].Icon, party.PartyMembers[1].Icon, 
-            party.PartyMembers[2].Icon, party.PartyMembers[3].Icon, party.PartyMembers[4].Icon );
+        itemScript.InitData( party.MatchID, party.PartyMembers [ 0 ].Icon, party.PartyMembers [ 1 ].Icon,
+            party.PartyMembers [ 2 ].Icon, party.PartyMembers [ 3 ].Icon, party.PartyMembers [ 4 ].Icon );
+
+        Boolean firstChild = false;
+        if ( grid.transform.childCount == 0 )
+            firstChild = true;
 
         item.transform.SetParent( grid.transform );
-        item.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        item.transform.localScale = new Vector3( 1.0f, 1.0f, 1.0f );
         item.transform.localPosition = Vector3.zero;
-        
+
         if ( scrollRect.verticalScrollbar.size == 1 )
             scrollBar.gameObject.SetActive( false );
         else
             scrollBar.gameObject.SetActive( true );
+
+        if ( firstChild )
+        {
+            itemScript.OnButtonClick( );
+            SetCurrentSelectedPlayer( 0, champ1PortraitBackground );
+        }
 
 
         TitlePanel.SetActive( true );
@@ -145,6 +315,11 @@ public class TeamSelectView : MonoBehaviour
         SubmitPanel.SetActive( true );
     }
 
+    /// <summary>
+    /// Update the right side with the selected party
+    /// </summary>
+    /// <param name="party">selected party</param>
+    /// <param name="maxPartyStats">max party stats of the group of ids</param>
     public void UpdateParty( Party party, MaxPartyStats maxPartyStats )
     {
         champ1Portrait.sprite = party.PartyMembers [ 0 ].Portrait;
@@ -168,8 +343,54 @@ public class TeamSelectView : MonoBehaviour
         champ5AttackMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 4 ].AttackDamage / maxPartyStats.MaxPlayerAttack, 1, 1 );
         champ5HealthMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 4 ].HealthPool / maxPartyStats.MaxPlayerHealthPool, 1, 1 );
 
-        teamAttackMeter.rectTransform.localScale = new Vector3( ( Single )party.AttackAverage*5.0f / maxPartyStats.MaxTeamAttack, 1, 1 );
-        teamHealthMeter.rectTransform.localScale = new Vector3( ( Single )party.HealthAverage*5.0f / maxPartyStats.MaxTeamHealthPool, 1, 1 );
+        teamAttackMeter.rectTransform.localScale = new Vector3( ( Single )party.AttackAverage * 5.0f / maxPartyStats.MaxTeamAttack, 1, 1 );
+        teamHealthMeter.rectTransform.localScale = new Vector3( ( Single )party.HealthAverage * 5.0f / maxPartyStats.MaxTeamHealthPool, 1, 1 );
+    }
+
+    public void UpdateSelectedPartyMember( ParticipantStats stats )
+    {
+        Kills.text = stats.Kills.ToString( );
+        Assists.text = stats.Assists.ToString( );
+        Deaths.text = stats.Deaths.ToString( );
+
+        GoldEarned.text = stats.GoldEarned.ToString( );
+
+        LargestCriticalStrike.text = stats.LargestCriticalStrike.ToString( );
+
+        PhysicalDamageDealtToChampions.text = stats.PhysicalDamageDealtToChampions.ToString( );
+        PhysicalDamageDealt.text = stats.PhysicalDamageDealt.ToString( );
+        PhysicalDamageTaken.text = stats.PhysicalDamageTaken.ToString( );
+
+        MagicDamageDealtToChampions.text = stats.MagicDamageDealtToChampions.ToString( );
+        MagicDamageDealt.text = stats.MagicDamageDealt.ToString( );
+        MagicDamageTaken.text = stats.MagicDamageTaken.ToString( );
+
+        TrueDamageDealtToChampions.text = stats.TrueDamageDealtToChampions.ToString( );
+        TrueDamageDealt.text = stats.TrueDamageDealt.ToString( );
+        TrueDamageTaken.text = stats.TrueDamageTaken.ToString( );
+
+        TotalDamageDealtToChampions.text = stats.TotalDamageDealtToChampions.ToString( );
+        TotalDamageDealt.text = stats.TotalDamageDealt.ToString( );
+        TotalDamageTaken.text = stats.TotalDamageTaken.ToString( );
+        TotalHeal.text = stats.TotalHeal.ToString( );
+
+        KillingSprees.text = stats.KillingSprees.ToString( );
+        LargestKillingSpree.text = stats.LargestKillingSpree.ToString( );
+
+        LargestMultiKill.text = stats.LargestMultiKill.ToString( );
+        DoubleKills.text = stats.DoubleKills.ToString( );
+        TripleKills.text = stats.TripleKills.ToString( );
+        QuadraKills.text = stats.QuadraKills.ToString( );
+        PentaKills.text = stats.PentaKills.ToString( );
+        UnrealKills.text = stats.UnrealKills.ToString( );
+
+        MinionsKilled.text = stats.MinionsKilled.ToString( );
+        //NeutralMinionsKilled.text = stats.NeutralMinionsKilled.ToString( );
+        //NeutralMinionsKilledEnemyJungle.text = stats.NeutralMinionsKilledEnemyJungle.ToString( );
+        //NeutralMinionsKilledTeamJungle.text = stats.NeutralMinionsKilledTeamJungle.ToString( );
+
+        WardsKilled.text = stats.WardsKilled.ToString( );
+        WardsPlaced.text = stats.WardsPlaced.ToString( );
     }
 
     public void EnableContinue( )

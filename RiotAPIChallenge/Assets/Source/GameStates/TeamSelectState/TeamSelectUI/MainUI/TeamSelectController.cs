@@ -35,9 +35,12 @@ public class TeamSelectController : MonoBehaviour
         //From Model
         Messenger<Party>.AddListener( MessengerEventTypes.TSUI_ADD_PARTY, OnPartyAdd );
         Messenger<Party, MaxPartyStats>.AddListener( MessengerEventTypes.TSUI_PARTY_UPDATE, OnPartyUpdate );
+        Messenger<MaxPartyStats>.AddListener( MessengerEventTypes.TSUI_MAX_PARTY_STATS_UPDATE, OnMaxStatsUpdate );
+        Messenger<ParticipantStats>.AddListener( MessengerEventTypes.TSUI_PARTY_MEMBER_UPDATE, OnPartyMemberUpdate );
 
         //FromView
         Messenger<Int64>.AddListener( MessengerEventTypes.TSUI_PARTY_SELECTED, OnPartySelect );
+        Messenger<Int32>.AddListener( MessengerEventTypes.TSUI_PARTY_MEMBER_SELECTED, OnPartyMemberSelect );
     }
 
     /// <summary>
@@ -49,9 +52,12 @@ public class TeamSelectController : MonoBehaviour
         //From Model
         Messenger<Party>.RemoveListener( MessengerEventTypes.TSUI_ADD_PARTY, OnPartyAdd );
         Messenger<Party, MaxPartyStats>.RemoveListener( MessengerEventTypes.TSUI_PARTY_UPDATE, OnPartyUpdate );
+        Messenger<MaxPartyStats>.RemoveListener( MessengerEventTypes.TSUI_MAX_PARTY_STATS_UPDATE, OnMaxStatsUpdate );
+        Messenger<ParticipantStats>.RemoveListener( MessengerEventTypes.TSUI_PARTY_MEMBER_UPDATE, OnPartyMemberUpdate );
 
         //FromView
         Messenger<Int64>.RemoveListener( MessengerEventTypes.TSUI_PARTY_SELECTED, OnPartySelect );
+        Messenger<Int32>.RemoveListener( MessengerEventTypes.TSUI_PARTY_MEMBER_SELECTED, OnPartyMemberSelect );
     }
 
     #endregion
@@ -77,6 +83,19 @@ public class TeamSelectController : MonoBehaviour
         view.AddParty( party );
     }
 
+    private void OnPartyMemberUpdate( ParticipantStats stats )
+    {
+        view.UpdateSelectedPartyMember( stats );
+    }
+
+    private void OnMaxStatsUpdate( MaxPartyStats maxStats )
+    {
+        if ( model.SelectedParty == null )
+            return;
+
+        view.UpdateParty( model.SelectedParty, maxStats );
+    }
+
     #endregion
 
     #region Messenger Handlers From View
@@ -90,6 +109,11 @@ public class TeamSelectController : MonoBehaviour
     {
         model.PartyChange( matchID );
         view.EnableContinue( );
+    }
+
+    private void OnPartyMemberSelect( Int32 playerIndex )
+    {
+        model.PartyMemberChange( playerIndex );
     }
 
     #endregion

@@ -102,5 +102,6 @@ public class FetchMatch : MonoBehaviour
 
             }
         }
+        Messenger<MaxPartyStats>.Broadcast( MessengerEventTypes.TSUI_MAX_PARTY_STATS_UPDATE, maxPartyStats );
     }
 }
