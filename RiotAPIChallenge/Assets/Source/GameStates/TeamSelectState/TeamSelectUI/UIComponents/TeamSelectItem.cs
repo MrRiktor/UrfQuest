@@ -18,7 +18,7 @@ using System;
 /// A UI Team Item that gets dynamically created when the users
 /// needs to select a team from random match ID's
 /// </summary>
-public class TeamSelectItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class TeamSelectItem : MonoBehaviour
 {
     #region variables
 
@@ -44,6 +44,8 @@ public class TeamSelectItem : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField]
     private Image championIcon5;
 
+    private AudioSource buttonAudioSource;
+
     private static TeamSelectItem currentItem = null; //Keeps track of the currently selected TeamSelectItem
    
     #endregion
@@ -61,6 +63,11 @@ public class TeamSelectItem : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     #endregion
 
     #region Initialization
+
+    void Start( )
+    {
+        buttonAudioSource = transform.parent.GetComponent<AudioSource>();
+    }
 
     /// <summary>
     /// Updates the visual item with the passed
@@ -86,34 +93,6 @@ public class TeamSelectItem : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     #endregion
 
-    #region IPointerEnterHandler Implementation
-
-    /// <summary>
-    /// Gets Triggered when the mouse enters 
-    /// the button region
-    /// </summary>
-    void IPointerEnterHandler.OnPointerEnter( PointerEventData data )
-    {
-        if ( this != CurrentItem )
-            mainBackground.color = COLOR_LIGHT_GREY;
-    }
-
-    #endregion
-
-    #region IPointerExitHandler Implementation
-
-    /// <summary>
-    /// Gets Triggered when the mouse exits
-    /// the button region
-    /// </summary>
-    void IPointerExitHandler.OnPointerExit( PointerEventData data )
-    {
-        if ( this != CurrentItem )
-            mainBackground.color = COLOR_DARK_GREY;
-    }
-
-    #endregion
-
     #region Button Input Methods
 
     /// <summary>
@@ -127,6 +106,7 @@ public class TeamSelectItem : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 CurrentItem.Reset( );
 
             currentItem = this;
+
             Messenger<Int64>.Broadcast( MessengerEventTypes.TSUI_PARTY_SELECTED, matchID );
 
             mainBackground.color = COLOR_GOLD;

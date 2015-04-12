@@ -216,8 +216,8 @@ public class TeamSelectView : MonoBehaviour
             currentSelectedPlayer.color = Color.black;
         }
         currentSelectedPlayer = backgroundImage;
-        Messenger<Int32>.Broadcast( MessengerEventTypes.TSUI_PARTY_MEMBER_SELECTED, index );
         currentSelectedPlayer.color = COLOR_GOLD;
+        Messenger<Int32>.Broadcast( MessengerEventTypes.TSUI_PARTY_MEMBER_SELECTED, index );
     }
 
     #endregion
@@ -227,6 +227,11 @@ public class TeamSelectView : MonoBehaviour
     void Start( )
     {
         continueButton.gameObject.SetActive( false );
+        TitlePanel.SetActive( false );
+
+        HorizontalPanel.SetActive( false );
+
+        SubmitPanel.SetActive( false );
     }
 
     #endregion

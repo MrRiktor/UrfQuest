@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2b8a168275f3e0442bd6084fac10e529
+timeCreated: 1428872153
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - buttonHover: {fileID: 8300000, guid: 479e77cf239912c479f3e3a306dc90d6, type: 3}
+  - buttonPress: {fileID: 8300000, guid: ef0ebba407d0e974eb701dc738661979, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
