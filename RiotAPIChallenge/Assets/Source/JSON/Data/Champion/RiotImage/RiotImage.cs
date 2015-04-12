@@ -189,6 +189,14 @@ public class RiotImage
     {
         get
         {
+            string[] champName = full.Split('.');
+            UnityEngine.Sprite sprite = UnityEngine.Resources.Load<UnityEngine.Sprite>("Icons/champion/" + champName[0]);
+
+            if (sprite != null)
+            {
+                this.Icon = sprite;
+            }
+
             return this.icon;
         }
         set
@@ -204,6 +212,17 @@ public class RiotImage
     {
         get
         {
+            if(this.portrait == null)
+            {
+                string[] champName = full.Split('.');
+
+                UnityEngine.Sprite sprite = UnityEngine.Resources.Load<UnityEngine.Sprite>("Images/champion/loading/" + champName[0] + "_0");
+
+                if (sprite != null)
+                {
+                    this.Portrait = sprite;
+                }
+            }
             return this.portrait;
         }
         set

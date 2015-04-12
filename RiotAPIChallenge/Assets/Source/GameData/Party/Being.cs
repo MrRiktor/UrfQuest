@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 using System.Xml.Serialization;
 
-public abstract class Being
+public abstract class Being : IPartyMember
 {
     #region Private Member Variables
 

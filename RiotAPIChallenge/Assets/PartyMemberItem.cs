@@ -4,16 +4,19 @@ using UnityEngine.UI;
 
 public class PartyMemberItem : MonoBehaviour 
 {
-
+    [SerializeField]
     private Image portrait;
+    [SerializeField]
     private GameObject healthBar;
 
-    private PartyMember partyMemberStats;
+    private int currentHealth;
+
+    private IPartyMember partyMemberData;
     
 	// Use this for initialization
 	void Start () 
     {
-        portrait.sprite = partyMemberStats.Portrait;
+        
 	}
 	
 	// Update is called once per frame
@@ -22,8 +25,9 @@ public class PartyMemberItem : MonoBehaviour
 	
 	}
 
-    private void InitData( PartyMember partyMember )
+    public void InitPartyMember( IPartyMember partyMember )
     {
-        
+        partyMemberData = partyMember;
+        portrait.sprite = partyMemberData.Portrait;
     }
 }

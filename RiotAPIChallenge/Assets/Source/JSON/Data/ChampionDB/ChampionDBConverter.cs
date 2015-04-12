@@ -67,16 +67,18 @@ public class ChampionDBConverter : JsonConverter
                 championDB.Data.Add(championDict.Key, champion);
 
                 if ( !propToValueMap.ContainsKey( ChampionDB.PropertyNames.Keys ) )
-                {
+                {                    
+                    if( champion.Id == 0 )
+                    {
+                        champion.Id = Int32.Parse(champion.Key);
+                        champion.Key = championDict.Key;
+                    }
                     championDB.Keys.Add(champion.Id.ToString(), championDict.Key);
                 }
-
             }
         }
 
         #endregion
-
-
 
         return championDB;
     }

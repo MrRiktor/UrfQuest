@@ -136,6 +136,9 @@ public sealed class ChampionDBManager : MonoBehaviour
     private void InitializationFailure(string message)
     {
         UnityEngine.Debug.LogError("ChampionDBManager::InitializationFailure - Failed to Initialize Champion Database.");
+
+        Fetch fetch = new Fetch(InitializationSuccess, null, ChampionDB.fromJSON);
+
     }
     
     /// <summary>
