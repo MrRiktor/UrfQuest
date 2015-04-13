@@ -56,14 +56,20 @@ public class StageMap
 
     private void FromXML()
     {
-        XmlSerializer deserializer = new XmlSerializer(typeof(StageMap));
-        TextReader textReader = new StreamReader(Application.dataPath + StageMapPath);
 
-        StageMap stageMap = new StageMap();
-        stageMap = (StageMap)deserializer.Deserialize(textReader);
-        textReader.Close();
+        TextAsset textAsset = Resources.Load("Stages/StageMap") as TextAsset;
 
-        this.stages = stageMap.Stages;
+        using (System.IO.StringReader reader = new System.IO.StringReader(textAsset.text))
+        {
+            XmlSerializer deserializer = new XmlSerializer(typeof(StageMap));
+            //TextReader textReader = new StreamReader(Application.dataPath + StageMapPath);
+
+            StageMap stageMap = new StageMap();
+            stageMap = (StageMap)deserializer.Deserialize(reader);
+            reader.Close();
+
+            this.stages = stageMap.Stages;
+        }
     }
 
     #endregion
