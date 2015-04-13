@@ -16,10 +16,10 @@ public class FetchMatchIDList : MonoBehaviour
 
         System.DateTime date = System.DateTime.Now;
 
-        for (int i = 0; i < 40; ++i)
+        for (int i = 0; i < 5; ++i)
         {
-            StartCoroutine(getMatchIDList(DateMath.RoundDateToFive(date)));
             date = date.AddMinutes(-6);
+            StartCoroutine(getMatchIDList(DateMath.RoundDateToFive(date)));            
         }
 	}
 	

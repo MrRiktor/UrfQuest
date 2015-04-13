@@ -11,8 +11,10 @@ public abstract class Being : IPartyMember
 
     private String beingName;
     private long attackDamage;
+    private long currentHealth;
     private long healthPool;
     private long movementSpeed;
+    
 
     private UnityEngine.Sprite icon;
     private UnityEngine.Sprite portrait;

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SetupParty : MonoBehaviour 
 {
@@ -22,34 +23,46 @@ public class SetupParty : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="party"></param>
-    public void SetupTheParty( Party party )
+    public List<PartyMemberItem> SetupTheParty( Party partyData )
     {
-        for( int i = 0; i < party.PartyMembers.Count; ++i )
+        List<PartyMemberItem> party = new List<PartyMemberItem>(); ;
+
+        for (int i = 0; i < partyData.PartyMembers.Count; ++i)
         {
             GameObject partyMemberUI = (Instantiate(partyMemberPrefab, Vector3.zero, Quaternion.identity) as GameObject);
 
-            partyMemberUI.GetComponent<PartyMemberItem>().InitPartyMember(party.PartyMembers[i]);
+            partyMemberUI.GetComponent<PartyMemberItem>().InitPartyMember(partyData.PartyMembers[i], false);
 
             partyMemberUI.transform.SetParent(this.transform);
 
             partyMemberUI.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             partyMemberUI.transform.localPosition = Vector3.zero;
+
+            party.Add(partyMemberUI.GetComponent<PartyMemberItem>());
         }
+
+        return party;
     }
 
-    public void SetupTheParty( Enemy[] enemies )
+    public List<PartyMemberItem> SetupTheParty(Enemy[] enemies)
     {
+        List<PartyMemberItem> party = new List<PartyMemberItem>(); ;
+
         foreach(Enemy enemy in enemies)
         {
             GameObject partyMemberUI = (Instantiate(partyMemberPrefab, Vector3.zero, Quaternion.identity) as GameObject);
 
-            partyMemberUI.GetComponent<PartyMemberItem>().InitPartyMember(enemy);
+            partyMemberUI.GetComponent<PartyMemberItem>().InitPartyMember(enemy, true);
 
             partyMemberUI.transform.SetParent(this.transform);
 
             partyMemberUI.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             partyMemberUI.transform.localPosition = Vector3.zero;
+
+            party.Add(partyMemberUI.GetComponent<PartyMemberItem>());
         }
+
+        return party;
     }
 
 }
