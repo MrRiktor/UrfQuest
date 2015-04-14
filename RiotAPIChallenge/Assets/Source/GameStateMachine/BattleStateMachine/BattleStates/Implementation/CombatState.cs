@@ -22,7 +22,7 @@ public class CombatState : BattleState
     /// </summary>
     public override void OnEnter()
     {
-        BattleManager.GetInstance().i = 0;
+        BattleManager.GetInstance().ResetAttackQueue();
 
         base.OnEnter();
     } 
