@@ -36,9 +36,19 @@ public class FetchMatchIDList : MonoBehaviour
     /// <returns></returns>
     public IEnumerator getMatchIDList( System.DateTime date )
     {
+        string url = "";
+        if ( Application.isWebPlayer )
+        {
+            url = "UrfQuest.php?apiCall=" + RiotAPIConstants.API_CHALLENGE_MATCH_LIST( Region.na, EpochTime.ToEpoch( date ) );
+        }
+        else
+        {
+            url = RiotAPIConstants.API_CHALLENGE_MATCH_LIST( Region.na, EpochTime.ToEpoch( date ) );
+        }
+
         Fetch fetch = new Fetch(success,
                                 failure, 
-                                RiotAPIConstants.API_CHALLENGE_MATCH_LIST( Region.na, EpochTime.ToEpoch( date ) ),
+                                url,
                                 MatchIDList.fromJSON
                                 );
         return fetch.WaitForUrlData();

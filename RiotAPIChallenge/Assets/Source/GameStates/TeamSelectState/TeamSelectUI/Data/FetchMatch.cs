@@ -27,7 +27,17 @@ public class FetchMatch : MonoBehaviour
     /// <returns></returns>
     public IEnumerator getMatch( Int64 matchID )
     {
-        Fetch fetch = new Fetch( MatchGrabSuccess, failure, RiotAPIConstants.MATCHv2_2( Region.na, matchID ), MatchDetail.fromJSON );
+        string url = "";
+        if ( Application.isWebPlayer )
+        {
+            url = "UrfQuest.php?apiCall=" + RiotAPIConstants.MATCHv2_2( Region.na, matchID );
+        }
+        else
+        {
+            url = RiotAPIConstants.MATCHv2_2( Region.na, matchID );
+        }
+
+        Fetch fetch = new Fetch( MatchGrabSuccess, failure, url, MatchDetail.fromJSON );
 
         return fetch.WaitForUrlData( );
     }

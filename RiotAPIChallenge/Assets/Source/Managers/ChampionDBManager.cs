@@ -149,7 +149,17 @@ public sealed class ChampionDBManager : MonoBehaviour
     /// <returns></returns>
     private IEnumerator InitializeChampionDatabase(Region region, ChampData champData)
     {
-        Fetch fetch = new Fetch(InitializationSuccess, InitializationFailure, RiotAPIConstants.CHAMPIONv1_2(region, champData), ChampionDB.fromJSON);
+        string url = "";
+        if ( Application.isWebPlayer)
+        {
+            url = "UrfQuest.php?apiCall=" + RiotAPIConstants.CHAMPIONv1_2( region, champData );
+        }
+        else
+        {
+            url = RiotAPIConstants.CHAMPIONv1_2( region, champData );
+        }
+
+        Fetch fetch = new Fetch(InitializationSuccess, InitializationFailure, url, ChampionDB.fromJSON);
 
         return fetch.WaitForUrlData();
     }
