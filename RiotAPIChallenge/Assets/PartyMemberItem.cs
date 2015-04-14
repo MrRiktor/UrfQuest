@@ -10,7 +10,8 @@ public class PartyMemberItem : MonoBehaviour
     {
         Waiting,
         Attacking,
-        Returning
+        Returning,
+        Cooldown,
     };
 
     #region SerializeField Variables
@@ -136,6 +137,23 @@ public class PartyMemberItem : MonoBehaviour
             return false;
     }
 
+    public bool IsOnCooldown()
+    {
+        if (currentState == PlayerState.Cooldown)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void ResetState()
+    {
+        currentState = PlayerState.Waiting;
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -236,7 +254,7 @@ public class PartyMemberItem : MonoBehaviour
         if (rate >= 1)
         {
             rate = 0;
-            currentState = PlayerState.Waiting;
+            currentState = PlayerState.Cooldown;
         }
     }
 

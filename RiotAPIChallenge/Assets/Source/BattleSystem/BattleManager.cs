@@ -139,6 +139,17 @@ public class BattleManager : MonoBehaviour
         return instance;
     }
 
+    public void ResetAttackQueue()
+    {
+        i = 0;
+
+        foreach(PartyMemberItem partyMemberItem in attackQueue)
+        {
+            partyMemberItem.ResetState();
+        }
+
+    }
+
     /// <summary>
     /// Initializes the both teams. Delegates the setup of the visual objects to the party Gameobject's SetupParty Components.
     /// </summary>
@@ -154,9 +165,6 @@ public class BattleManager : MonoBehaviour
         
         areTeamsInitialized = true;
     }
-    
-    private PartyMemberItem lastattacker = null;
-    private PartyMemberItem lastattackee = null;
 
     public int i = 0;
 
@@ -168,9 +176,8 @@ public class BattleManager : MonoBehaviour
         }    
         
         // Attacker is not dead. (a.k.a. HP <= 0)
-        if (attackQueue[i].IsAlive && lastattacker != attackQueue[i])
+        if (attackQueue[i].IsAlive && attackQueue[i].IsWaiting())
         {
-            lastattacker = attackQueue[i];
             PartyMemberItem target;
 
             if (playerTarget == null || playerTarget.IsAlive == false || attackQueue[i].IsEnemy == true)
@@ -189,13 +196,11 @@ public class BattleManager : MonoBehaviour
                 stateMachine.TransitionToState(BattleState.BattleStateType.ResolveCombatState);
                 return;
             }
-
-            lastattackee = target;
-
+            
             attackQueue[i].SetTarget(target);
         }
 
-        if( !attackQueue[i].IsAlive || attackQueue[i].IsWaiting() )
+        if( !attackQueue[i].IsAlive || attackQueue[i].IsOnCooldown() )
         {
             i++;
         }
