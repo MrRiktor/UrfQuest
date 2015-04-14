@@ -200,7 +200,7 @@ public class PartyMemberItem : MonoBehaviour
 
         float healthPercent = ((float)currentHealth / (float)partyMemberData.HealthPool);
 
-        healthBar.GetComponent<UpdateHealthBarScale>().SetHealth(currentHealth / partyMemberData.HealthPool);
+        healthBar.GetComponent<UpdateHealthBarScale>().SetHealth(healthPercent);
 
         PlayCombatText(Damage);
         this.healthBarText.text = (currentHealth > 0 ? currentHealth.ToString() : "0");
