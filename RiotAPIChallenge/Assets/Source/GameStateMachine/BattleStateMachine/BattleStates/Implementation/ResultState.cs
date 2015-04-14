@@ -30,6 +30,7 @@ public class ResultState : BattleState
             defeatScreen.transform.parent = BattleManager.GetInstance().transform;
 
             defeatScreen.transform.localPosition = Vector3.zero;
+            defeatScreen.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
             ++GameData.Strikes;
         }
@@ -40,6 +41,7 @@ public class ResultState : BattleState
             victoryScreen.transform.parent = BattleManager.GetInstance().transform;
 
             victoryScreen.transform.localPosition = Vector3.zero;
+            victoryScreen.transform.localScale = new Vector3(1.0f,1.0f,1.0f);
 
             ++GameData.CurrentLevel;
         }
