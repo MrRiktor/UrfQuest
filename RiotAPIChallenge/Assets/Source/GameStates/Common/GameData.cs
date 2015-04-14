@@ -4,7 +4,7 @@ public class GameData
 {
     #region Variables
 
-    private static Int32 currentLevel=9;
+    private static Int32 currentLevel=0;
     private static Int32 strikes = 0;
     private static Party currentParty;
     private static StageMap stageMap = null;
