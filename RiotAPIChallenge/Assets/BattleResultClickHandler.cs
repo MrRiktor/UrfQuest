@@ -18,14 +18,14 @@ public class BattleResultClickHandler : MonoBehaviour
         }
         else if (BattleManager.GetInstance().WinningTeam == BattleManager.Team.Player)
         {
-            if (GameData.CurrentLevel <= 9)
+            if (GameData.CurrentLevel <= 10)
             {
                 Messenger<GameStateTypes>.Broadcast(MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.PROGRESSION);
             }
             else
             {
                 //REALLY REALLY WIN??? lol
-                //Messenger<GameStateTypes>.Broadcast(MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.VICTORY);
+                Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.SCOREBOARD );
             }
 
         }

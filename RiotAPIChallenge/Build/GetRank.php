@@ -3,7 +3,8 @@
     $db = mysql_connect('127.0.0.1', 'vincent', 'vb1987') or die('Failed to connect: ' . mysql_error()); 
         mysql_select_db('UrfQuest') or die('Failed to access database');
  
-    $name = mysql_real_escape_string($_GET['name']); 
+    $name = mysql_real_escape_string($_GET['name']);
+    $region = mysql_real_escape_string($_GET['region']); 
     
     //This is the polite version of our name
     $politestring = sanitize($name);
@@ -16,7 +17,8 @@
           WHERE   (ui.score, -ui.ts) >= (uo.score, -uo.ts)
           ) AS rank
       FROM    Scores uo
-      WHERE   name = '$politestring';";
+      WHERE   name = '$politestring'
+      AND region = '$region';";
       $result = mysql_query($query) or die('Query failed: ' . mysql_error());
       
       //This is more elaborate than we need, considering we're only grabbing one rank, but you can modify it if needs be.

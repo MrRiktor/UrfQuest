@@ -80,7 +80,8 @@ public class LeaderBoardView : MonoBehaviour
 
         if ( ScorePost.error == null )
         {
-            StartCoroutine( GrabRank( name ) ); // If the post is successful, the rank gets grabbed next.
+            Debug.Log( ScorePost.text );
+            StartCoroutine( GrabRank( name, region ) ); // If the post is successful, the rank gets grabbed next.
         }
         else
         {
@@ -88,15 +89,16 @@ public class LeaderBoardView : MonoBehaviour
         }
     }
 
-    IEnumerator GrabRank( string name )
+    IEnumerator GrabRank( string name, string region )
     {
         //Try and grab the Rank
-        WWW RankGrabAttempt = new WWW( RankURL + "name=" + WWW.EscapeURL( name ) );
+        WWW RankGrabAttempt = new WWW( RankURL + "name=" + WWW.EscapeURL( name ) + "&region=" + WWW.EscapeURL( region ) );
 
         yield return RankGrabAttempt;
 
         if ( RankGrabAttempt.error == null )
         {
+            Debug.Log( RankGrabAttempt.text );
             rank = System.Int32.Parse( RankGrabAttempt.text ); // Assign the rank to our variable. We could also use a TryParse and write an error dialogue.
             StartCoroutine( GetTopScores( ) ); // Get our top scores
         }
