@@ -7,6 +7,8 @@ public class SoundManager : MonoBehaviour
     {
         None,
         WelcomeToSummonersRift,
+        EnemySlain,
+        AllySlain,
         Ace,
         Victory,
         Defeat,
@@ -40,6 +42,7 @@ public class SoundManager : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
+        PlaySound(SoundClip.Defeat);
 	}
 	
 	// Update is called once per frame
