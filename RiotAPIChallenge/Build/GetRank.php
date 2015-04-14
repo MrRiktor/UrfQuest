@@ -1,6 +1,6 @@
 <?php
     //You need to fill in this information!
-    $db = mysql_connect('loaclhost', 'vincent', 'vb1987') or die('Failed to connect: ' . mysql_error()); 
+    $db = mysql_connect('127.0.0.1', 'vincent', 'vb1987') or die('Failed to connect: ' . mysql_error()); 
         mysql_select_db('UrfQuest') or die('Failed to access database');
  
     $name = mysql_real_escape_string($_GET['name']); 
@@ -12,10 +12,10 @@
       $query = "SELECT  uo.*, 
           (
           SELECT  COUNT(*)
-          FROM    Score ui
+          FROM    Scores ui
           WHERE   (ui.score, -ui.ts) >= (uo.score, -uo.ts)
           ) AS rank
-      FROM    Score uo
+      FROM    Scores uo
       WHERE   name = '$politestring';";
       $result = mysql_query($query) or die('Query failed: ' . mysql_error());
       

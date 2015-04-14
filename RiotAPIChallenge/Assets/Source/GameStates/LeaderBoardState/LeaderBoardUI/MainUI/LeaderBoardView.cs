@@ -42,6 +42,8 @@ public class LeaderBoardView : MonoBehaviour
     {
         if ( GameData.Score == 0.0f )
         {
+            ScoreBoardPanel.SetActive( true );
+            InputPanel.SetActive( false );
             StartCoroutine( GetTopScores( ) );
         }
         else
@@ -71,7 +73,7 @@ public class LeaderBoardView : MonoBehaviour
     ///Our IEnumerators
     IEnumerator AddScore( string name, string region, int score )
     {
-        string hash = Md5Sum( name + score + privateKey );
+        string hash = Md5Sum( name + region + score + privateKey );
 
         WWW ScorePost = new WWW( AddScoreURL + "name=" + WWW.EscapeURL( name ) + "&region=" + WWW.EscapeURL( region ) + "&score=" + score + "&hash=" + hash ); //Post our score
         yield return ScorePost; // The function halts until the score is posted.
@@ -95,7 +97,6 @@ public class LeaderBoardView : MonoBehaviour
 
         if ( RankGrabAttempt.error == null )
         {
-            Debug.Log( RankGrabAttempt.text );
             rank = System.Int32.Parse( RankGrabAttempt.text ); // Assign the rank to our variable. We could also use a TryParse and write an error dialogue.
             StartCoroutine( GetTopScores( ) ); // Get our top scores
         }

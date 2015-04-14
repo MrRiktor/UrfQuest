@@ -1,6 +1,6 @@
 <?php 
         //You have to fill in this information to connect to your database!
-        $db = mysql_connect('localhost', 'vincent', 'vb1987') or die('Failed to connect: ' . mysql_error()); 
+        $db = mysql_connect('127.0.0.1', 'vincent', 'vb1987') or die('Failed to connect: ' . mysql_error()); 
         mysql_select_db('UrfQuest') or die('Failed to access database');
         //These are our variables.
         //We use real escape string to stop people from injecting. We handle this in Unity too, but it's important we do it here as well in case people extract our url.
@@ -11,7 +11,7 @@
         
         //This is the polite version of our name
         $politestring = sanitize($name);
-        
+
         //This is your key. You have to fill this in! Go and generate a strong one.
         $secretKey="e733fdbe-1b86-406c-88fc-c8aa9c874679";
         
@@ -20,8 +20,9 @@
         
         //If what we expect is what we have:
         if($expected_hash == $hash) { 
+            echo "hash correct";
             // Here's our query to insert/update scores!
-            $query = "INSERT INTO Score
+            $query = "INSERT INTO Scores
 SET name = '$politestring'
    , region = '$region'
    , score = '$score'
@@ -31,6 +32,10 @@ ON DUPLICATE KEY UPDATE
             //And finally we send our query.
             $result = mysql_query($query) or die('Query failed: ' . mysql_error()); 
         } 
+        else
+        {
+           echo "failed hash";
+        }
 /////////////////////////////////////////////////
 // string sanitize functionality to avoid
 // sql or html injection abuse and bad words
