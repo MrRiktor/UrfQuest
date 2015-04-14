@@ -5,6 +5,7 @@
         //These are our variables.
         //We use real escape string to stop people from injecting. We handle this in Unity too, but it's important we do it here as well in case people extract our url.
         $name = mysql_real_escape_string($_GET['name'], $db); 
+        $region = mysql_real_escape_string($_GET['region'], $db);
         $score = mysql_real_escape_string($_GET['score'], $db); 
         $hash = $_GET['hash']; 
         
@@ -12,16 +13,17 @@
         $politestring = sanitize($name);
         
         //This is your key. You have to fill this in! Go and generate a strong one.
-        $secretKey="YOUR KEY GOES HERE";
+        $secretKey="e733fdbe-1b86-406c-88fc-c8aa9c874679";
         
         //We md5 hash our results.
-        $expected_hash = md5($name . $score . $secretKey); 
+        $expected_hash = md5($name . $region . $score . $secretKey); 
         
         //If what we expect is what we have:
         if($expected_hash == $hash) { 
             // Here's our query to insert/update scores!
             $query = "INSERT INTO Score
 SET name = '$politestring'
+   , region = '$region'
    , score = '$score'
    , ts = CURRENT_TIMESTAMP
 ON DUPLICATE KEY UPDATE

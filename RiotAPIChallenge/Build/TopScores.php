@@ -14,6 +14,6 @@
     for($i = 0; $i < $result_length; $i++)
     {
          $row = mysql_fetch_array($result);
-         echo $row['name'] . "\t" . $row['score'] . "\n"; // And output them
+         echo $row['name'] . "\t" . $row['region'] . "\t" . $row['score'] ."\n"; // And output them
     }
 ?>

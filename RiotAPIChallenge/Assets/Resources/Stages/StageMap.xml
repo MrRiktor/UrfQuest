@@ -1,263 +1,268 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <StageMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
   <Stages>
-	<Stage StageNumber="0">
-	  <StageImage>Images/stages/stage0</StageImage>
-	  <Enemies>
-		<Enemy id="0" BeingName="Minion">      
-		  <AttackDamage>16</AttackDamage>
-		  <HealthPool>350</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/minion</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
-		</Enemy>
-		<Enemy id="1" BeingName="Minion">
-		  <AttackDamage>16</AttackDamage>
-		  <HealthPool>350</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/minion</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
-		</Enemy>
-		<Enemy id="2" BeingName="Minion">
-		  <AttackDamage>16</AttackDamage>
-		  <HealthPool>350</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/minion</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
-		</Enemy>
-		<Enemy id="3" BeingName="Minion">
-		  <AttackDamage>16</AttackDamage>
-		  <HealthPool>350</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/minion</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
-		</Enemy>
-		<Enemy id="4" BeingName="Minion">
-		  <AttackDamage>16</AttackDamage>
-		  <HealthPool>350</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/minion</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
-		</Enemy>
-	  </Enemies>
-	</Stage>
-	<Stage StageNumber="1">
-	  <StageImage>Images/stages/stage1</StageImage>
-	  <Enemies>
-		<Enemy id="0" BeingName="Murk Wolf">
-		  <AttackDamage>16</AttackDamage>
-		  <HealthPool>420</HealthPool>
-		  <MovementSpeed>340</MovementSpeed>
-		  <IconPath>Icons/enemy/MurkWolf</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage1/MurkWolf</PortraitPath>
-		</Enemy>
-		<Enemy id="1" BeingName="Greater Murk Wolf">      
-		  <AttackDamage>42</AttackDamage>
-		  <HealthPool>1320</HealthPool>
-		  <MovementSpeed>349</MovementSpeed>
-		  <IconPath>Icons/enemy/GreaterMurkWolf</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage1/GreaterMurkWolf</PortraitPath>
-		</Enemy>
-		<Enemy id="2" BeingName="Murk Wolf">
-		  <AttackDamage>16</AttackDamage>
-		  <HealthPool>420</HealthPool>
-		  <MovementSpeed>340</MovementSpeed>
-		  <IconPath>Icons/enemy/MurkWolf</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage1/MurkWolf</PortraitPath>
-		</Enemy>
-	  </Enemies>
-	</Stage>
-	<Stage StageNumber="2">
-	  <StageImage>Images/stages/stage2</StageImage>
-	  <Enemies>
-		<Enemy id="0" BeingName="Crimson Raptor">
-		  <AttackDamage>45</AttackDamage>
-		  <HealthPool>1200</HealthPool>
-		  <MovementSpeed>349</MovementSpeed>
-		  <IconPath>Icons/enemy/CrimsonRaptor</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage2/CrimsonRaptor</PortraitPath>
-		</Enemy>
-		<Enemy id="1" BeingName="Raptor">
-		  <AttackDamage>16</AttackDamage>
-		  <HealthPool>250</HealthPool>
-		  <MovementSpeed>354</MovementSpeed>
-		  <IconPath>Icons/enemy/Raptor</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage2/Raptor</PortraitPath>
-		</Enemy>
-		<Enemy id="2" BeingName="Raptor">
-		  <AttackDamage>16</AttackDamage>
-		  <HealthPool>250</HealthPool>
-		  <MovementSpeed>354</MovementSpeed>
-		  <IconPath>Icons/enemy/Raptor</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage2/Raptor</PortraitPath>
-		</Enemy>
-		<Enemy id="3" BeingName="Raptor">
-		  <AttackDamage>16</AttackDamage>
-		  <HealthPool>250</HealthPool>
-		  <MovementSpeed>354</MovementSpeed>
-		  <IconPath>Icons/enemy/Raptor</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage2/Raptor</PortraitPath>
-		</Enemy>
-	  </Enemies>
-	</Stage>
-	<Stage StageNumber="3">
-	  <StageImage>Images/stages/stage3</StageImage>
-	  <Enemies>
-		<Enemy id="0" BeingName="Ancient Krug">
-		  <AttackDamage>73</AttackDamage>
-		  <HealthPool>1440</HealthPool>
-		  <MovementSpeed>334</MovementSpeed>
-		  <IconPath>Icons/enemy/AncientKrug</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage3/AncientKrug</PortraitPath>
-		</Enemy>
-		<Enemy id="1" BeingName="Krug">
-		  <AttackDamage>35</AttackDamage>
-		  <HealthPool>540</HealthPool>
-		  <MovementSpeed>344</MovementSpeed>
-		  <IconPath>Icons/enemy/Krug</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage3/Krug</PortraitPath>
-		</Enemy>
-	  </Enemies>
-	</Stage>
-	<Stage StageNumber="4">
-	  <StageImage>Images/stages/stage4</StageImage>
-	  <Enemies>
-		<Enemy id="0" BeingName="Gromp">
-		  <AttackDamage>83</AttackDamage>
-		  <HealthPool>1600</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Gromp</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage4/Gromp</PortraitPath>
-		</Enemy>
-	  </Enemies>
-	</Stage>
-	<Stage StageNumber="5">
-	  <StageImage>Images/stages/stage5</StageImage>
-	  <Enemies>
-		<Enemy id="0" BeingName="Blue Sentry">
-		  <AttackDamage>12</AttackDamage>
-		  <HealthPool>400</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/BlueSentry</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage5/BlueSentry</PortraitPath>
-		</Enemy>
-		<Enemy id="1" BeingName="Blue Sentinel">
-		  <AttackDamage>73</AttackDamage>
-		  <HealthPool>2000</HealthPool>
-		  <MovementSpeed>334</MovementSpeed>
-		  <IconPath>Icons/enemy/BlueSentinel</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage5/BlueSentinel</PortraitPath>
-		</Enemy>
-		<Enemy id="2" BeingName="Blue Sentry">
-		  <AttackDamage>12</AttackDamage>
-		  <HealthPool>400</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/BlueSentry</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage5/BlueSentry</PortraitPath>
-		</Enemy>
-	  </Enemies>
-	</Stage>
-	<Stage StageNumber="6">
-	  <StageImage>Images/stages/stage6</StageImage>
-	  <Enemies>
-		<Enemy id="0" BeingName="Cinderling">
-		  <AttackDamage>12</AttackDamage>
-		  <HealthPool>400</HealthPool>
-		  <MovementSpeed>339</MovementSpeed>
-		  <IconPath>Icons/enemy/Cinderling</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage6/Cinderling</PortraitPath>
-		</Enemy>
-		<Enemy id="1" BeingName="Red Brambleback">
-		  <AttackDamage>73</AttackDamage>
-		  <HealthPool>2000</HealthPool>
-		  <MovementSpeed>334</MovementSpeed>
-		  <IconPath>Icons/enemy/RedBrambleback</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage6/RedBrambleback</PortraitPath>
-		</Enemy>
-		<Enemy id="2" BeingName="Cinderling">
-		  <AttackDamage>12</AttackDamage>
-		  <HealthPool>400</HealthPool>
-		  <MovementSpeed>339</MovementSpeed>
-		  <IconPath>Icons/enemy/Cinderling</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage6/Cinderling</PortraitPath>
-		</Enemy>
-	  </Enemies>
-	</Stage>
-	<Stage StageNumber="7">
-	  <StageImage>Images/stages/stage7</StageImage>
-	  <Enemies>
-		<Enemy id="0" BeingName="Dragon">
-		  <AttackDamage>230</AttackDamage>
-		  <HealthPool>4940</HealthPool>
-		  <MovementSpeed>334</MovementSpeed>
-		  <IconPath>Icons/enemy/Dragon</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage7/Dragon</PortraitPath>
-		</Enemy>
-	  </Enemies>
-	</Stage>
-	<Stage StageNumber="8">
-	  <StageImage>Images/stages/stage8</StageImage>
-	  <Enemies>
-		<Enemy id="0" BeingName="Baron">
-		  <AttackDamage>500</AttackDamage>
-		  <HealthPool>8800</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Baron</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage8/Baron</PortraitPath>
-		</Enemy>
-	  </Enemies>
-	</Stage>
-	<Stage StageNumber="9">
-	  <StageImage>Images/stages/stage9</StageImage>
-	  <Enemies>
-		<Enemy id="0" BeingName="Rivington">
-		  <AttackDamage>230</AttackDamage>
-		  <HealthPool>4940</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Riot</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage9/Rivington</PortraitPath>
-		</Enemy>	
-		<Enemy id="1" BeingName="Jatt">
-		  <AttackDamage>230</AttackDamage>
-		  <HealthPool>4940</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Riot</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage9/Jatt</PortraitPath>
-		</Enemy>
-		<Enemy id="2" BeingName="Phreak">
-		  <AttackDamage>230</AttackDamage>
-		  <HealthPool>4940</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Riot</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage9/Phreak</PortraitPath>
-		</Enemy>	
-		<Enemy id="3" BeingName="Kobe">
-		  <AttackDamage>230</AttackDamage>
-		  <HealthPool>4940</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Riot</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage9/Kobe</PortraitPath>
-		</Enemy>	
-		<Enemy id="4" BeingName="Dash">
-		  <AttackDamage>230</AttackDamage>
-		  <HealthPool>4940</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Riot</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage9/Dash</PortraitPath>
-		</Enemy>
-	  </Enemies>
-	</Stage>
-	<Stage StageNumber="10">
-	  <StageImage>Images/stages/stage10</StageImage>
-	  <Enemies>
-		<Enemy id="0" BeingName="Urf">
-		  <AttackDamage>500</AttackDamage>
-		  <HealthPool>18800</HealthPool>
-		  <MovementSpeed>500</MovementSpeed>
-		  <IconPath>Icons/enemy/Urf</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage10/Urf</PortraitPath>
-		</Enemy>
-	  </Enemies>
-	</Stage>
+    <Stage StageNumber="0">
+      <StageImage>Images/stages/stage0</StageImage>
+      <Enemies>
+        <Enemy id="0" BeingName="Minion">
+          <AttackDamage>16</AttackDamage>
+          <HealthPool>350</HealthPool>
+          <MovementSpeed>324</MovementSpeed>
+          <IconPath>Icons/enemy/minion</IconPath>
+          <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
+        </Enemy>
+        <Enemy id="1" BeingName="Minion">
+          <AttackDamage>16</AttackDamage>
+          <HealthPool>350</HealthPool>
+          <MovementSpeed>324</MovementSpeed>
+          <IconPath>Icons/enemy/minion</IconPath>
+          <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
+        </Enemy>
+        <Enemy id="2" BeingName="Minion">
+          <AttackDamage>16</AttackDamage>
+          <HealthPool>350</HealthPool>
+          <MovementSpeed>324</MovementSpeed>
+          <IconPath>Icons/enemy/minion</IconPath>
+          <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
+        </Enemy>
+        <Enemy id="3" BeingName="Minion">
+          <AttackDamage>16</AttackDamage>
+          <HealthPool>350</HealthPool>
+          <MovementSpeed>324</MovementSpeed>
+          <IconPath>Icons/enemy/minion</IconPath>
+          <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
+        </Enemy>
+        <Enemy id="4" BeingName="Minion">
+          <AttackDamage>16</AttackDamage>
+          <HealthPool>350</HealthPool>
+          <MovementSpeed>324</MovementSpeed>
+          <IconPath>Icons/enemy/minion</IconPath>
+          <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
+        </Enemy>
+      </Enemies>
+    </Stage>
+    <Stage StageNumber="1">
+      <StageImage>Images/stages/stage1</StageImage>
+      <Enemies>
+        <Enemy id="0" BeingName="Murk Wolf">
+          <AttackDamage>16</AttackDamage>
+          <HealthPool>420</HealthPool>
+          <MovementSpeed>340</MovementSpeed>
+          <IconPath>Icons/enemy/MurkWolf</IconPath>
+          <PortraitPath>Images/enemy/loading/stage1/MurkWolf</PortraitPath>
+        </Enemy>
+        <Enemy id="1" BeingName="Greater Murk Wolf">
+          <AttackDamage>42</AttackDamage>
+          <HealthPool>1320</HealthPool>
+          <MovementSpeed>349</MovementSpeed>
+          <IconPath>Icons/enemy/GreaterMurkWolf</IconPath>
+          <PortraitPath>Images/enemy/loading/stage1/GreaterMurkWolf</PortraitPath>
+        </Enemy>
+        <Enemy id="2" BeingName="Murk Wolf">
+          <AttackDamage>16</AttackDamage>
+          <HealthPool>420</HealthPool>
+          <MovementSpeed>340</MovementSpeed>
+          <IconPath>Icons/enemy/MurkWolf</IconPath>
+          <PortraitPath>Images/enemy/loading/stage1/MurkWolf</PortraitPath>
+        </Enemy>
+      </Enemies>
+    </Stage>
+    <Stage StageNumber="2">
+      <StageImage>Images/stages/stage2</StageImage>
+      <Enemies>
+        <Enemy id="0" BeingName="Crimson Raptor">
+          <AttackDamage>45</AttackDamage>
+          <HealthPool>1200</HealthPool>
+          <MovementSpeed>349</MovementSpeed>
+          <IconPath>Icons/enemy/CrimsonRaptor</IconPath>
+          <PortraitPath>Images/enemy/loading/stage2/CrimsonRaptor</PortraitPath>
+        </Enemy>
+        <Enemy id="1" BeingName="Raptor">
+          <AttackDamage>16</AttackDamage>
+          <HealthPool>250</HealthPool>
+          <MovementSpeed>354</MovementSpeed>
+          <IconPath>Icons/enemy/Raptor</IconPath>
+          <PortraitPath>Images/enemy/loading/stage2/Raptor</PortraitPath>
+        </Enemy>
+        <Enemy id="2" BeingName="Raptor">
+          <AttackDamage>16</AttackDamage>
+          <HealthPool>250</HealthPool>
+          <MovementSpeed>354</MovementSpeed>
+          <IconPath>Icons/enemy/Raptor</IconPath>
+          <PortraitPath>Images/enemy/loading/stage2/Raptor</PortraitPath>
+        </Enemy>
+        <Enemy id="3" BeingName="Raptor">
+          <AttackDamage>16</AttackDamage>
+          <HealthPool>250</HealthPool>
+          <MovementSpeed>354</MovementSpeed>
+          <IconPath>Icons/enemy/Raptor</IconPath>
+          <PortraitPath>Images/enemy/loading/stage2/Raptor</PortraitPath>
+        </Enemy>
+      </Enemies>
+    </Stage>
+    <Stage StageNumber="3">
+      <StageImage>Images/stages/stage3</StageImage>
+      <Enemies>
+        <Enemy id="0" BeingName="Ancient Krug">
+          <AttackDamage>146</AttackDamage>
+          <HealthPool>1440</HealthPool>
+          <MovementSpeed>334</MovementSpeed>
+          <IconPath>Icons/enemy/AncientKrug</IconPath>
+          <PortraitPath>Images/enemy/loading/stage3/AncientKrug</PortraitPath>
+        </Enemy>
+        <Enemy id="1" BeingName="Krug">
+          <AttackDamage>70</AttackDamage>
+          <HealthPool>540</HealthPool>
+          <MovementSpeed>344</MovementSpeed>
+          <IconPath>Icons/enemy/Krug</IconPath>
+          <PortraitPath>Images/enemy/loading/stage3/Krug</PortraitPath>
+        </Enemy>
+      </Enemies>
+    </Stage>
+    <Stage StageNumber="4">
+      <StageImage>Images/stages/stage4</StageImage>
+      <Enemies>
+        <Enemy id="0" BeingName="Gromp">
+          <AttackDamage>166</AttackDamage>
+          <HealthPool>3200</HealthPool>
+          <MovementSpeed>324</MovementSpeed>
+          <IconPath>Icons/enemy/Gromp</IconPath>
+          <PortraitPath>Images/enemy/loading/stage4/Gromp</PortraitPath>
+        </Enemy>
+      </Enemies>
+    </Stage>
+    <Stage StageNumber="5">
+      <StageImage>Images/stages/stage5</StageImage>
+      <Enemies>
+        <Enemy id="0" BeingName="Blue Sentry">
+          <AttackDamage>48</AttackDamage>
+          <HealthPool>400</HealthPool>
+          <MovementSpeed>324</MovementSpeed>
+          <IconPath>Icons/enemy/BlueSentry</IconPath>
+          <PortraitPath>Images/enemy/loading/stage5/BlueSentry</PortraitPath>
+        </Enemy>
+        <Enemy id="1" BeingName="Blue Sentinel">
+          <AttackDamage>146</AttackDamage>
+          <HealthPool>2000</HealthPool>
+          <MovementSpeed>334</MovementSpeed>
+          <IconPath>Icons/enemy/BlueSentinel</IconPath>
+          <PortraitPath>Images/enemy/loading/stage5/BlueSentinel</PortraitPath>
+        </Enemy>
+        <Enemy id="2" BeingName="Blue Sentry">
+          <AttackDamage>48</AttackDamage>
+          <HealthPool>400</HealthPool>
+          <MovementSpeed>324</MovementSpeed>
+          <IconPath>Icons/enemy/BlueSentry</IconPath>
+          <PortraitPath>Images/enemy/loading/stage5/BlueSentry</PortraitPath>
+        </Enemy>
+      </Enemies>
+    </Stage>
+    <Stage StageNumber="6">
+      <StageImage>Images/stages/stage6</StageImage>
+      <Enemies>
+        <Enemy id="0" BeingName="Cinderling">
+          <AttackDamage>48</AttackDamage>
+          <HealthPool>400</HealthPool>
+          <MovementSpeed>339</MovementSpeed>
+          <IconPath>Icons/enemy/Cinderling</IconPath>
+          <PortraitPath>Images/enemy/loading/stage6/Cinderling</PortraitPath>
+        </Enemy>
+        <Enemy id="1" BeingName="Red Brambleback">
+          <AttackDamage>146</AttackDamage>
+          <HealthPool>2000</HealthPool>
+          <MovementSpeed>334</MovementSpeed>
+          <IconPath>Icons/enemy/RedBrambleback</IconPath>
+          <PortraitPath>Images/enemy/loading/stage6/RedBrambleback</PortraitPath>
+        </Enemy>
+        <Enemy id="2" BeingName="Cinderling">
+          <AttackDamage>48</AttackDamage>
+          <HealthPool>400</HealthPool>
+          <MovementSpeed>339</MovementSpeed>
+          <IconPath>Icons/enemy/Cinderling</IconPath>
+          <PortraitPath>Images/enemy/loading/stage6/Cinderling</PortraitPath>
+        </Enemy>
+      </Enemies>
+    </Stage>
+    <Stage StageNumber="7">
+      <StageImage>Images/stages/stage7</StageImage>
+      <Enemies>
+        <Enemy id="0" BeingName="Dragon">
+          <AttackDamage>325</AttackDamage>
+          <HealthPool>4940</HealthPool>
+          <MovementSpeed>334</MovementSpeed>
+          <IconPath>Icons/enemy/Dragon</IconPath>
+          <PortraitPath>Images/enemy/loading/stage7/Dragon</PortraitPath>
+        </Enemy>
+      </Enemies>
+    </Stage>
+    <Stage StageNumber="8">
+      <StageImage>Images/stages/stage8</StageImage>
+      <Enemies>
+        <Enemy id="0" BeingName="Baron">
+          <AttackDamage>400</AttackDamage>
+          <HealthPool>8800</HealthPool>
+          <MovementSpeed>324</MovementSpeed>
+          <IconPath>Icons/enemy/Baron</IconPath>
+          <PortraitPath>Images/enemy/loading/stage8/Baron</PortraitPath>
+        </Enemy>
+      </Enemies>
+    </Stage>
+    <Stage StageNumber="9">
+      <StageImage>Images/stages/stage9</StageImage>
+      <Enemies>
+        <Enemy id="0" BeingName="Rivington">
+          <!-- Lower Attack/Higher Health Pool -->
+          <AttackDamage>85</AttackDamage>
+          <HealthPool>1750</HealthPool>
+          <MovementSpeed>344</MovementSpeed>
+          <IconPath>Icons/enemy/Riot</IconPath>
+          <PortraitPath>Images/enemy/loading/stage9/Rivington</PortraitPath>
+        </Enemy>
+        <Enemy id="1" BeingName="Jatt">
+          <!-- TANK - Low Attack/Highest Health Pool -->
+          <AttackDamage>50</AttackDamage>
+          <HealthPool>2500</HealthPool>
+          <MovementSpeed>329</MovementSpeed>
+          <IconPath>Icons/enemy/Riot</IconPath>
+          <PortraitPath>Images/enemy/loading/stage9/Jatt</PortraitPath>
+        </Enemy>
+        <Enemy id="2" BeingName="Phreak">
+          <!-- SUPER SLOW - Guaranteed One Shot/Low Health Pool -->
+          <AttackDamage>9001</AttackDamage>
+          <HealthPool>666</HealthPool>
+          <MovementSpeed>1</MovementSpeed>
+          <IconPath>Icons/enemy/Riot</IconPath>
+          <PortraitPath>Images/enemy/loading/stage9/Phreak</PortraitPath>
+        </Enemy>
+        <Enemy id="3" BeingName="Kobe">
+          <!-- Higher Attack/Lower Health Pool -->
+          <AttackDamage>212</AttackDamage>
+          <HealthPool>975</HealthPool>
+          <MovementSpeed>339</MovementSpeed>
+          <IconPath>Icons/enemy/Riot</IconPath>
+          <PortraitPath>Images/enemy/loading/stage9/Kobe</PortraitPath>
+        </Enemy>
+        <Enemy id="4" BeingName="Dash">
+          <!-- Super Fast - Balanced Attack/ Balanced Health Pool -->
+          <AttackDamage>136</AttackDamage>
+          <HealthPool>1250</HealthPool>
+          <MovementSpeed>400</MovementSpeed>
+          <IconPath>Icons/enemy/Riot</IconPath>
+          <PortraitPath>Images/enemy/loading/stage9/Dash</PortraitPath>
+        </Enemy>
+      </Enemies>
+    </Stage>
+    <Stage StageNumber="10">
+      <StageImage>Images/stages/stage10</StageImage>
+      <Enemies>
+        <Enemy id="0" BeingName="Urf">
+          <AttackDamage>99999</AttackDamage>
+          <HealthPool>5000</HealthPool>
+          <MovementSpeed>1</MovementSpeed>
+          <IconPath>Icons/enemy/Urf</IconPath>
+          <PortraitPath>Images/enemy/loading/stage10/Urf</PortraitPath>
+        </Enemy>
+      </Enemies>
+    </Stage>
   </Stages>
 </StageMap>

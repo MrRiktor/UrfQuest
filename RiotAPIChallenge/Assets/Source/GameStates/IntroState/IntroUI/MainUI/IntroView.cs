@@ -11,6 +11,9 @@ public class IntroView : MonoBehaviour
     private Button playButton;
 
     [SerializeField]
+    private Button scoresButton;
+
+    [SerializeField]
     private GameObject Spinner;
 
     [SerializeField]
@@ -39,6 +42,7 @@ public class IntroView : MonoBehaviour
         if ( championDBManager.ChampionDBReady && !playButton.gameObject.activeSelf )
         {
             playButton.gameObject.SetActive( true );
+            scoresButton.gameObject.SetActive( true );
             Spinner.SetActive( false );
         }
         else if ( !playButton.gameObject.activeSelf )
@@ -64,6 +68,11 @@ public class IntroView : MonoBehaviour
     public void OnPlayHandler( )
     {
         Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.TEAMSELECT );
+    }
+
+    public void OnScoresHandler( )
+    {
+        Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.SCOREBOARD );
     }
 
 }

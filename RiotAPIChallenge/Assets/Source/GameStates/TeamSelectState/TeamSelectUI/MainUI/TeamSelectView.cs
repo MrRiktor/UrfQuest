@@ -18,8 +18,6 @@ public class TeamSelectView : MonoBehaviour
     #region Variables
 
     private static Color32 COLOR_GOLD = new Color32( 255, 223, 0, 255 );
-    private static Color32 COLOR_DARK_GREY = new Color32( 64, 64, 64, 255 );
-    private static Color32 COLOR_LIGHT_GREY = new Color32( 128, 128, 128, 255 );
 
     //Left Side Scroll 
 

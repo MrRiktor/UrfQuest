@@ -9,7 +9,7 @@ public class BattleResultClickHandler : MonoBehaviour
         {
             if (GameData.Strikes >= 3)
             {
-                Messenger<GameStateTypes>.Broadcast(MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.INTRO);
+                Messenger<GameStateTypes>.Broadcast(MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.SCOREBOARD);
             }
             else
             {
