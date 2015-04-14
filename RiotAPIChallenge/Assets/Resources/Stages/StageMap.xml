@@ -2,7 +2,7 @@
 <StageMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
   <Stages>
 	<Stage StageNumber="0">
-	  <StageImage>Images/stage/stage0</StageImage>
+	  <StageImage>Images/stages/stage0</StageImage>
 	  <Enemies>
 		<Enemy id="0" BeingName="Minion">      
 		  <AttackDamage>16</AttackDamage>
@@ -42,7 +42,7 @@
 	  </Enemies>
 	</Stage>
 	<Stage StageNumber="1">
-	  <StageImage>Images/stage/stage1</StageImage>
+	  <StageImage>Images/stages/stage1</StageImage>
 	  <Enemies>
 		<Enemy id="0" BeingName="Greater Murk Wolf">      
 		  <AttackDamage>42</AttackDamage>
@@ -68,7 +68,7 @@
 	  </Enemies>
 	</Stage>
 	<Stage StageNumber="2">
-	  <StageImage>Images/stage/stage2</StageImage>
+	  <StageImage>Images/stages/stage2</StageImage>
 	  <Enemies>
 		<Enemy id="0" BeingName="Crimson Raptor">
 		  <AttackDamage>45</AttackDamage>
@@ -101,7 +101,7 @@
 	  </Enemies>
 	</Stage>
 	<Stage StageNumber="3">
-	  <StageImage>Images/stage/stage3</StageImage>
+	  <StageImage>Images/stages/stage3</StageImage>
 	  <Enemies>
 		<Enemy id="0" BeingName="Ancient Krug">
 		  <AttackDamage>73</AttackDamage>
@@ -120,7 +120,7 @@
 	  </Enemies>
 	</Stage>
 	<Stage StageNumber="4">
-	  <StageImage>Images/stage/stage4</StageImage>
+	  <StageImage>Images/stages/stage4</StageImage>
 	  <Enemies>
 		<Enemy id="0" BeingName="Gromp">
 		  <AttackDamage>83</AttackDamage>
@@ -132,7 +132,7 @@
 	  </Enemies>
 	</Stage>
 	<Stage StageNumber="5">
-	  <StageImage>Images/stage/stage5</StageImage>
+	  <StageImage>Images/stages/stage5</StageImage>
 	  <Enemies>
 		<Enemy id="0" BeingName="Blue Sentinel">
 		  <AttackDamage>73</AttackDamage>
@@ -158,7 +158,7 @@
 	  </Enemies>
 	</Stage>
 	<Stage StageNumber="6">
-	  <StageImage>Images/stage/stage6</StageImage>
+	  <StageImage>Images/stages/stage6</StageImage>
 	  <Enemies>
 		<Enemy id="0" BeingName="Red Brambleback">
 		  <AttackDamage>73</AttackDamage>
@@ -184,7 +184,7 @@
 	  </Enemies>
 	</Stage>
 	<Stage StageNumber="7">
-	  <StageImage>Images/stage/stage7</StageImage>
+	  <StageImage>Images/stages/stage7</StageImage>
 	  <Enemies>
 		<Enemy id="0" BeingName="Dragon">
 		  <AttackDamage>230</AttackDamage>
@@ -196,7 +196,7 @@
 	  </Enemies>
 	</Stage>
 	<Stage StageNumber="8">
-	  <StageImage>Images/stage/stage8</StageImage>
+	  <StageImage>Images/stages/stage8</StageImage>
 	  <Enemies>
 		<Enemy id="0" BeingName="Baron">
 		  <AttackDamage>500</AttackDamage>
@@ -208,7 +208,7 @@
 	  </Enemies>
 	</Stage>
 	<Stage StageNumber="9">
-	  <StageImage>Images/stage/stage9</StageImage>
+	  <StageImage>Images/stages/stage9</StageImage>
 	  <Enemies>
 		<Enemy id="0" BeingName="Phreak">
 		  <AttackDamage>230</AttackDamage>
@@ -248,7 +248,7 @@
 	  </Enemies>
 	</Stage>
 	<Stage StageNumber="10">
-	  <StageImage>Images/stage/stage10</StageImage>
+	  <StageImage>Images/stages/stage10</StageImage>
 	  <Enemies>
 		<Enemy id="0" BeingName="Urf">
 		  <AttackDamage>500</AttackDamage>
