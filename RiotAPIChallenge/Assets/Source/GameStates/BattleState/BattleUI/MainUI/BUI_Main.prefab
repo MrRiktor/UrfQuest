@@ -211,7 +211,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 194164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253dacde3e561e54c97929fe8674438b, type: 3}
+  m_Script: {fileID: 11500000, guid: cc74609e22a829648873f59d0438b37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   partyMemberPrefab: {fileID: 171676, guid: 9f73855c90d329340be2eef3564c1a48, type: 2}
@@ -314,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyParty: {fileID: 194164}
   PlayerParty: {fileID: 166632}
+  playerTarget: {fileID: 0}
   winningTeam: 0
   i: 0
 --- !u!114 &11492272
@@ -324,7 +325,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 166632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253dacde3e561e54c97929fe8674438b, type: 3}
+  m_Script: {fileID: 11500000, guid: cc74609e22a829648873f59d0438b37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   partyMemberPrefab: {fileID: 171676, guid: 9f73855c90d329340be2eef3564c1a48, type: 2}
