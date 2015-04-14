@@ -77,6 +77,7 @@ public class PartyMemberItem : MonoBehaviour
     /// </summary>
     private PartyMemberItem target = null;
 
+
     #endregion
 
     #region Accessors/Modifiers

@@ -49,6 +49,8 @@ public class BattleManager : MonoBehaviour
     private List<PartyMemberItem> enemyTeam = new List<PartyMemberItem>();
     private List<PartyMemberItem> playerTeam = new List<PartyMemberItem>();
 
+    public PartyMemberItem playerTarget = null;
+
     public Team winningTeam = Team.None;
 
     /// <summary>
@@ -119,6 +121,11 @@ public class BattleManager : MonoBehaviour
 
     #region Public Methods
 
+    public void SetPlayerTarget( PartyMemberItem target )
+    {
+        BattleManager.GetInstance().playerTarget = target;
+    }
+
     /// <summary>
     /// The accessor to this singleton instance.
     /// </summary>
@@ -164,8 +171,16 @@ public class BattleManager : MonoBehaviour
         if (attackQueue[i].IsAlive && lastattacker != attackQueue[i])
         {
             lastattacker = attackQueue[i];
+            PartyMemberItem target;
 
-            PartyMemberItem target = GetRandomTarget(attackQueue[i].IsEnemy);
+            if (playerTarget == null || playerTarget.IsAlive == false || attackQueue[i].IsEnemy == true)
+            {
+                target = GetRandomTarget(attackQueue[i].IsEnemy);
+            }
+            else 
+            {
+                target = playerTarget;
+            }
 
             if (target == null)
             {
