@@ -51,7 +51,13 @@ public class TeamSelectModel : FetchMatch
     {
         if ( ChampionDBManager.GetInstance( ).ChampionDBReady )
         {
-            AddMatchID( 1783499038 );
+            List<long> matchIDs = GrabMatchIDsFromFile.FetchRandomMatchIDs();
+            
+            foreach(long matchID in matchIDs)
+            {
+                AddMatchID(matchID);
+            }
+            /*
             AddMatchID( 1783499704 );
             AddMatchID( 1783499709 );
             AddMatchID( 1783499209 );
@@ -62,7 +68,7 @@ public class TeamSelectModel : FetchMatch
             AddMatchID( 1787568426 );
             AddMatchID( 1787579044 );
             AddMatchID( 1787608607 );
-            initFinalized = true;
+            */initFinalized = true;
         }
     }
 
