@@ -247,7 +247,7 @@ public class PartyMemberItem : MonoBehaviour
             }
             else
             {
-                GameData.Score -= this.partyMemberData.AttackDamage;
+                GameData.Score -= this.partyMemberData.AttackDamage > target.currentHealth ? target.currentHealth : this.partyMemberData.AttackDamage;
             }
 
             currentState = PlayerState.Returning;
