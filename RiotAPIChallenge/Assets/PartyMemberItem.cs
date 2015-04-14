@@ -6,22 +6,34 @@ public class PartyMemberItem : MonoBehaviour
 {
     #region Private Variables
 
+    private enum PlayerState
+    {
+        Waiting,
+        Attacking,
+        Returning
+    };
+
     #region SerializeField Variables
 
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] public Image portrait;
+    [SerializeField] public Image portrait = null;
 
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] private RectTransform healthBar;
+    [SerializeField] private RectTransform healthBar = null;
 
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] private Text healthBarText;
+    [SerializeField] private Text healthBarText = null;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] private GameObject combatText = null;
 
     #endregion
 
@@ -35,11 +47,35 @@ public class PartyMemberItem : MonoBehaviour
     /// </summary>
     private long currentHealth = 1;
 
-    private float lastHealth = 1;
-
+    /// <summary>
+    /// 
+    /// </summary>
     private bool isAlive = true;
 
+    /// <summary>
+    /// 
+    /// </summary>
     private bool isEnemy = false;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private float rate = 0.0f;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private float interpolationSpeed = 1.0f;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private PlayerState currentState = PlayerState.Waiting;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private PartyMemberItem target = null;
 
     #endregion
 
@@ -77,7 +113,7 @@ public class PartyMemberItem : MonoBehaviour
             return isEnemy;
         }
     }
-
+ 
     #endregion
 
     #region Native Unity Functionality
@@ -88,16 +124,30 @@ public class PartyMemberItem : MonoBehaviour
 	void Start () 
     {
         currentHealth = partyMemberData.HealthPool;
-        lastHealth = partyMemberData.HealthPool;
-	}
+	}    
 
+    ///
+    public bool IsWaiting()
+    {
+        if (currentState == PlayerState.Waiting)
+            return true;
+        else
+            return false;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     void Update()
     {
-        if (lastHealth > currentHealth && lastHealth > 0)
+        if(currentState == PlayerState.Attacking)
         {
-            UpdateHealthBar();
+            MoveToTarget();
         }
-        
+        else if (currentState == PlayerState.Returning)
+        {
+            ReturnToOrigin();
+        }        
     }
 
     #endregion
@@ -118,50 +168,81 @@ public class PartyMemberItem : MonoBehaviour
     }
 
     /// <summary>
-    /// This function updates the healthBar's scale based upon the currentHealth and the maximum health of this party Member.
+    /// 
     /// </summary>
-    /// <param name="healthPercent"></param>
-    private void UpdateHealthBar()
-    {        
-        lastHealth -= (Time.deltaTime * 50);
-
-        if (lastHealth < currentHealth)
-        {
-            lastHealth = currentHealth;
-        }        
-
-        if(lastHealth <= 0)
-        {
-            this.portrait.GetComponent<Image>().color = Color.red;
-        }
-
-       /* float tempCurrentHealth = float.Parse(currentHealth.ToString());
-        float partyMemberHealthPool =  float.Parse(partyMemberData.HealthPool.ToString());
-
-        float lastHealthPercentage = tempCurrentHealth / partyMemberHealthPool;
-
-        healthBar.localScale = new Vector3(lastHealthPercentage, healthBar.localScale.y);*/
-
-        healthBarText.text = ((long)lastHealth).ToString();
-    }
-
-    /// <summary>
-    /// Accesses the currentHealth of the partyMember.
-    /// </summary>
-    /// <returns> The current health of the party member. </returns>
-    public long GetCurrentHealth()
-    {
-        return this.currentHealth;
-    }
-
-    public void TakeDamage( long Damage )
+    /// <param name="Damage"></param>
+    public void TakeDamage(long Damage)
     {
         currentHealth -= Damage;
 
-        if(currentHealth <= 0)
+        float healthPercent = ((float)currentHealth / (float)partyMemberData.HealthPool);
+                
+        healthBar.GetComponent<UpdateHealthBarScale>().SetHealth( currentHealth / partyMemberData.HealthPool );
+
+        PlayCombatText( Damage );
+        this.healthBarText.text = (currentHealth > 0 ? currentHealth.ToString() : "0");
+        
+        if (currentHealth <= 0)
         {
+            this.portrait.GetComponent<Image>().color = Color.red;
             this.isAlive = false;
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="enemy"></param>
+    public void SetTarget( PartyMemberItem enemy )
+    {
+        this.target = enemy;
+        this.currentState = PlayerState.Attacking;
+    }    
+    
+    #endregion
+    
+    #region Private Methods
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void MoveToTarget()
+    {
+        rate += Time.deltaTime * interpolationSpeed;
+        
+        // This is done so that we can correctly render the UI when attacks are happening. 
+        // It looks ugly but I can't think of another way to access what I need.
+        this.transform.parent.transform.parent.SetAsLastSibling();
+        
+        this.transform.GetChild(0).position = Vector3.Lerp(this.transform.GetChild(0).position, target.transform.position, rate);
+
+        if(rate >= 0.75f)
+        {
+            rate = 0;
+            target.TakeDamage( this.partyMemberData.AttackDamage );
+            currentState = PlayerState.Returning;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    private void ReturnToOrigin()
+    {
+        rate += Time.deltaTime * interpolationSpeed;
+        this.transform.GetChild(0).position = Vector3.Lerp(this.transform.GetChild(0).position, this.transform.position, rate);
+
+        if (rate >= 1)
+        {
+            rate = 0;
+            currentState = PlayerState.Waiting;
+        }
+    }
+
+    private void PlayCombatText( long damage )
+    {
+        combatText.GetComponent<Text>().text = ("-" + damage.ToString());
+        combatText.GetComponent<Animator>().SetTrigger("PlayCombatText");
     }
 
     #endregion

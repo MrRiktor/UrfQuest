@@ -151,7 +151,6 @@ public class BattleManager : MonoBehaviour
     private PartyMemberItem lastattacker = null;
     private PartyMemberItem lastattackee = null;
 
-    float timer = 0.0f;
     public int i = 0;
 
     public void Fight()
@@ -159,40 +158,31 @@ public class BattleManager : MonoBehaviour
         if (i >= (attackQueue.Count))
         {
             stateMachine.TransitionToState(BattleState.BattleStateType.ResolveCombatState);
-        }
+        }    
+        
+        // Attacker is not dead. (a.k.a. HP <= 0)
+        if (attackQueue[i].IsAlive && lastattacker != attackQueue[i])
+        {
+            lastattacker = attackQueue[i];
 
-        if (timer > 0.5f)
-        {            
-            if (lastattackee != null) { lastattackee.portrait.color = Color.white; }
-            if (lastattacker != null) { lastattacker.portrait.color = Color.white; }
+            PartyMemberItem target = GetRandomTarget(attackQueue[i].IsEnemy);
 
-            // Attacker is not dead. (a.k.a. HP <= 0)
-            if (attackQueue[i].IsAlive)
+            if (target == null)
             {
-                lastattacker = attackQueue[i];
-                attackQueue[i].portrait.color = Color.green;
-
-                PartyMemberItem target = GetRandomTarget(attackQueue[i].IsEnemy);
-                
-                if (target == null)
-                {
-                    Debug.Log("Could not find target, all enemies or partymembers are dead.");
-                    winningTeam = ((attackQueue[i].IsEnemy) ? Team.Enemy : Team.Player);
-                    stateMachine.TransitionToState(BattleState.BattleStateType.ResolveCombatState);
-                    return;
-                }
-
-                lastattackee = target;
-                target.portrait.color = Color.yellow;
-
-                target.TakeDamage(attackQueue[i].PartyMemberData.AttackDamage);
+                Debug.Log("Could not find target, all enemies or partymembers are dead.");
+                winningTeam = ((attackQueue[i].IsEnemy) ? Team.Enemy : Team.Player);
+                stateMachine.TransitionToState(BattleState.BattleStateType.ResolveCombatState);
+                return;
             }
-            i++;
-            timer = 0.0f;
+
+            lastattackee = target;
+
+            attackQueue[i].SetTarget(target);
         }
-        else 
-        { 
-            timer += Time.deltaTime; 
+
+        if( !attackQueue[i].IsAlive || attackQueue[i].IsWaiting() )
+        {
+            i++;
         }
     }
     
