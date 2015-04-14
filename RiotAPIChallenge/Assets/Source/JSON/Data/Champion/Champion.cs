@@ -70,6 +70,9 @@ public class Champion
     private string[] tags;
     private string title;
 
+    private UnityEngine.AudioClip attackClip;
+    private UnityEngine.AudioClip intro;
+
     #endregion
 
     #region Accessors/Modifiers
@@ -288,6 +291,40 @@ public class Champion
         set
         {
             title = value;
+        }
+    }
+
+    public UnityEngine.AudioClip Intro
+    {
+        get 
+        { 
+            return intro; 
+        }
+    }
+
+    public UnityEngine.AudioClip AttackClip
+    {
+        get 
+        { 
+            if(attackClip == null)
+            {
+                System.Collections.Generic.List<string> tagsList = new System.Collections.Generic.List<string>(this.tags);
+
+                if (tagsList.Contains("Marksman") )
+                {
+                    this.attackClip = UnityEngine.Resources.Load<UnityEngine.AudioClip>("Sound/RangeAttack");
+                }
+                else if (tagsList.Contains("Mage") || tagsList.Contains("Support") )
+                {
+                    this.attackClip = UnityEngine.Resources.Load<UnityEngine.AudioClip>("Sound/MagicAttack");
+                }
+                else if (tagsList.Contains("Assassin") || tagsList.Contains("Tank") || tagsList.Contains("Assassin"))
+                {
+                    this.attackClip = UnityEngine.Resources.Load<UnityEngine.AudioClip>("Sound/MeleeAttack");
+                }
+            }
+
+            return this.attackClip;
         }
     }
 
