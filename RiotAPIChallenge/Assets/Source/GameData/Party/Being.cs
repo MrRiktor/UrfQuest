@@ -108,6 +108,12 @@ public abstract class Being : IPartyMember
         set { portrait = value; }
     }
 
+    public UnityEngine.AudioClip attackClip
+    {
+        get;
+        set;
+    }
+
     #endregion
 
     public Being()
@@ -129,5 +135,7 @@ public abstract class Being : IPartyMember
         icon = champion.Image.Icon;
 
         portrait = champion.Image.Portrait;
+
+        attackClip = champion.AttackClip;
     }    
 }

@@ -238,6 +238,7 @@ public class PartyMemberItem : MonoBehaviour
         if(rate >= 0.75f)
         {
             rate = 0;
+            SoundManager.GetInstance().PlaySoundOnce(this.partyMemberData.attackClip);
             target.TakeDamage( this.partyMemberData.AttackDamage );
 
             if (target.isEnemy)

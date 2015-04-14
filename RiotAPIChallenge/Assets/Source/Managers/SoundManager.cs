@@ -63,8 +63,16 @@ public class SoundManager : MonoBehaviour
             audioSource.clip = Resources.Load<AudioClip>("Sound/" + soundClip.ToString());
             audioSource.Play();
             lastSoundPlayed = soundClip;
+        }       
+    }
+
+    public void PlaySoundOnce(UnityEngine.AudioClip soundClip)
+    {
+        if (soundClip != null )
+        {
+            audioSource.clip = soundClip;
+            audioSource.Play();
         }
-       
     }
 
     public string LastSoundPlayed()
