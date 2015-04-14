@@ -4,7 +4,7 @@ public class GameData
 {
     #region Variables
 
-    private static Int32 currentLevel=0;
+    private static Int32 currentLevel = 0;
     private static Int32 strikes = 0;
     private static float score = 0.0f;
     private static Party currentParty;
@@ -30,13 +30,13 @@ public class GameData
 
     public static Int32 Strikes
     {
-        get 
-        { 
-            return strikes; 
+        get
+        {
+            return strikes;
         }
-        set 
-        { 
-            strikes = value; 
+        set
+        {
+            strikes = value;
         }
     }
 
@@ -56,7 +56,7 @@ public class GameData
     {
         get
         {
-            if(stageMap == null)
+            if (stageMap == null)
             {
                 stageMap = new StageMap();
                 stageMap.Initialize();
@@ -66,15 +66,15 @@ public class GameData
         }
     }
 
-    public static float Score 
+    public static float Score
     {
-        get 
+        get
         {
             return score;
         }
-        set 
+        set
         {
-            score = value;
+            score = (value < 0) ? 0 : value;
         }
     }
 

@@ -19,22 +19,26 @@ public class PartyMemberItem : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] public Image portrait = null;
+    [SerializeField]
+    public Image portrait = null;
 
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] private RectTransform healthBar = null;
+    [SerializeField]
+    private RectTransform healthBar = null;
 
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] private Text healthBarText = null;
+    [SerializeField]
+    private Text healthBarText = null;
 
     /// <summary>
     /// 
     /// </summary>
-    [SerializeField] private GameObject combatText = null;
+    [SerializeField]
+    private GameObject combatText = null;
 
     #endregion
 
@@ -115,7 +119,7 @@ public class PartyMemberItem : MonoBehaviour
             return isEnemy;
         }
     }
- 
+
     #endregion
 
     #region Native Unity Functionality
@@ -123,10 +127,10 @@ public class PartyMemberItem : MonoBehaviour
     /// <summary>
     /// Use this for initialization
     /// </summary>
-	void Start () 
+    void Start()
     {
         currentHealth = partyMemberData.HealthPool;
-	}    
+    }
 
     ///
     public bool IsWaiting()
@@ -159,14 +163,14 @@ public class PartyMemberItem : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(currentState == PlayerState.Attacking)
+        if (currentState == PlayerState.Attacking)
         {
             MoveToTarget();
         }
         else if (currentState == PlayerState.Returning)
         {
             ReturnToOrigin();
-        }        
+        }
     }
 
     #endregion
@@ -177,7 +181,7 @@ public class PartyMemberItem : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="partyMember"></param>
-    public void InitPartyMember( IPartyMember partyMember, bool isEnemy )
+    public void InitPartyMember(IPartyMember partyMember, bool isEnemy)
     {
         this.isEnemy = isEnemy;
         this.healthBarText.text = partyMember.HealthPool.ToString();
@@ -195,12 +199,12 @@ public class PartyMemberItem : MonoBehaviour
         currentHealth -= Damage;
 
         float healthPercent = ((float)currentHealth / (float)partyMemberData.HealthPool);
-                
-        healthBar.GetComponent<UpdateHealthBarScale>().SetHealth( currentHealth / partyMemberData.HealthPool );
 
-        PlayCombatText( Damage );
+        healthBar.GetComponent<UpdateHealthBarScale>().SetHealth(currentHealth / partyMemberData.HealthPool);
+
+        PlayCombatText(Damage);
         this.healthBarText.text = (currentHealth > 0 ? currentHealth.ToString() : "0");
-        
+
         if (currentHealth <= 0)
         {
             this.portrait.GetComponent<Image>().color = Color.red;
@@ -212,14 +216,14 @@ public class PartyMemberItem : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="enemy"></param>
-    public void SetTarget( PartyMemberItem enemy )
+    public void SetTarget(PartyMemberItem enemy)
     {
         this.target = enemy;
         this.currentState = PlayerState.Attacking;
-    }    
-    
+    }
+
     #endregion
-    
+
     #region Private Methods
 
     /// <summary>
@@ -228,18 +232,17 @@ public class PartyMemberItem : MonoBehaviour
     private void MoveToTarget()
     {
         rate += Time.deltaTime * interpolationSpeed;
-        
+
         // This is done so that we can correctly render the UI when attacks are happening. 
         // It looks ugly but I can't think of another way to access what I need.
         this.transform.parent.transform.parent.SetAsLastSibling();
-        
+
         this.transform.GetChild(0).position = Vector3.Lerp(this.transform.GetChild(0).position, target.transform.position, rate);
 
-        if(rate >= 0.75f)
+        if (rate >= 0.75f)
         {
             rate = 0;
             SoundManager.GetInstance().PlaySoundOnce(this.partyMemberData.attackClip);
-            target.TakeDamage( this.partyMemberData.AttackDamage );
 
             if (target.isEnemy)
             {
@@ -247,9 +250,19 @@ public class PartyMemberItem : MonoBehaviour
             }
             else
             {
-                GameData.Score -= this.partyMemberData.AttackDamage > target.currentHealth ? target.currentHealth : this.partyMemberData.AttackDamage;
+                long healthDifference = target.currentHealth - this.partyMemberData.AttackDamage;
+
+                if (healthDifference < 0)
+                {
+                    GameData.Score -= (healthDifference + this.partyMemberData.AttackDamage);
+                }
+                else
+                {
+                    GameData.Score -= this.partyMemberData.AttackDamage;
+                }
             }
 
+            target.TakeDamage(this.partyMemberData.AttackDamage);
             currentState = PlayerState.Returning;
         }
     }
@@ -269,7 +282,7 @@ public class PartyMemberItem : MonoBehaviour
         }
     }
 
-    private void PlayCombatText( long damage )
+    private void PlayCombatText(long damage)
     {
         combatText.GetComponent<Text>().text = ("-" + damage.ToString());
         combatText.GetComponent<Animator>().SetTrigger("PlayCombatText");
