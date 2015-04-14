@@ -239,6 +239,16 @@ public class PartyMemberItem : MonoBehaviour
         {
             rate = 0;
             target.TakeDamage( this.partyMemberData.AttackDamage );
+
+            if (target.isEnemy)
+            {
+                GameData.Score += this.partyMemberData.AttackDamage;
+            }
+            else
+            {
+                GameData.Score -= this.partyMemberData.AttackDamage;
+            }
+
             currentState = PlayerState.Returning;
         }
     }

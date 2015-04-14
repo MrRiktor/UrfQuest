@@ -4,9 +4,12 @@ public class GameData
 {
     #region Variables
 
-    private static Int32 currentLevel=0;
+    private static Int32 currentLevel=5;
     private static Int32 strikes = 0;
+    private static float score = 0.0f;
     private static Party currentParty;
+
+
     private static StageMap stageMap = null;
 
     #endregion
@@ -60,6 +63,18 @@ public class GameData
             }
 
             return stageMap;
+        }
+    }
+
+    public static float Score 
+    {
+        get 
+        {
+            return score;
+        }
+        set 
+        {
+            score = value;
         }
     }
 
