@@ -312,11 +312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98038b4fd2ea1f74eaeec1893103fc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyParty: {fileID: 194164}
-  PlayerParty: {fileID: 166632}
-  playerTarget: {fileID: 0}
-  winningTeam: 0
-  i: 0
+  enemyParty: {fileID: 194164}
+  playerParty: {fileID: 166632}
+  victoryPrefab: {fileID: 198092, guid: eba7765681f58ad4580527ae231dfd08, type: 2}
+  defeatPrefab: {fileID: 104294, guid: bc5fc9590c0794343b89668ffb6579c4, type: 2}
 --- !u!114 &11492272
 MonoBehaviour:
   m_ObjectHideFlags: 1

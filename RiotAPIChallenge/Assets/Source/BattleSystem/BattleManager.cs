@@ -27,13 +27,16 @@ public class BattleManager : MonoBehaviour
     /// The Gameobject that acts as a container and holds the Enemy party members. 
     /// This grants us access to the SetupParty Component on the Party GameObject.
     /// </summary>
-    [SerializeField] private GameObject EnemyParty = null;
+    [SerializeField] private GameObject enemyParty = null;
     
     /// <summary>
     /// The Gameobject that acts as a container and holds the Player party members. 
     /// This grants us access to the SetupParty Component on the Party GameObject.
     /// </summary>
-    [SerializeField] private GameObject PlayerParty = null;
+    [SerializeField] private GameObject playerParty = null;
+
+    [SerializeField] private GameObject victoryPrefab = null;
+    [SerializeField] private GameObject defeatPrefab = null;
 
     /// <summary>
     /// A Boolean defining whether or not the visual team items have been setup.
@@ -45,13 +48,14 @@ public class BattleManager : MonoBehaviour
     /// This will define the turn order in the combat state.
     /// </summary>
     private List<PartyMemberItem> attackQueue = new List<PartyMemberItem>();
+    private int attackQueueIndex = 0;
 
     private List<PartyMemberItem> enemyTeam = new List<PartyMemberItem>();
     private List<PartyMemberItem> playerTeam = new List<PartyMemberItem>();
 
-    public PartyMemberItem playerTarget = null;
+    private PartyMemberItem playerTarget = null;
 
-    public Team winningTeam = Team.None;
+    private Team winningTeam = Team.None;
 
     /// <summary>
     /// The statemachine that drives combat flow.
@@ -61,6 +65,39 @@ public class BattleManager : MonoBehaviour
     #endregion
 
     #region Accessors/Modifiers
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public GameObject DefeatPrefab
+    {
+        get
+        {
+            return defeatPrefab;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public GameObject VictoryPrefab
+    {
+        get
+        {
+            return victoryPrefab;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public Team WinningTeam
+    {
+        get
+        {
+            return this.winningTeam;
+        }
+    }
 
     /// <summary>
     /// A Boolean defining whether or not the visual team items have been setup.
@@ -121,11 +158,6 @@ public class BattleManager : MonoBehaviour
 
     #region Public Methods
 
-    public void SetPlayerTarget( PartyMemberItem target )
-    {
-        BattleManager.GetInstance().playerTarget = target;
-    }
-
     /// <summary>
     /// The accessor to this singleton instance.
     /// </summary>
@@ -139,9 +171,14 @@ public class BattleManager : MonoBehaviour
         return instance;
     }
 
+    public void SetPlayerTarget(PartyMemberItem target)
+    {
+        BattleManager.GetInstance().playerTarget = target;
+    }
+
     public void ResetAttackQueue()
     {
-        i = 0;
+        attackQueueIndex = 0;
 
         foreach(PartyMemberItem partyMemberItem in attackQueue)
         {
@@ -155,8 +192,8 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     public void InitializeTeams()
     {
-        playerTeam = PlayerParty.GetComponent<SetupParty>().SetupTheParty(GameData.CurrentParty);
-        enemyTeam = EnemyParty.GetComponent<SetupParty>().SetupTheParty(GameData.StageMap.Stages[GameData.CurrentLevel].Enemies);
+        playerTeam = playerParty.GetComponent<SetupParty>().SetupTheParty(GameData.CurrentParty);
+        enemyTeam = enemyParty.GetComponent<SetupParty>().SetupTheParty(GameData.StageMap.Stages[GameData.CurrentLevel].Enemies);
         
         attackQueue.AddRange(playerTeam);
         attackQueue.AddRange(enemyTeam);
@@ -166,23 +203,23 @@ public class BattleManager : MonoBehaviour
         areTeamsInitialized = true;
     }
 
-    public int i = 0;
+   
 
     public void Fight()
     {
-        if (i >= (attackQueue.Count))
+        if (attackQueueIndex >= (attackQueue.Count))
         {
             stateMachine.TransitionToState(BattleState.BattleStateType.ResolveCombatState);
         }    
         
         // Attacker is not dead. (a.k.a. HP <= 0)
-        if (attackQueue[i].IsAlive && attackQueue[i].IsWaiting())
+        if (attackQueue[attackQueueIndex].IsAlive && attackQueue[attackQueueIndex].IsWaiting())
         {
             PartyMemberItem target;
 
-            if (playerTarget == null || playerTarget.IsAlive == false || attackQueue[i].IsEnemy == true)
+            if (playerTarget == null || playerTarget.IsAlive == false || attackQueue[attackQueueIndex].IsEnemy == true)
             {
-                target = GetRandomTarget(attackQueue[i].IsEnemy);
+                target = GetRandomTarget(attackQueue[attackQueueIndex].IsEnemy);
             }
             else 
             {
@@ -192,17 +229,17 @@ public class BattleManager : MonoBehaviour
             if (target == null)
             {
                 Debug.Log("Could not find target, all enemies or partymembers are dead.");
-                winningTeam = ((attackQueue[i].IsEnemy) ? Team.Enemy : Team.Player);
+                winningTeam = ((attackQueue[attackQueueIndex].IsEnemy) ? Team.Enemy : Team.Player);
                 stateMachine.TransitionToState(BattleState.BattleStateType.ResolveCombatState);
                 return;
             }
-            
-            attackQueue[i].SetTarget(target);
+
+            attackQueue[attackQueueIndex].SetTarget(target);
         }
 
-        if( !attackQueue[i].IsAlive || attackQueue[i].IsOnCooldown() )
+        if (!attackQueue[attackQueueIndex].IsAlive || attackQueue[attackQueueIndex].IsOnCooldown())
         {
-            i++;
+            ++attackQueueIndex;
         }
     }
     

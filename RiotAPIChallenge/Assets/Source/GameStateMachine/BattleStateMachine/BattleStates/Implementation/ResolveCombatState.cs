@@ -18,7 +18,7 @@ public class ResolveCombatState : BattleState
     {
         base.OnEnter();
 
-        if( BattleManager.GetInstance().winningTeam == BattleManager.Team.None )
+        if( BattleManager.GetInstance().WinningTeam == BattleManager.Team.None )
         {
             BattleManager.GetInstance().StateMachine.TransitionToState(BattleState.BattleStateType.CombatState);
         }

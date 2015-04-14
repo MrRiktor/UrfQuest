@@ -30,7 +30,7 @@ public class ProgressionView : MonoBehaviour
                 return;
 
             EnemyPortraitItem itemScript = item.GetComponent<EnemyPortraitItem>( );
-            itemScript.SetEnemyPortrait( curEnemy.Portrait );
+            itemScript.SetEnemyPortrait( curEnemy.Icon );
 
             item.transform.SetParent( grid.transform );
             item.transform.localScale = new Vector3( 1.0f, 1.0f, 1.0f );

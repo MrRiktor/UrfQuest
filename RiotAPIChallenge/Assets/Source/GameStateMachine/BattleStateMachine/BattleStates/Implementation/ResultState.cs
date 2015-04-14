@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class ResultState : BattleState
-{
-    
+{    
     /// <summary>
     /// Default Constructor
     /// </summary>
@@ -23,26 +23,25 @@ public class ResultState : BattleState
     {
         base.OnEnter();
 
-        if (BattleManager.GetInstance().winningTeam == BattleManager.Team.Enemy)
+        if (BattleManager.GetInstance().WinningTeam == BattleManager.Team.Enemy)
         {
-            if( GameData.Strikes >= 3 )
-            {
-                Messenger<GameStateTypes>.Broadcast(MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.INTRO);
-            }
-            else
-            {
-                ++GameData.Strikes;
-                Messenger<GameStateTypes>.Broadcast(MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.PROGRESSION);
-            }
+            GameObject defeatScreen = GameObject.Instantiate(BattleManager.GetInstance().DefeatPrefab);
 
-            UnityEngine.Debug.Log("YOU LOSE!");
+            defeatScreen.transform.parent = BattleManager.GetInstance().transform;
+
+            defeatScreen.transform.localPosition = Vector3.zero;
+
+            ++GameData.Strikes;
         }
-        else if(BattleManager.GetInstance().winningTeam == BattleManager.Team.Player)
+        else if(BattleManager.GetInstance().WinningTeam == BattleManager.Team.Player)
         {
-            ++GameData.CurrentLevel;
-            Messenger<GameStateTypes>.Broadcast(MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.PROGRESSION);
+            GameObject victoryScreen = GameObject.Instantiate(BattleManager.GetInstance().VictoryPrefab);
 
-            UnityEngine.Debug.Log("YOU WIN!");
+            victoryScreen.transform.parent = BattleManager.GetInstance().transform;
+
+            victoryScreen.transform.localPosition = Vector3.zero;
+
+            ++GameData.CurrentLevel;
         }
     } 
 }

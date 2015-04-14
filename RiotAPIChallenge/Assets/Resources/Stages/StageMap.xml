@@ -44,19 +44,19 @@
 	<Stage StageNumber="1">
 	  <StageImage>Images/stages/stage1</StageImage>
 	  <Enemies>
-		<Enemy id="0" BeingName="Greater Murk Wolf">      
-		  <AttackDamage>42</AttackDamage>
-		  <HealthPool>1320</HealthPool>
-		  <MovementSpeed>349</MovementSpeed>
-		  <IconPath>Icons/enemy/GreaterMurkWolf</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage1/GreaterMurkWolf</PortraitPath>
-		</Enemy>
-		<Enemy id="1" BeingName="Murk Wolf">
+		<Enemy id="0" BeingName="Murk Wolf">
 		  <AttackDamage>16</AttackDamage>
 		  <HealthPool>420</HealthPool>
 		  <MovementSpeed>340</MovementSpeed>
 		  <IconPath>Icons/enemy/MurkWolf</IconPath>
 		  <PortraitPath>Images/enemy/loading/stage1/MurkWolf</PortraitPath>
+		</Enemy>
+		<Enemy id="1" BeingName="Greater Murk Wolf">      
+		  <AttackDamage>42</AttackDamage>
+		  <HealthPool>1320</HealthPool>
+		  <MovementSpeed>349</MovementSpeed>
+		  <IconPath>Icons/enemy/GreaterMurkWolf</IconPath>
+		  <PortraitPath>Images/enemy/loading/stage1/GreaterMurkWolf</PortraitPath>
 		</Enemy>
 		<Enemy id="2" BeingName="Murk Wolf">
 		  <AttackDamage>16</AttackDamage>
@@ -134,21 +134,21 @@
 	<Stage StageNumber="5">
 	  <StageImage>Images/stages/stage5</StageImage>
 	  <Enemies>
-		<Enemy id="0" BeingName="Blue Sentinel">
-		  <AttackDamage>73</AttackDamage>
-		  <HealthPool>2000</HealthPool>
-		  <MovementSpeed>334</MovementSpeed>
-		  <IconPath>Icons/enemy/BlueSentinel</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage5/BlueSentinel</PortraitPath>
-		</Enemy>
-		<Enemy id="1" BeingName="Blue Sentry">
+		<Enemy id="0" BeingName="Blue Sentry">
 		  <AttackDamage>12</AttackDamage>
 		  <HealthPool>400</HealthPool>
 		  <MovementSpeed>324</MovementSpeed>
 		  <IconPath>Icons/enemy/BlueSentry</IconPath>
 		  <PortraitPath>Images/enemy/loading/stage5/BlueSentry</PortraitPath>
 		</Enemy>
-		<Enemy id="1" BeingName="Blue Sentry">
+		<Enemy id="1" BeingName="Blue Sentinel">
+		  <AttackDamage>73</AttackDamage>
+		  <HealthPool>2000</HealthPool>
+		  <MovementSpeed>334</MovementSpeed>
+		  <IconPath>Icons/enemy/BlueSentinel</IconPath>
+		  <PortraitPath>Images/enemy/loading/stage5/BlueSentinel</PortraitPath>
+		</Enemy>
+		<Enemy id="2" BeingName="Blue Sentry">
 		  <AttackDamage>12</AttackDamage>
 		  <HealthPool>400</HealthPool>
 		  <MovementSpeed>324</MovementSpeed>
@@ -160,21 +160,21 @@
 	<Stage StageNumber="6">
 	  <StageImage>Images/stages/stage6</StageImage>
 	  <Enemies>
-		<Enemy id="0" BeingName="Red Brambleback">
-		  <AttackDamage>73</AttackDamage>
-		  <HealthPool>2000</HealthPool>
-		  <MovementSpeed>334</MovementSpeed>
-		  <IconPath>Icons/enemy/RedBrambleback</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage6/RedBrambleback</PortraitPath>
-		</Enemy>
-		<Enemy id="1" BeingName="Cinderling">
+		<Enemy id="0" BeingName="Cinderling">
 		  <AttackDamage>12</AttackDamage>
 		  <HealthPool>400</HealthPool>
 		  <MovementSpeed>339</MovementSpeed>
 		  <IconPath>Icons/enemy/Cinderling</IconPath>
 		  <PortraitPath>Images/enemy/loading/stage6/Cinderling</PortraitPath>
 		</Enemy>
-		<Enemy id="22" BeingName="Cinderling">
+		<Enemy id="1" BeingName="Red Brambleback">
+		  <AttackDamage>73</AttackDamage>
+		  <HealthPool>2000</HealthPool>
+		  <MovementSpeed>334</MovementSpeed>
+		  <IconPath>Icons/enemy/RedBrambleback</IconPath>
+		  <PortraitPath>Images/enemy/loading/stage6/RedBrambleback</PortraitPath>
+		</Enemy>
+		<Enemy id="2" BeingName="Cinderling">
 		  <AttackDamage>12</AttackDamage>
 		  <HealthPool>400</HealthPool>
 		  <MovementSpeed>339</MovementSpeed>
@@ -210,39 +210,39 @@
 	<Stage StageNumber="9">
 	  <StageImage>Images/stages/stage9</StageImage>
 	  <Enemies>
-		<Enemy id="0" BeingName="Phreak">
+		<Enemy id="0" BeingName="Rivington">
 		  <AttackDamage>230</AttackDamage>
 		  <HealthPool>4940</HealthPool>
 		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Phreak</IconPath>
-		  <PortraitPath>Images/enemy/loading/stage9/Phreak</PortraitPath>
-		</Enemy>	
-		<Enemy id="1" BeingName="Rivington">
-		  <AttackDamage>230</AttackDamage>
-		  <HealthPool>4940</HealthPool>
-		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Rivington</IconPath>
+		  <IconPath>Icons/enemy/Riot</IconPath>
 		  <PortraitPath>Images/enemy/loading/stage9/Rivington</PortraitPath>
 		</Enemy>	
-		<Enemy id="2" BeingName="Jatt">
+		<Enemy id="1" BeingName="Jatt">
 		  <AttackDamage>230</AttackDamage>
 		  <HealthPool>4940</HealthPool>
 		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Jatt</IconPath>
+		  <IconPath>Icons/enemy/Riot</IconPath>
 		  <PortraitPath>Images/enemy/loading/stage9/Jatt</PortraitPath>
+		</Enemy>
+		<Enemy id="2" BeingName="Phreak">
+		  <AttackDamage>230</AttackDamage>
+		  <HealthPool>4940</HealthPool>
+		  <MovementSpeed>324</MovementSpeed>
+		  <IconPath>Icons/enemy/Riot</IconPath>
+		  <PortraitPath>Images/enemy/loading/stage9/Phreak</PortraitPath>
 		</Enemy>	
 		<Enemy id="3" BeingName="Kobe">
 		  <AttackDamage>230</AttackDamage>
 		  <HealthPool>4940</HealthPool>
 		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Kobe</IconPath>
+		  <IconPath>Icons/enemy/Riot</IconPath>
 		  <PortraitPath>Images/enemy/loading/stage9/Kobe</PortraitPath>
 		</Enemy>	
 		<Enemy id="4" BeingName="Dash">
 		  <AttackDamage>230</AttackDamage>
 		  <HealthPool>4940</HealthPool>
 		  <MovementSpeed>324</MovementSpeed>
-		  <IconPath>Icons/enemy/Dash</IconPath>
+		  <IconPath>Icons/enemy/Riot</IconPath>
 		  <PortraitPath>Images/enemy/loading/stage9/Dash</PortraitPath>
 		</Enemy>
 	  </Enemies>

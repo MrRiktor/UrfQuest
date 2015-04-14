@@ -7,6 +7,9 @@ public class FadeInOverlay : MonoBehaviour
 {
     [SerializeField] private Image image;
     [SerializeField] private GameObject button;
+    [SerializeField] private SoundManager.SoundClip soundClip;
+
+    
 
     private float rate = 0.0f;
 
@@ -15,6 +18,7 @@ public class FadeInOverlay : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
+        SoundManager.GetInstance().PlaySoundOnce(soundClip);
         this.image.color = Color.clear;
 	}
 	
