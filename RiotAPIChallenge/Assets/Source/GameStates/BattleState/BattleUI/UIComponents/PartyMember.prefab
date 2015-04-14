@@ -79,7 +79,7 @@ GameObject:
   - 224: {fileID: 22494240}
   - 222: {fileID: 22227052}
   - 114: {fileID: 11441834}
-  - 114: {fileID: 11443808}
+  - 114: {fileID: 11496298}
   m_Layer: 5
   m_Name: Healthbar
   m_TagString: Untagged
@@ -130,7 +130,7 @@ GameObject:
   - 224: {fileID: 22498950}
   - 222: {fileID: 22264902}
   - 114: {fileID: 11478066}
-  - 114: {fileID: 11435868}
+  - 114: {fileID: 11407812}
   m_Layer: 5
   m_Name: PartyMember
   m_TagString: Untagged
@@ -148,7 +148,7 @@ GameObject:
   - 224: {fileID: 22460810}
   - 222: {fileID: 22278926}
   - 114: {fileID: 11406084}
-  - 95: {fileID: 9555046}
+  - 95: {fileID: 9515884}
   m_Layer: 5
   m_Name: CombatText
   m_TagString: Untagged
@@ -190,7 +190,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &9555046
+--- !u!95 &9515884
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -199,7 +199,7 @@ Animator:
   m_GameObject: {fileID: 172914}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3eb4624c1167e6b478f7d5dced1a8158, type: 2}
+  m_Controller: {fileID: 9100000, guid: bf20136c7a8d6bc4fba1e5d9a9114b1c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -233,6 +233,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &11407812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b33226a28e8a1748a3a838360b53356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portrait: {fileID: 11430452}
+  healthBar: {fileID: 22494240}
+  healthBarText: {fileID: 11478634}
+  combatText: {fileID: 172914}
 --- !u!114 &11430452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,21 +269,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11435868
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ffd335b2e388d48ba9fabcdf81ce39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  portrait: {fileID: 11430452}
-  healthBar: {fileID: 22494240}
-  healthBarText: {fileID: 11478634}
-  combatText: {fileID: 172914}
 --- !u!114 &11441834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,17 +290,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11443808
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dbd0b0a71f23294dba3661b4c4fd6bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11445624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -407,7 +396,7 @@ MonoBehaviour:
         m_MethodName: SetPlayerTarget
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11435868}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: PartyMemberItem, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
@@ -506,6 +495,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11496298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ddff1687ae5b1d4eb963887336f7b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &22201026
 CanvasRenderer:
   m_ObjectHideFlags: 1
