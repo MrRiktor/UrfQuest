@@ -25,10 +25,23 @@ public class ResultState : BattleState
 
         if (BattleManager.GetInstance().winningTeam == BattleManager.Team.Enemy)
         {
+            if( GameData.Strikes >= 3 )
+            {
+                Messenger<GameStateTypes>.Broadcast(MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.INTRO);
+            }
+            else
+            {
+                ++GameData.Strikes;
+                Messenger<GameStateTypes>.Broadcast(MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.PROGRESSION);
+            }
+
             UnityEngine.Debug.Log("YOU LOSE!");
         }
         else if(BattleManager.GetInstance().winningTeam == BattleManager.Team.Player)
         {
+            ++GameData.CurrentLevel;
+            Messenger<GameStateTypes>.Broadcast(MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.PROGRESSION);
+
             UnityEngine.Debug.Log("YOU WIN!");
         }
     } 

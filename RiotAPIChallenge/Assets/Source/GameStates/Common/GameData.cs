@@ -5,6 +5,7 @@ public class GameData
     #region Variables
 
     private static Int32 currentLevel=0;
+    private static Int32 strikes = 0;
     private static Party currentParty;
     private static StageMap stageMap = null;
 
@@ -21,6 +22,18 @@ public class GameData
         set
         {
             currentLevel = value;
+        }
+    }
+
+    public static Int32 Strikes
+    {
+        get 
+        { 
+            return strikes; 
+        }
+        set 
+        { 
+            strikes = value; 
         }
     }
 
