@@ -41,7 +41,11 @@ public class InitBattleState : BattleState
 
         if( BattleManager.GetInstance().AreTeamsInitialized )
         {
-            BattleManager.GetInstance().StateMachine.TransitionToState( BattleStateType.CombatState );
+            SoundManager.GetInstance().PlaySoundOnce(SoundManager.SoundClip.WelcomeToSummonersRift);
+            if (!SoundManager.GetInstance().IsClipPlaying())
+            {
+                BattleManager.GetInstance().StateMachine.TransitionToState(BattleStateType.CombatState);
+            }
         }
     }
 }
