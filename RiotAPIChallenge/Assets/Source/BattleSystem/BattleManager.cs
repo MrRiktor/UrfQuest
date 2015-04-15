@@ -184,7 +184,14 @@ public class BattleManager : MonoBehaviour
 
     public void SetPlayerTarget(PartyMemberItem target)
     {
-        BattleManager.GetInstance().playerTarget = target;
+        if (target.CombatStatus.BeingType == Being.BeingType.Enemy)
+        {
+            BattleManager.GetInstance().playerTarget = target;
+        }
+        else
+        {
+            Debug.Log("YOU CANNOT TARGET AN ALLY.");
+        }
     }
 
     public void AttackClicked()

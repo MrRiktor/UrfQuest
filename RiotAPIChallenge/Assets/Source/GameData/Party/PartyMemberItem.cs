@@ -237,9 +237,33 @@ public class PartyMemberItem : MonoBehaviour
 
         PlayCombatText(modifiedDamage);
 
+        UpdateScore( modifiedDamage );
+
         this.healthBarText.text = (this.CombatStatus.CurrentHealth > 0 ? this.CombatStatus.CurrentHealth.ToString() : "0");
     }
     
+    private void UpdateScore( float damageDone )
+    {
+        if (this.CombatStatus.BeingType == Being.BeingType.Enemy)
+        {
+            GameData.Score += damageDone;
+        }
+        else
+        {
+            float healthDifference = Mathf.Round(this.CombatStatus.CurrentHealth - damageDone);
+
+            if (healthDifference < 0.0f)
+            {
+                GameData.Score -= (healthDifference + damageDone);
+            }
+            else
+            {
+                GameData.Score -= damageDone;
+            }
+        }
+    }
+
+
     /// <summary>
     /// Can be used in the future if we want to apply more damage reduction from items or other things.
     /// </summary>
@@ -247,9 +271,10 @@ public class PartyMemberItem : MonoBehaviour
     /// <returns></returns>
     private float ApplyDamageReduction( long Damage )
     {
-        if (this.combatState == CombatStates.Taunting)
+        if (this.CombatState == CombatStates.Taunting)
         {
-            return (float)(Damage * 0.75f);
+            float reducedDamage = (float)(Damage * 0.75f);
+            return reducedDamage;
         }
         return Damage;
     }
@@ -290,7 +315,7 @@ public class PartyMemberItem : MonoBehaviour
         {
             this.desiredTarget.forcedTarget = this;
             this.playerState = PlayerStates.OnCooldown;
-            this.CombatState = CombatStates.None;
+            this.CombatState = CombatStates.Taunting;
         }
         else
         {
