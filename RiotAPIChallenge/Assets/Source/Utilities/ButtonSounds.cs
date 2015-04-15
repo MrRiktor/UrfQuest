@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonSounds : Button
 {
-    Color32 colorException = new Color32( 255, 223, 0, 255 );
+    Color32 colorException = new Color32( 218, 165, 32, 255 );
     Color32 originColor;
 
     [SerializeField]

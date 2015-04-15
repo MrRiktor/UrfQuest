@@ -29,6 +29,9 @@ public class ProgressionView : MonoBehaviour
     [SerializeField]
     private Sprite failed;
 
+    [SerializeField]
+    private GridLayoutGroup progressGrid;
+
     void Start( )
     {
         Stage curStage = GameData.StageMap.Stages [ GameData.CurrentLevel ];
@@ -65,6 +68,9 @@ public class ProgressionView : MonoBehaviour
             trys2.sprite = failed;
         }
 
+        Transform progressTrans = progressGrid.transform.GetChild( GameData.CurrentLevel );
+        Image progressImage = progressTrans.GetComponent<Image>( );
+        progressImage.color = new Color( 255, 255, 255, 255 );
 
     }
 

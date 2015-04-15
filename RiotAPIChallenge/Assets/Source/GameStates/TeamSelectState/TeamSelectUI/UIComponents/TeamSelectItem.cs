@@ -22,7 +22,7 @@ public class TeamSelectItem : MonoBehaviour
 {
     #region variables
 
-    private Color32 COLOR_GOLD = new Color32( 255, 223, 0, 255 );
+    private Color32 COLOR_GOLD = new Color32( 218, 165, 32, 255 );
     private Color32 COLOR_DARK_GREY = new Color32( 64, 64, 64, 255 );
 
     private Int64 matchID;

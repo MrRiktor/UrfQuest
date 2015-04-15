@@ -17,7 +17,7 @@ public class TeamSelectView : MonoBehaviour
 {
     #region Variables
 
-    private static Color32 COLOR_GOLD = new Color32( 255, 223, 0, 255 );
+    private static Color32 COLOR_GOLD = new Color32( 218, 165, 32, 255 );
 
     //Left Side Scroll 
 
@@ -53,6 +53,43 @@ public class TeamSelectView : MonoBehaviour
 
 
     //Right Side
+
+    [SerializeField]
+    private Text champ1AttackText;
+
+    [SerializeField]
+    private Text champ1HealthText;
+
+    [SerializeField]
+    private Text champ2AttackText;
+
+    [SerializeField]
+    private Text champ2HealthText;
+
+    [SerializeField]
+    private Text champ3AttackText;
+
+    [SerializeField]
+    private Text champ3HealthText;
+
+    [SerializeField]
+    private Text champ4AttackText;
+
+    [SerializeField]
+    private Text champ4HealthText;
+
+    [SerializeField]
+    private Text champ5AttackText;
+
+    [SerializeField]
+    private Text champ5HealthText;
+
+    [SerializeField]
+    private Text teamAttackText;
+
+    [SerializeField]
+    private Text teamHealthText;
+
 
     [SerializeField]
     private Image champ1PortraitBackground;
@@ -333,21 +370,34 @@ public class TeamSelectView : MonoBehaviour
 
         champ1AttackMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 0 ].AttackDamage / maxPartyStats.MaxPlayerAttack, 1, 1 );
         champ1HealthMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 0 ].HealthPool / maxPartyStats.MaxPlayerHealthPool, 1, 1 );
+        champ1AttackText.text = party.PartyMembers [ 0 ].AttackDamage.ToString( );
+        champ1HealthText.text = party.PartyMembers [ 0 ].HealthPool.ToString( );
+
 
         champ2AttackMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 1 ].AttackDamage / maxPartyStats.MaxPlayerAttack, 1, 1 );
         champ2HealthMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 1 ].HealthPool / maxPartyStats.MaxPlayerHealthPool, 1, 1 );
+        champ2AttackText.text = party.PartyMembers [ 1 ].AttackDamage.ToString( );
+        champ2HealthText.text = party.PartyMembers [ 1 ].HealthPool.ToString( );
 
         champ3AttackMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 2 ].AttackDamage / maxPartyStats.MaxPlayerAttack, 1, 1 );
         champ3HealthMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 2 ].HealthPool / maxPartyStats.MaxPlayerHealthPool, 1, 1 );
+        champ3AttackText.text = party.PartyMembers [ 2 ].AttackDamage.ToString( );
+        champ3HealthText.text = party.PartyMembers [ 2 ].HealthPool.ToString( );
 
         champ4AttackMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 3 ].AttackDamage / maxPartyStats.MaxPlayerAttack, 1, 1 );
         champ4HealthMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 3 ].HealthPool / maxPartyStats.MaxPlayerHealthPool, 1, 1 );
+        champ4AttackText.text = party.PartyMembers [ 3 ].AttackDamage.ToString( );
+        champ4HealthText.text = party.PartyMembers [ 3 ].HealthPool.ToString( );
 
         champ5AttackMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 4 ].AttackDamage / maxPartyStats.MaxPlayerAttack, 1, 1 );
         champ5HealthMeter.rectTransform.localScale = new Vector3( ( Single )party.PartyMembers [ 4 ].HealthPool / maxPartyStats.MaxPlayerHealthPool, 1, 1 );
+        champ5AttackText.text = party.PartyMembers [ 4 ].AttackDamage.ToString( );
+        champ5HealthText.text = party.PartyMembers [ 4 ].HealthPool.ToString( );
 
         teamAttackMeter.rectTransform.localScale = new Vector3( ( Single )party.AttackAverage * 5.0f / maxPartyStats.MaxTeamAttack, 1, 1 );
         teamHealthMeter.rectTransform.localScale = new Vector3( ( Single )party.HealthAverage * 5.0f / maxPartyStats.MaxTeamHealthPool, 1, 1 );
+        teamAttackText.text = (party.AttackAverage * 5).ToString( );
+        teamHealthText.text = (party.HealthAverage * 5).ToString( );
     }
 
     public void UpdateSelectedPartyMember( ParticipantStats stats )
