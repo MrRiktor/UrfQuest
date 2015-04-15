@@ -20,6 +20,15 @@ public class ProgressionView : MonoBehaviour
     [SerializeField]
     private Scrollbar scrollBar;
 
+    [SerializeField]
+    private Image trys1;
+
+    [SerializeField]
+    private Image trys2;
+
+    [SerializeField]
+    private Sprite failed;
+
     void Start( )
     {
         Stage curStage = GameData.StageMap.Stages [ GameData.CurrentLevel ];
@@ -44,6 +53,16 @@ public class ProgressionView : MonoBehaviour
             item.transform.SetParent( grid.transform );
             item.transform.localScale = new Vector3( 1.0f, 1.0f, 1.0f );
             item.transform.localPosition = Vector3.zero;
+        }
+
+        if ( GameData.Strikes == 1 )
+        {
+            trys1.sprite = failed;
+        }
+        else if ( GameData.Strikes == 2 )
+        {
+            trys1.sprite = failed;
+            trys2.sprite = failed;
         }
 
 
