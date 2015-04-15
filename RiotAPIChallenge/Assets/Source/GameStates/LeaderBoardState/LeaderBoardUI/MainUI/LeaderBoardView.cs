@@ -49,14 +49,14 @@ public class LeaderBoardView : MonoBehaviour
 
     void Start( )
     {
-       /* if ( GameData.Score == 0.0f )
+        if ( GameData.Score == 0.0f )
         {
             ScoreBoardPanel.SetActive( true );
             InputPanel.SetActive( false );
             winPanel.SetActive( false );
             StartCoroutine( GetTopScores( ) );
         }
-        else*/
+        else
         {
             ScoreBoardPanel.SetActive( false );
             InputPanel.SetActive( true );
