@@ -68,6 +68,14 @@ public class PartyMemberItem : MonoBehaviour
     /// </summary>
     private CombatStatus combatStatus = new CombatStatus();
 
+    private bool isMitigating = false;
+
+    public bool IsMitigating
+    {
+        get;
+        set;
+    }
+
     #endregion
 
     #region Movement Variables
@@ -229,6 +237,8 @@ public class PartyMemberItem : MonoBehaviour
     {
         float modifiedDamage = Mathf.Round(ApplyDamageReduction(incomingDamage));
 
+        this.UpdateScore(modifiedDamage);
+
         this.CombatStatus.CurrentHealth -= modifiedDamage;
 
         float healthPercent = (this.CombatStatus.CurrentHealth / (float)partyMemberData.HealthPool);
@@ -236,8 +246,6 @@ public class PartyMemberItem : MonoBehaviour
         this.healthBar.GetComponent<UpdateHealthBarScale>().SetHealth(healthPercent);
 
         PlayCombatText(modifiedDamage);
-
-        UpdateScore( modifiedDamage );
 
         this.healthBarText.text = (this.CombatStatus.CurrentHealth > 0 ? this.CombatStatus.CurrentHealth.ToString() : "0");
     }
@@ -248,7 +256,7 @@ public class PartyMemberItem : MonoBehaviour
         {
             GameData.Score += damageDone;
         }
-        else
+       else
         {
             float healthDifference = Mathf.Round(this.CombatStatus.CurrentHealth - damageDone);
 
@@ -271,7 +279,7 @@ public class PartyMemberItem : MonoBehaviour
     /// <returns></returns>
     private float ApplyDamageReduction( long Damage )
     {
-        if (this.CombatState == CombatStates.Taunting)
+        if (this.isMitigating)
         {
             float reducedDamage = (float)(Damage * 0.75f);
             return reducedDamage;
@@ -316,6 +324,7 @@ public class PartyMemberItem : MonoBehaviour
             this.desiredTarget.forcedTarget = this;
             this.playerState = PlayerStates.OnCooldown;
             this.CombatState = CombatStates.Taunting;
+            IsMitigating = true;
         }
         else
         {

@@ -292,6 +292,7 @@ public class BattleManager : MonoBehaviour
 
                         if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState == PartyMemberItem.CombatStates.Attacking)
                         {
+                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].IsMitigating = false;
                             if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].GetAttackTarget() == null)
                             {
                                 BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(target);
