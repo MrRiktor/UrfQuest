@@ -1,18 +1,26 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class PartyMemberItem : MonoBehaviour
 {
     #region Private Variables
 
-    private enum PlayerState
+    public enum CombatStates
+    {
+        None,
+        Ready,
+        Attacking,
+        Taunting,
+    };
+
+    private enum PlayerStates
     {
         Waiting,
-        Attacking,
-        Returning,
-        Cooldown,
-    };
+        Ready,
+        MoveToTarget,
+        ReturnToOrigin,
+        OnCooldown,
+    }
 
     #region SerializeField Variables
 
@@ -20,7 +28,7 @@ public class PartyMemberItem : MonoBehaviour
     /// 
     /// </summary>
     [SerializeField]
-    public Image portrait = null;
+    private Image portrait = null;
 
     /// <summary>
     /// 
@@ -40,7 +48,15 @@ public class PartyMemberItem : MonoBehaviour
     [SerializeField]
     private GameObject combatText = null;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField] 
+    private GameObject attackTauntBar = null;
+
     #endregion
+
+    #region Game Information
 
     /// <summary>
     /// The party members data. (Attack, HealthPool, Movementspeed, etc.)
@@ -48,40 +64,59 @@ public class PartyMemberItem : MonoBehaviour
     private IPartyMember partyMemberData;
 
     /// <summary>
-    /// The partyMembers current health.
+    /// Combat stats for the partyMember (Alive, IsEnemy, CurrentHealth).
     /// </summary>
-    private long currentHealth = 1;
+    private CombatStatus combatStatus = new CombatStatus();
 
-    /// <summary>
-    /// 
-    /// </summary>
-    private bool isAlive = true;
+    #endregion
 
-    /// <summary>
-    /// 
-    /// </summary>
-    private bool isEnemy = false;
+    #region Movement Variables
 
     /// <summary>
     /// 
     /// </summary>
     private float rate = 0.0f;
-
+    
     /// <summary>
     /// 
     /// </summary>
     private float interpolationSpeed = 1.0f;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    private PlayerState currentState = PlayerState.Waiting;
+    #endregion
+
+    #region PartyMemberItem States
 
     /// <summary>
     /// 
     /// </summary>
-    private PartyMemberItem target = null;
+    private PlayerStates playerState = PlayerStates.Waiting;
 
+    /// <summary>
+    /// Defines what state of their turn the player is in.
+    /// </summary>
+    public CombatStates combatState = CombatStates.None;
+
+    public CombatStates CombatState
+    {
+        get;
+        set;
+    }
+
+    #endregion
+
+    #region Targets
+
+    /// <summary>
+    /// The Target I would like to attack.
+    /// </summary>
+    private PartyMemberItem desiredTarget = null;
+
+    /// <summary>
+    /// The target I am forced to attack even if my desired is different.
+    /// </summary>
+    private PartyMemberItem forcedTarget = null;
+
+    #endregion
 
     #endregion
 
@@ -98,25 +133,11 @@ public class PartyMemberItem : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Is the partyMember still alive or is he dead.
-    /// </summary>
-    public bool IsAlive
+    public CombatStatus CombatStatus
     {
         get
         {
-            return isAlive;
-        }
-    }
-
-    /// <summary>
-    /// Is the partyMember still alive or is he dead.
-    /// </summary>
-    public bool IsEnemy
-    {
-        get
-        {
-            return isEnemy;
+            return this.combatStatus;
         }
     }
 
@@ -129,33 +150,13 @@ public class PartyMemberItem : MonoBehaviour
     /// </summary>
     void Start()
     {
-        currentHealth = partyMemberData.HealthPool;
-    }
-
-    ///
-    public bool IsWaiting()
-    {
-        if (currentState == PlayerState.Waiting)
-            return true;
-        else
-            return false;
-    }
-
-    public bool IsOnCooldown()
-    {
-        if (currentState == PlayerState.Cooldown)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        this.combatStatus.CurrentHealth = partyMemberData.HealthPool;
     }
 
     public void ResetState()
     {
-        currentState = PlayerState.Waiting;
+        this.CombatState = CombatStates.None;
+        this.playerState = PlayerStates.Waiting;
     }
 
     /// <summary>
@@ -163,11 +164,11 @@ public class PartyMemberItem : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (currentState == PlayerState.Attacking)
+        if (this.playerState.Equals(PlayerStates.MoveToTarget))
         {
-            MoveToTarget();
+            MoveToTarget( GetAttackTarget() );
         }
-        else if (currentState == PlayerState.Returning)
+        else if (this.playerState.Equals(PlayerStates.ReturnToOrigin))
         {
             ReturnToOrigin();
         }
@@ -177,59 +178,188 @@ public class PartyMemberItem : MonoBehaviour
 
     #region Public Methods
 
+    #region Initialization
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name="partyMember"></param>
-    public void InitPartyMember(IPartyMember partyMember, bool isEnemy)
+    public void InitPartyMember(IPartyMember partyMember, Being.BeingType beingType)
     {
-        this.isEnemy = isEnemy;
+        this.combatStatus.BeingType = beingType;
         this.healthBarText.text = partyMember.HealthPool.ToString();
 
         partyMemberData = partyMember;
         portrait.sprite = partyMemberData.Portrait;
     }
 
+    #endregion
+
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="Damage"></param>
-    public void TakeDamage(long Damage)
+    /// <returns></returns>
+    public bool IsWaiting()
     {
-        currentHealth -= Damage;
+        return (this.playerState.Equals(PlayerStates.Waiting)) ? true : false;
+    }
 
-        float healthPercent = ((float)currentHealth / (float)partyMemberData.HealthPool);
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public bool IsOnCooldown()
+    {
+        return (this.playerState.Equals(PlayerStates.OnCooldown)) ? true : false;
+    }
 
-        healthBar.GetComponent<UpdateHealthBarScale>().SetHealth(healthPercent);
-
-        PlayCombatText(Damage);
-        this.healthBarText.text = (currentHealth > 0 ? currentHealth.ToString() : "0");
-
-        if (currentHealth <= 0)
+    public void SetAttackTauntBarActive( bool isActive )
+    {
+        if (this.attackTauntBar != null)
         {
-            this.portrait.GetComponent<Image>().color = Color.red;
-            this.isAlive = false;
+            this.attackTauntBar.SetActive(isActive);
         }
     }
 
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="enemy"></param>
-    public void SetTarget(PartyMemberItem enemy)
+    /// <param name="Damage"></param>
+    public void TakeDamage( long incomingDamage )
     {
-        this.target = enemy;
-        this.currentState = PlayerState.Attacking;
+        float modifiedDamage = Mathf.Round(ApplyDamageReduction(incomingDamage));
+
+        this.CombatStatus.CurrentHealth -= modifiedDamage;
+
+        float healthPercent = (this.CombatStatus.CurrentHealth / (float)partyMemberData.HealthPool);
+
+        this.healthBar.GetComponent<UpdateHealthBarScale>().SetHealth(healthPercent);
+
+        PlayCombatText(modifiedDamage);
+
+        this.healthBarText.text = (this.CombatStatus.CurrentHealth > 0 ? this.CombatStatus.CurrentHealth.ToString() : "0");
+    }
+    
+    /// <summary>
+    /// Can be used in the future if we want to apply more damage reduction from items or other things.
+    /// </summary>
+    /// <param name="Damage"></param>
+    /// <returns></returns>
+    private float ApplyDamageReduction( long Damage )
+    {
+        if (this.combatState == CombatStates.Taunting)
+        {
+            return (float)(Damage * 0.75f);
+        }
+        return Damage;
     }
 
-    #endregion
+    /// <summary>
+    /// Command to attack the current target...
+    /// </summary>
+    /// <param name="target"></param>
+    public void AttackTarget()
+    {
+        PartyMemberItem target = GetAttackTarget();
 
-    #region Private Methods
+        if (target != null)
+        {
+            playerState = PlayerStates.MoveToTarget;
+
+            //Place attack execution here:
+            target.TakeDamage(this.partyMemberData.AttackDamage);
+            this.CombatState = CombatStates.None;
+        }
+        else
+        {
+            Debug.LogError("PartyMemberItem::AttackTarget() - target was null");
+        }
+    }
+    public void AttackClicked()
+    {
+        this.CombatState = CombatStates.Attacking;
+        SetAttackTauntBarActive(false);
+    }
 
     /// <summary>
     /// 
     /// </summary>
-    private void MoveToTarget()
+    public void TauntTarget()
+    {        
+        if( desiredTarget != null )
+        {
+            this.desiredTarget.forcedTarget = this;
+            this.playerState = PlayerStates.OnCooldown;
+            this.CombatState = CombatStates.None;
+        }
+        else
+        {
+            //TODO: Add a UI element for this warning. OR a sound feedback.
+            Debug.Log("You must pick a target to taunt.");
+        }
+    }
+    public void TauntClicked()
+    {
+        if (this.desiredTarget != null && this.desiredTarget.CombatStatus.IsAlive() == true)
+        {
+            this.CombatState = PartyMemberItem.CombatStates.Taunting;
+            SetAttackTauntBarActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Sets my desired Target
+    /// </summary>
+    /// <param name="target"></param>
+    public void SetTarget( PartyMemberItem target )
+    {
+        if (target != null)
+        {
+            this.desiredTarget = target;
+        }
+    }
+
+    /// <summary>
+    /// Returns the attack target of this PartyMemberItem.
+    /// </summary>
+    /// <returns></returns>
+    public PartyMemberItem GetAttackTarget()
+    {
+        if (this.forcedTarget != null && this.forcedTarget.CombatStatus.IsAlive() == true)
+        {
+            return this.forcedTarget;
+        }
+        else if (this.desiredTarget != null && desiredTarget.CombatStatus.IsAlive() == true)
+        {
+            return this.desiredTarget;
+        }
+        else 
+        { 
+            return null;
+        }
+    }
+
+    public PartyMemberItem GetTauntTarget()
+    {
+        if (this.desiredTarget != null && this.desiredTarget.CombatStatus.IsAlive() == true)
+        {
+            return this.desiredTarget;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    
+    #endregion
+
+    #region Private Methods
+    
+    /// <summary>
+    /// Moves the PartyMemberItem a target location
+    /// </summary>
+    private void MoveToTarget( PartyMemberItem target )
     {
         rate += Time.deltaTime * interpolationSpeed;
 
@@ -237,33 +367,12 @@ public class PartyMemberItem : MonoBehaviour
         // It looks ugly but I can't think of another way to access what I need.
         this.transform.parent.transform.parent.SetAsLastSibling();
 
-        this.transform.GetChild(0).position = Vector3.Lerp(this.transform.GetChild(0).position, target.transform.position, rate);
+        this.transform.GetChild(0).position = Vector3.Lerp( this.transform.GetChild(0).position, target.transform.position, rate);
 
         if (rate >= 0.75f)
         {
             rate = 0;
-            SoundManager.GetInstance().PlaySoundOnce(this.partyMemberData.attackClip);
-
-            if (target.isEnemy)
-            {
-                GameData.Score += this.partyMemberData.AttackDamage;
-            }
-            else
-            {
-                long healthDifference = target.currentHealth - this.partyMemberData.AttackDamage;
-
-                if (healthDifference < 0)
-                {
-                    GameData.Score -= (healthDifference + this.partyMemberData.AttackDamage);
-                }
-                else
-                {
-                    GameData.Score -= this.partyMemberData.AttackDamage;
-                }
-            }
-
-            target.TakeDamage(this.partyMemberData.AttackDamage);
-            currentState = PlayerState.Returning;
+            playerState = PlayerStates.ReturnToOrigin;
         }
     }
 
@@ -278,11 +387,22 @@ public class PartyMemberItem : MonoBehaviour
         if (rate >= 1)
         {
             rate = 0;
-            currentState = PlayerState.Cooldown;
+            playerState = PlayerStates.OnCooldown;
+
+            PartyMemberItem target = (this.forcedTarget == null) ? this.desiredTarget : this.forcedTarget;
+
+            if (target.combatStatus.HealthState == CombatStatus.HealthStates.Dying)
+            {
+                target.portrait.color = Color.red;
+                target.combatStatus.HealthState = CombatStatus.HealthStates.Dead;
+            }
+
+            // After I attack, Clear my forced target.
+            this.forcedTarget = null;
         }
     }
 
-    private void PlayCombatText(long damage)
+    private void PlayCombatText(float damage)
     {
         combatText.GetComponent<Text>().text = ("-" + damage.ToString());
         combatText.GetComponent<Animator>().SetTrigger("PlayCombatText");

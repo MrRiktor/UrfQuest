@@ -31,7 +31,7 @@ public class SetupParty : MonoBehaviour
         {
             GameObject partyMemberUI = (Instantiate(partyMemberPrefab, Vector3.zero, Quaternion.identity) as GameObject);
 
-            partyMemberUI.GetComponent<PartyMemberItem>().InitPartyMember(partyData.PartyMembers[i], false);
+            partyMemberUI.GetComponent<PartyMemberItem>().InitPartyMember(partyData.PartyMembers[i], Being.BeingType.Player);
 
             partyMemberUI.transform.SetParent(this.transform);
 
@@ -52,7 +52,7 @@ public class SetupParty : MonoBehaviour
         {
             GameObject partyMemberUI = (Instantiate(partyMemberPrefab, Vector3.zero, Quaternion.identity) as GameObject);
 
-            partyMemberUI.GetComponent<PartyMemberItem>().InitPartyMember(enemy, true);
+            partyMemberUI.GetComponent<PartyMemberItem>().InitPartyMember(enemy, Being.BeingType.Enemy);
 
             partyMemberUI.transform.SetParent(this.transform);
 

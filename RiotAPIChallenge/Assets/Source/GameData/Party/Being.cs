@@ -7,6 +7,13 @@ using System.Xml.Serialization;
 
 public abstract class Being : IPartyMember
 {
+    public enum BeingType
+    {
+        None,
+        Player,
+        Enemy,
+    };
+
     #region Private Member Variables
 
     private String beingName;

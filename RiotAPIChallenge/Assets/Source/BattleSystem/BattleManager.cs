@@ -48,7 +48,18 @@ public class BattleManager : MonoBehaviour
     /// This will define the turn order in the combat state.
     /// </summary>
     private List<PartyMemberItem> attackQueue = new List<PartyMemberItem>();
-    private int attackQueueIndex = 0;
+
+    public List<PartyMemberItem> AttackQueue
+    {
+        get
+        {
+            return this.attackQueue;
+        }
+    }
+
+    private static int attackQueueIndex = 0;
+
+    private bool autoBattleEnabled = false;
 
     private List<PartyMemberItem> enemyTeam = new List<PartyMemberItem>();
     private List<PartyMemberItem> playerTeam = new List<PartyMemberItem>();
@@ -159,7 +170,7 @@ public class BattleManager : MonoBehaviour
     #region Public Methods
 
     /// <summary>
-    /// The accessor to this singleton instance.
+    /// The accessor to this singleton BattleManager.GetInstance().
     /// </summary>
     /// <returns> Returns the instance of this manager. </returns>
     public static BattleManager GetInstance()
@@ -176,11 +187,23 @@ public class BattleManager : MonoBehaviour
         BattleManager.GetInstance().playerTarget = target;
     }
 
+    public void AttackClicked()
+    {
+        BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(playerTarget);
+        BattleManager.GetInstance().AttackQueue[attackQueueIndex].AttackClicked();
+    }
+
+    public void TauntClicked()
+    {
+        BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(playerTarget);
+        BattleManager.GetInstance().AttackQueue[attackQueueIndex].TauntClicked();
+    }
+    
     public void ResetAttackQueue()
     {
         attackQueueIndex = 0;
 
-        foreach(PartyMemberItem partyMemberItem in attackQueue)
+        foreach (PartyMemberItem partyMemberItem in BattleManager.GetInstance().AttackQueue)
         {
             partyMemberItem.ResetState();
         }
@@ -194,50 +217,97 @@ public class BattleManager : MonoBehaviour
     {
         playerTeam = playerParty.GetComponent<SetupParty>().SetupTheParty(GameData.CurrentParty);
         enemyTeam = enemyParty.GetComponent<SetupParty>().SetupTheParty(GameData.StageMap.Stages[GameData.CurrentLevel].Enemies);
-        
-        attackQueue.AddRange(playerTeam);
-        attackQueue.AddRange(enemyTeam);
+
+        BattleManager.GetInstance().AttackQueue.AddRange(playerTeam);
+        BattleManager.GetInstance().AttackQueue.AddRange(enemyTeam);
         
         SortAttackQueue();
         
         areTeamsInitialized = true;
     }
 
-   
-
     public void Fight()
     {
-        if (attackQueueIndex >= (attackQueue.Count))
+        if (attackQueueIndex >= (BattleManager.GetInstance().AttackQueue.Count) || !winningTeam.Equals(Team.None))
         {
             stateMachine.TransitionToState(BattleState.BattleStateType.ResolveCombatState);
-        }    
-        
-        // Attacker is not dead. (a.k.a. HP <= 0)
-        if (attackQueue[attackQueueIndex].IsAlive && attackQueue[attackQueueIndex].IsWaiting())
-        {
-            PartyMemberItem target;
-
-            if (playerTarget == null || playerTarget.IsAlive == false || attackQueue[attackQueueIndex].IsEnemy == true)
-            {
-                target = GetRandomTarget(attackQueue[attackQueueIndex].IsEnemy);
-            }
-            else 
-            {
-                target = playerTarget;
-            }
-
-            if (target == null)
-            {
-                Debug.Log("Could not find target, all enemies or partymembers are dead.");
-                winningTeam = ((attackQueue[attackQueueIndex].IsEnemy) ? Team.Enemy : Team.Player);
-                stateMachine.TransitionToState(BattleState.BattleStateType.ResolveCombatState);
-                return;
-            }
-
-            attackQueue[attackQueueIndex].SetTarget(target);
         }
 
-        if (!attackQueue[attackQueueIndex].IsAlive || attackQueue[attackQueueIndex].IsOnCooldown())
+        if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatStatus.IsAlive() && BattleManager.GetInstance().AttackQueue[attackQueueIndex].IsWaiting())
+        {
+            //Enemy Turn
+            if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatStatus.BeingType.Equals(Being.BeingType.Enemy))
+            {
+                PartyMemberItem target = GetRandomTarget(Being.BeingType.Player);
+
+                if(target != null)
+                {
+                    // Perform Attack
+                    BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(target);
+                    BattleManager.GetInstance().AttackQueue[attackQueueIndex].AttackTarget();
+                }
+                else
+                {
+                    this.winningTeam = Team.Enemy;
+                }
+            }
+            // Player Turn
+            else 
+            {
+                // A random enemy if we decide to use it.
+                PartyMemberItem target = GetRandomTarget(Being.BeingType.Enemy);
+
+                if (target == null)
+                {
+                    this.winningTeam = Team.Player;
+                }
+                else
+                {
+                    BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(playerTarget);
+
+                    if (autoBattleEnabled == true)
+                    {
+                        if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].GetAttackTarget() == null)
+                        {
+                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(target);
+                        }
+
+                        // Perform Attack
+                        BattleManager.GetInstance().AttackQueue[attackQueueIndex].AttackTarget();
+                    }
+                    else
+                    {
+                        if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState == PartyMemberItem.CombatStates.None)
+                        {
+                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetAttackTauntBarActive(true);
+                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState = PartyMemberItem.CombatStates.Ready;
+                        }
+
+                        if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState == PartyMemberItem.CombatStates.Attacking)
+                        {
+                            if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].GetAttackTarget() == null)
+                            {
+                                BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(target);
+                            }
+                            
+                            // Perform Attack
+                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].AttackTarget();
+                        }
+                        else if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState == PartyMemberItem.CombatStates.Taunting)
+                        {
+                            if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].GetTauntTarget() == null)
+                            {
+                                BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(target);
+                            }
+
+                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].TauntTarget();
+                        }
+                    }
+                }
+            }
+        }
+
+        if (!BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatStatus.IsAlive() || BattleManager.GetInstance().AttackQueue[attackQueueIndex].IsOnCooldown())
         {
             ++attackQueueIndex;
         }
@@ -251,14 +321,14 @@ public class BattleManager : MonoBehaviour
     /// Grabs a random target for the current attacker to attack.
     /// </summary>
     /// <returns></returns>
-    private PartyMemberItem GetRandomTarget(bool isEnemy)
+    private PartyMemberItem GetRandomTarget(Being.BeingType beingType)
     {
         int index = 0;
         List<PartyMemberItem> aliveOpponents = new List<PartyMemberItem>();
 
         foreach(PartyMemberItem pmi in attackQueue)
         {
-            if( pmi.IsAlive && ( pmi.IsEnemy != isEnemy ) ) 
+            if (pmi.CombatStatus.IsAlive() && (pmi.CombatStatus.BeingType.Equals(beingType))) 
             {
                 aliveOpponents.Add(pmi);
             }
