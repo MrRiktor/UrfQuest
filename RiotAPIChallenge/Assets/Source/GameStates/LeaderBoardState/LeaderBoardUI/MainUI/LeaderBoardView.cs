@@ -23,6 +23,15 @@ public class LeaderBoardView : MonoBehaviour
     [SerializeField]
     Text scoreText;
 
+    [SerializeField]
+    Text winText;
+
+    [SerializeField]
+    GameObject winPanel;
+
+    private const string WIN_TEXT = "You have defeated Urf and brought normalcy back to Summoner's Rift!  Way to ruin a great game type newb…";
+    private const string LOSE_TEXT = "Wow... you my friend do not deal TONS OF DAMAGE on a daily basis. Urf is still rampant!";
+
     public StyledComboBox comboBox;
 
     ///Fill in your server data here.
@@ -40,16 +49,19 @@ public class LeaderBoardView : MonoBehaviour
 
     void Start( )
     {
-        if ( GameData.Score == 0.0f )
+       /* if ( GameData.Score == 0.0f )
         {
             ScoreBoardPanel.SetActive( true );
             InputPanel.SetActive( false );
+            winPanel.SetActive( false );
             StartCoroutine( GetTopScores( ) );
         }
-        else
+        else*/
         {
             ScoreBoardPanel.SetActive( false );
             InputPanel.SetActive( true );
+            winPanel.SetActive( true );
+            winText.text = GameData.Victorious ? WIN_TEXT : LOSE_TEXT;
             scoreText.text = ((int)GameData.Score).ToString();
             comboBox.AddItems( "NA", "EUW", "EUNE", "BR", "TR", "RU", "LAN", "LAS", "OCE", "KR" );
         }
@@ -68,6 +80,7 @@ public class LeaderBoardView : MonoBehaviour
         StartCoroutine( AddScore( username, region, highscore ) );
         GameData.Score = 0;
         GameData.CurrentLevel = 0;
+        GameData.Victorious = false;
     }
 
     ///Our IEnumerators
@@ -156,6 +169,7 @@ public class LeaderBoardView : MonoBehaviour
             }
 
             InputPanel.SetActive( false );
+            winPanel.SetActive( false );
             ScoreBoardPanel.SetActive( true );
         }
     }

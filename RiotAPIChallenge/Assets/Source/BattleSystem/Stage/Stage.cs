@@ -13,6 +13,13 @@ public class Stage
     }
 
     [XmlElement]
+    public string StageStory
+    {
+        get;
+        set;
+    }
+
+    [XmlElement]
     public string StageImage
     {
         get;

@@ -14,11 +14,20 @@ public class ProgressionView : MonoBehaviour
     [SerializeField]
     private GridLayoutGroup grid;
 
+    [SerializeField]
+    private Text StoryText;
+
+    [SerializeField]
+    private Scrollbar scrollBar;
+
     void Start( )
     {
         Stage curStage = GameData.StageMap.Stages [ GameData.CurrentLevel ];
 
         mainImage.sprite = Resources.Load<Sprite>( curStage.StageImage );
+
+        StoryText.text = curStage.StageStory;
+        scrollBar.value = 1;
 
         for ( Int32 i = 0; i < curStage.Enemies.Length; i++ )
         {

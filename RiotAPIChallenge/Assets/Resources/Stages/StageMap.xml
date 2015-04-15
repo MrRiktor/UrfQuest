@@ -3,6 +3,7 @@
   <Stages>
     <Stage StageNumber="0">
       <StageImage>Images/stages/stage0</StageImage>
+      <StageStory>The day was April 1st, and there was no doubt in anyone's mind that something was fishy on Summoner's Rift.  The smell of the ocean permeated through everyone's nostrils, but all that could be seen was the rift.  The fishy smell was more than just a notification in the brain that something was off, the pungent aroma sent a surge through every champion increasing their already unhuman fighting abilities.  For weeks, a trail of death and destruction like had never been seen before decorated Summoner's Rift.  At first it was confusing, but that confusion quickly turned into fun with horror quickly setting in.  How long can this craziness go on?  It needed to be stopped. The fishy smell that bolstered the champions must be emanating from the long forgotten URF, but this could not be… could it?  Warwick slayed the beast many many years ago, perhaps realizing the damage he would cause in time.  Somehow he is destroying the rift from the beyond.  YOU MUST STOP HIM!  The monsters of Summoner's Rift are happy to protect their unseen master, so in order for you to complete your quest you must defeat them and learn where this manatee is hiding.  Good luck Summoner!</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Minion">
           <AttackDamage>16</AttackDamage>
@@ -43,6 +44,7 @@
     </Stage>
     <Stage StageNumber="1">
       <StageImage>Images/stages/stage1</StageImage>
+      <StageStory>Congratulations you defeated the minions and part one of your quest.   Your journey has just begun, as minions are only feared by inanimate objects and dull blades of grass.  Your next opponent will be a much greater challenge.  The minions have divulged to you that the wolves may have more information on the whereabouts of the fish mammal beast.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Murk Wolf">
           <AttackDamage>16</AttackDamage>
@@ -69,6 +71,7 @@
     </Stage>
     <Stage StageNumber="2">
       <StageImage>Images/stages/stage2</StageImage>
+      <StageStory>The wolves have fallen and the fishy smell grows stronger.  Sadly the wolves would not direct you in any particular way, but as you follow your nose you are led to some colorful bird dinosaurs.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Crimson Raptor">
           <AttackDamage>45</AttackDamage>
@@ -102,6 +105,7 @@
     </Stage>
     <Stage StageNumber="3">
       <StageImage>Images/stages/stage3</StageImage>
+      <StageStory>Finally those dinos have been put down.  You are one step closer.  Be warned though, it only gets harder from here.  You can run away and hide under your seat with a popcorn tub on your head if you would like.  However, if you would like to continue, before the raptors died you saw them head toward their rock defenders.  Strike Krug down and get closer to winning the day.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Ancient Krug">
           <AttackDamage>146</AttackDamage>
@@ -121,6 +125,7 @@
     </Stage>
     <Stage StageNumber="4">
       <StageImage>Images/stages/stage4</StageImage>
+      <StageStory>The giant rocks are now nothing more than gravel thanks to you Summoner.  They revealed the next stop of your journey must go through a ginormous slimy frog.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Gromp">
           <AttackDamage>166</AttackDamage>
@@ -133,6 +138,7 @@
     </Stage>
     <Stage StageNumber="5">
       <StageImage>Images/stages/stage5</StageImage>
+      <StageStory>Gromp went out in an explosion of slim.  As you wipe the goo from your brow, you notice the fish smell looming heavy in the air.  The Blue Sentinel is near, and although Gromp was useless, perhaps this blue guardian of the forest has more information that will help you on your quest.  Obtaining that information may not be so easy.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Blue Sentry">
           <AttackDamage>48</AttackDamage>
@@ -159,6 +165,7 @@
     </Stage>
     <Stage StageNumber="6">
       <StageImage>Images/stages/stage6</StageImage>
+      <StageStory>Good job Summoner!  The rock guardian has given you much information that will be helpful in your quest.  He has confirmed that it is none other than Urf the Manatee behind all this destruction.  Before you landed the final blow he directed you toward the mighty Brambleback.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Cinderling">
           <AttackDamage>48</AttackDamage>
@@ -185,6 +192,7 @@
     </Stage>
     <Stage StageNumber="7">
       <StageImage>Images/stages/stage7</StageImage>
+      <StageStory>You have great strength Summoner, just like a pop artist surfing through the desert.  The mighty Brambleback would only give this riddle before his death.  "The path to Urf is through the dragon."  Whatever could that mean?</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Dragon">
           <AttackDamage>325</AttackDamage>
@@ -197,6 +205,7 @@
     </Stage>
     <Stage StageNumber="8">
       <StageImage>Images/stages/stage8</StageImage>
+      <StageStory>Amazing Summoner!  The dragon has been defeated, but no new information was gained.  By process of elimination, and the fact you have killed everything else on the rift, what do you say we head to Baron, the source of so many throws.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Baron">
           <AttackDamage>400</AttackDamage>
@@ -209,6 +218,7 @@
     </Stage>
     <Stage StageNumber="9">
       <StageImage>Images/stages/stage9</StageImage>
+      <StageStory>You defeated Baron!  Sorry but our Urf is in another castle.  The only thing visible around you are the never seen before Urf Guardians.  As they move out from the fog of war, terror strikes your heart for these… things… are the most hideous, frightening, creepy, bloodcurdling, chilling monsters you have ever laid eyes on!</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Rivington">
           <!-- Lower Attack/Higher Health Pool -->
@@ -254,6 +264,7 @@
     </Stage>
     <Stage StageNumber="10">
       <StageImage>Images/stages/stage10</StageImage>
+      <StageStory>You have emerged Victorious!  With no more monsters protecting him, a wild Urf has appeared!</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Urf">
           <AttackDamage>99999</AttackDamage>

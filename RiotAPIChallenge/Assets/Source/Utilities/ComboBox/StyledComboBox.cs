@@ -137,11 +137,11 @@ public class StyledComboBox : StyledItem
             root.transform.SetParent( this.transform );
 
 			RectTransform rt = root.GetComponent<RectTransform>();
-			rt.pivot = new Vector2(0.5f, 0.5f);
+			rt.pivot = new Vector2(0.5f, 0.0f);
 			//root.anchoredPosition = Vector2.zero;
 			rt.anchorMin = Vector2.zero;
 			rt.anchorMax = Vector2.one;
-			rt.offsetMax = Vector2.zero;
+            rt.offsetMax = Vector2.zero;
 			rt.offsetMin = Vector2.zero;
 			root.gameObject.hideFlags = HideFlags.HideInHierarchy; // should really be HideAndDontSave, but unity crashes
 			root.itemPanel.alpha = 0.0f;

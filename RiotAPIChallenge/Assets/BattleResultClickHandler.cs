@@ -9,6 +9,7 @@ public class BattleResultClickHandler : MonoBehaviour
         {
             if (GameData.Strikes >= 3)
             {
+                GameData.Victorious = false;
                 Messenger<GameStateTypes>.Broadcast(MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.SCOREBOARD);
             }
             else
@@ -25,6 +26,7 @@ public class BattleResultClickHandler : MonoBehaviour
             else
             {
                 //REALLY REALLY WIN??? lol
+                GameData.Victorious = true;
                 Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.SCOREBOARD );
             }
 

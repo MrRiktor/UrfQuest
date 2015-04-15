@@ -7,6 +7,7 @@ public class GameData
     private static Int32 currentLevel = 0;
     private static Int32 strikes = 0;
     private static float score = 0.0f;
+    private static Boolean victorious = false;
     private static Party currentParty;
 
 
@@ -63,6 +64,18 @@ public class GameData
             }
 
             return stageMap;
+        }
+    }
+
+    public static Boolean Victorious
+    {
+        get
+        {
+            return victorious;
+        }
+        set
+        {
+            victorious = value;
         }
     }
 
