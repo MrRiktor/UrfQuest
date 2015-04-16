@@ -13,7 +13,7 @@ public interface IBattleState
 
     BattleState.BattleStateType StateType
     {
-        get; 
+        get;
         set;
     }
 }

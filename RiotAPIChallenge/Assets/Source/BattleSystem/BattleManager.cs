@@ -184,15 +184,16 @@ public class BattleManager : MonoBehaviour
 
     public void SetPlayerTarget(PartyMemberItem target)
     {
-        if (target.CombatStatus.BeingType == Being.BeingType.Enemy)
+        if (target.CombatStatus.BeingType == Being.BeingType.Enemy && target.CombatStatus.IsAlive())
         {
             if (BattleManager.GetInstance().playerTarget != null)
             {
                 BattleManager.GetInstance().playerTarget.SetTargetIconActive(false);
-                SoundManager.GetInstance().PlaySound(SoundManager.SoundClip.TargetPing);
             }
+
             BattleManager.GetInstance().playerTarget = target;
             target.SetTargetIconActive(true);
+            SoundManager.GetInstance().PlaySound(SoundManager.SoundClip.TargetPing);
         }
         else
         {

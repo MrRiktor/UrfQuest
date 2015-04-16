@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
         Defeat,
         exitchampionselect,
         TargetPing,
+        TauntSound,
     }
 
     [SerializeField] private AudioSource audioSource = null;

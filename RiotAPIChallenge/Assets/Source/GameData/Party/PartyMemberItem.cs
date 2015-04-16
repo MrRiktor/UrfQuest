@@ -372,6 +372,7 @@ public class PartyMemberItem : MonoBehaviour
         if (this.desiredTarget != null && this.desiredTarget.CombatStatus.IsAlive() == true)
         {
             SetTauntIconActive(true);
+            SoundManager.GetInstance().PlaySound(SoundManager.SoundClip.TauntSound);
             this.CombatState = PartyMemberItem.CombatStates.Taunting;
             SetAttackTauntBarActive(false);
         }
@@ -464,6 +465,7 @@ public class PartyMemberItem : MonoBehaviour
             if (target.combatStatus.HealthState == CombatStatus.HealthStates.Dying)
             {
                 target.portrait.color = Color.red;
+                target.SetTargetIconActive(false);
                 target.combatStatus.HealthState = CombatStatus.HealthStates.Dead;
             }
 
