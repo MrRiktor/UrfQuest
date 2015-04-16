@@ -1,7 +1,7 @@
 <?php
     //You need to fill in this information!
-    $db = mysql_connect('127.0.0.1', 'vincent', 'vb1987') or die('Failed to connect: ' . mysql_error()); 
-        mysql_select_db('UrfQuest') or die('Failed to access database');
+    $db = mysql_connect('SQLHOST', 'USERNAME', 'PASSWORD') or die('Failed to connect: ' . mysql_error()); 
+        mysql_select_db('YOUR_DATABASE') or die('Failed to access database');
  
     $name = mysql_real_escape_string($_GET['name']);
     $region = mysql_real_escape_string($_GET['region']); 

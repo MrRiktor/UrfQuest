@@ -1,7 +1,7 @@
 <?php 
         //You have to fill in this information to connect to your database!
-        $db = mysql_connect('127.0.0.1', 'vincent', 'vb1987') or die('Failed to connect: ' . mysql_error()); 
-        mysql_select_db('UrfQuest') or die('Failed to access database');
+        $db = mysql_connect('SQLHOST', 'USERNAME', 'PASSWORD') or die('Failed to connect: ' . mysql_error()); 
+        mysql_select_db('YOUR_DATABASE') or die('Failed to access database');
         //These are our variables.
         //We use real escape string to stop people from injecting. We handle this in Unity too, but it's important we do it here as well in case people extract our url.
         $name = mysql_real_escape_string($_GET['name'], $db); 
@@ -13,7 +13,7 @@
         $politestring = sanitize($name);
 
         //This is your key. You have to fill this in! Go and generate a strong one.
-        $secretKey="e733fdbe-1b86-406c-88fc-c8aa9c874679";
+        $secretKey="SECRET_KEY";
         
         //We md5 hash our results.
         $expected_hash = md5($name . $region . $score . $secretKey); 

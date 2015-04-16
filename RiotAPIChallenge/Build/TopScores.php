@@ -1,7 +1,7 @@
 <?php
     //Again, fill in your server data here!
-    $db = mysql_connect('127.0.0.1', 'vincent', 'vb1987') or die('Failed to connect: ' . mysql_error()); 
-        mysql_select_db('UrfQuest') or die('Failed to access database');
+    $db = mysql_connect('SQLHOST', 'USERNAME', 'PASSWORD') or die('Failed to connect: ' . mysql_error()); 
+        mysql_select_db('YOUR_DATABASE') or die('Failed to access database');
  
      //This query grabs the top 10 scores, sorting by score and timestamp.
     $query = "SELECT * FROM Scores ORDER by score DESC, ts ASC LIMIT 10";
