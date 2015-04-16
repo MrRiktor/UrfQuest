@@ -25,7 +25,7 @@ public enum Region
 /// </summary>
 public static class RiotAPIConstants
 {
-    private static String API_KEY_SUFFIX = "d0fed0d2-9eaf-4436-a5d3-d5e2be76474d";
+    private static String API_KEY_SUFFIX = "";
 
     /// <summary>
     /// 
