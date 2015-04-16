@@ -138,7 +138,7 @@
     </Stage>
     <Stage StageNumber="5">
       <StageImage>Images/stages/stage5</StageImage>
-      <StageStory>Gromp went out in an explosion of slim.  As you wipe the goo from your brow, you notice the fish smell looming heavy in the air.  The Blue Sentinel is near, and although Gromp was useless, perhaps this blue guardian of the forest has more information that will help you on your quest.  Obtaining that information may not be so easy.</StageStory>
+      <StageStory>Gromp went out in an explosion of slime.  As you wipe the goo from your brow, you notice a fishy smell looming heavy in the air.  The Blue Sentinel is near, and although Gromp was useless, perhaps this blue guardian of the forest has more information that will help you on your quest.  Obtaining that information may not be so easy.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Blue Sentry">
           <AttackDamage>48</AttackDamage>
