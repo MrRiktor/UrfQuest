@@ -13,12 +13,18 @@ public static class GrabMatchIDsFromFile
     {
         List<long> listToReturn = new List<long>();
 
-        if (!File.Exists(@"Assets/Resources/MatchIDList/MatchIDList.txt"))
+        /*if (!File.Exists(@"Assets/Resources/MatchIDList/MatchIDList.txt"))
         {
             File.Create(@"Assets/Resources/MatchIDList/MatchIDList.txt");
-        }
+        }*/
 
-        string [] allMatchIds = File.ReadAllLines(@"Assets/Resources/MatchIDList/MatchIDList.txt");
+        TextAsset text = Resources.Load<TextAsset>("MatchIDList/MatchIDList");
+        
+        //string [] allMatchIds = File.ReadAllLines(@"Assets/Resources/MatchIDList/MatchIDList.txt");
+
+        string[] delims = { "\r\n" };
+
+        string[] allMatchIds = text.text.Split(delims, System.StringSplitOptions.None);
 
         if(allMatchIds.Length > 0)
         {
