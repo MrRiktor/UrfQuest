@@ -3,7 +3,7 @@
   <Stages>
     <Stage StageNumber="0">
       <StageImage>Images/stages/stage0</StageImage>
-      <StageStory>The day was April 1st, and there was no doubt in anyone's mind that something was fishy on Summoner's Rift.  The smell of the ocean permeated through everyone's nostrils, but all that could be seen was the rift.  The fishy smell was more than just a notification in the brain that something was off, the pungent aroma sent a surge through every champion increasing their already unhuman fighting abilities.  For weeks, a trail of death and destruction like had never been seen before decorated Summoner's Rift.  At first it was confusing, but that confusion quickly turned into fun with horror quickly setting in.  How long can this craziness go on?  It needed to be stopped. The fishy smell that bolstered the champions must be emanating from the long forgotten URF, but this could not be… could it?  Warwick slayed the beast many many years ago, perhaps realizing the damage he would cause in time.  Somehow he is destroying the rift from the beyond.  YOU MUST STOP HIM!  The monsters of Summoner's Rift are happy to protect their unseen master, so in order for you to complete your quest you must defeat them and learn where this manatee is hiding.  Good luck Summoner!</StageStory>
+      <StageStory>The day was April 1st, and there was no doubt in anyone's mind that something was fishy on Summoner's Rift.  The smell of the ocean permeated through everyone's nostrils, but all that could be seen was the rift.  The fishy smell was more than just a notification in the brain that something was off, the pungent aroma sent a surge through every champion increasing their already inhuman fighting abilities.  For weeks, a trail of death and destruction like had never been seen before decorated Summoner's Rift.  At first it was confusing, but that confusion quickly turned into fun with horror quickly setting in.  How long can this craziness go on?  It needed to be stopped. The fishy smell that bolstered the champions must be emanating from the long forgotten URF, but this could not be… could it?  Warwick slayed the beast many many years ago, perhaps realizing the damage he would cause in time.  Somehow he is destroying the rift from the beyond.  YOU MUST STOP HIM!  The monsters of Summoner's Rift are happy to protect their unseen master, so in order for you to complete your quest you must defeat them and learn where this manatee is hiding.  Good luck Summoner!</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Minion">
           <AttackDamage>16</AttackDamage>
@@ -82,7 +82,7 @@
       <StageStory>The wolves have fallen and the fishy smell grows stronger.  Sadly the wolves would not direct you in any particular way, but as you follow your nose you are led to some colorful bird dinosaurs.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Crimson Raptor">
-          <AttackDamage>45</AttackDamage>
+          <AttackDamage>124</AttackDamage>
           <HealthPool>1200</HealthPool>
           <MovementSpeed>349</MovementSpeed>
           <IconPath>Icons/enemy/CrimsonRaptor</IconPath>
@@ -90,7 +90,7 @@
 		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="1" BeingName="Raptor">
-          <AttackDamage>16</AttackDamage>
+          <AttackDamage>50</AttackDamage>
           <HealthPool>250</HealthPool>
           <MovementSpeed>354</MovementSpeed>
           <IconPath>Icons/enemy/Raptor</IconPath>
@@ -98,7 +98,7 @@
 		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="2" BeingName="Raptor">
-          <AttackDamage>16</AttackDamage>
+          <AttackDamage>50</AttackDamage>
           <HealthPool>250</HealthPool>
           <MovementSpeed>354</MovementSpeed>
           <IconPath>Icons/enemy/Raptor</IconPath>
@@ -106,7 +106,7 @@
 		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="3" BeingName="Raptor">
-          <AttackDamage>16</AttackDamage>
+          <AttackDamage>50</AttackDamage>
           <HealthPool>250</HealthPool>
           <MovementSpeed>354</MovementSpeed>
           <IconPath>Icons/enemy/Raptor</IconPath>
@@ -120,7 +120,7 @@
       <StageStory>Finally those dinos have been put down.  You are one step closer.  Be warned though, it only gets harder from here.  You can run away and hide under your seat with a popcorn tub on your head if you would like.  However, if you would like to continue, before the raptors died you saw them head toward their rock defenders.  Strike Krug down and get closer to winning the day.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Ancient Krug">
-          <AttackDamage>146</AttackDamage>
+          <AttackDamage>280</AttackDamage>
           <HealthPool>1440</HealthPool>
           <MovementSpeed>334</MovementSpeed>
           <IconPath>Icons/enemy/AncientKrug</IconPath>
@@ -128,7 +128,7 @@
 		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="1" BeingName="Krug">
-          <AttackDamage>70</AttackDamage>
+          <AttackDamage>125</AttackDamage>
           <HealthPool>540</HealthPool>
           <MovementSpeed>344</MovementSpeed>
           <IconPath>Icons/enemy/Krug</IconPath>
@@ -142,8 +142,8 @@
       <StageStory>The giant rocks are now nothing more than gravel thanks to you Summoner.  They revealed the next stop of your journey must go through a ginormous slimy frog.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Gromp">
-          <AttackDamage>166</AttackDamage>
-          <HealthPool>3200</HealthPool>
+          <AttackDamage>260</AttackDamage>
+          <HealthPool>3700</HealthPool>
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/Gromp</IconPath>
           <PortraitPath>Images/enemy/loading/stage4/Gromp</PortraitPath>
@@ -156,24 +156,24 @@
       <StageStory>Gromp went out in an explosion of slime.  As you wipe the goo from your brow, you notice a fishy smell looming heavy in the air.  The Blue Sentinel is near, and although Gromp was useless, perhaps this blue guardian of the forest has more information that will help you on your quest.  Obtaining that information may not be so easy.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Blue Sentry">
-          <AttackDamage>48</AttackDamage>
-          <HealthPool>400</HealthPool>
+          <AttackDamage>120</AttackDamage>
+          <HealthPool>600</HealthPool>
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/BlueSentry</IconPath>
           <PortraitPath>Images/enemy/loading/stage5/BlueSentry</PortraitPath>
 		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="1" BeingName="Blue Sentinel">
-          <AttackDamage>146</AttackDamage>
-          <HealthPool>2000</HealthPool>
+          <AttackDamage>256</AttackDamage>
+          <HealthPool>3000</HealthPool>
           <MovementSpeed>334</MovementSpeed>
           <IconPath>Icons/enemy/BlueSentinel</IconPath>
           <PortraitPath>Images/enemy/loading/stage5/BlueSentinel</PortraitPath>
 		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="2" BeingName="Blue Sentry">
-          <AttackDamage>48</AttackDamage>
-          <HealthPool>400</HealthPool>
+          <AttackDamage>120</AttackDamage>
+          <HealthPool>600</HealthPool>
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/BlueSentry</IconPath>
           <PortraitPath>Images/enemy/loading/stage5/BlueSentry</PortraitPath>
@@ -186,7 +186,7 @@
       <StageStory>Good job Summoner!  The rock guardian has given you much information that will be helpful in your quest.  He has confirmed that it is none other than Urf the Manatee behind all this destruction.  Before you landed the final blow he directed you toward the mighty Brambleback.</StageStory>
       <Enemies>
         <Enemy id="0" BeingName="Cinderling">
-          <AttackDamage>48</AttackDamage>
+          <AttackDamage>175</AttackDamage>
           <HealthPool>400</HealthPool>
           <MovementSpeed>339</MovementSpeed>
           <IconPath>Icons/enemy/Cinderling</IconPath>
@@ -194,7 +194,7 @@
 		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="1" BeingName="Red Brambleback">
-          <AttackDamage>146</AttackDamage>
+          <AttackDamage>323</AttackDamage>
           <HealthPool>2000</HealthPool>
           <MovementSpeed>334</MovementSpeed>
           <IconPath>Icons/enemy/RedBrambleback</IconPath>
@@ -202,7 +202,7 @@
 		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="2" BeingName="Cinderling">
-          <AttackDamage>48</AttackDamage>
+          <AttackDamage>175</AttackDamage>
           <HealthPool>400</HealthPool>
           <MovementSpeed>339</MovementSpeed>
           <IconPath>Icons/enemy/Cinderling</IconPath>
