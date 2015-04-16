@@ -270,9 +270,20 @@ public class PartyMemberItem : MonoBehaviour
 
     public void OnHover(bool isActive)
     {
-        if (this.borderPanel != null && this.CombatStatus.BeingType == Being.BeingType.Enemy && this.CombatStatus.IsAlive())
+        if (this.borderPanel != null && this.CombatStatus.BeingType == Being.BeingType.Enemy)
         {
-            this.borderPanel.SetActive(isActive);
+            if (this.playerState == PlayerStates.MoveToTarget || this.playerState == PlayerStates.ReturnToOrigin)
+            {
+                this.borderPanel.SetActive(false);
+            }
+            else if ( this.CombatStatus.IsAlive() )
+            {
+                this.borderPanel.SetActive(isActive);
+            }
+            else
+            {
+                this.borderPanel.SetActive(false);
+            }
         }
     }
 
@@ -489,6 +500,7 @@ public class PartyMemberItem : MonoBehaviour
             if (target.combatStatus.HealthState == CombatStatus.HealthStates.Dying)
             {
                 target.portrait.color = Color.red;
+                SetBorderPanelActive(false);
                 target.SetTargetIconActive(false);
                 target.combatStatus.HealthState = CombatStatus.HealthStates.Dead;
             }
