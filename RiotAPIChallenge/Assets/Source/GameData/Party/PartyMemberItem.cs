@@ -464,6 +464,7 @@ public class PartyMemberItem : MonoBehaviour
             if (target.combatStatus.HealthState == CombatStatus.HealthStates.Dying)
             {
                 target.portrait.color = Color.red;
+                target.SetTargetIconActive(false);
                 target.combatStatus.HealthState = CombatStatus.HealthStates.Dead;
             }
 
