@@ -310,18 +310,7 @@ public class Champion
             {
                 System.Collections.Generic.List<string> tagsList = new System.Collections.Generic.List<string>(this.tags);
 
-                if (tagsList.Contains("Marksman") )
-                {
-                    this.attackClip = UnityEngine.Resources.Load<UnityEngine.AudioClip>("Sound/RangeAttack");
-                }
-                else if (tagsList.Contains("Mage") || tagsList.Contains("Support") )
-                {
-                    this.attackClip = UnityEngine.Resources.Load<UnityEngine.AudioClip>("Sound/MagicAttack");
-                }
-                else if (tagsList.Contains("Assassin") || tagsList.Contains("Tank") || tagsList.Contains("Assassin"))
-                {
-                    this.attackClip = UnityEngine.Resources.Load<UnityEngine.AudioClip>("Sound/MeleeAttack");
-                }
+                 this.attackClip = UnityEngine.Resources.Load<UnityEngine.AudioClip>("Sound/Attack");                
             }
 
             return this.attackClip;

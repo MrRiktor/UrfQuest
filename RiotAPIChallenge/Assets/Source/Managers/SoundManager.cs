@@ -69,7 +69,7 @@ public class SoundManager : MonoBehaviour
         }       
     }
 
-    public void PlaySoundOnce(UnityEngine.AudioClip soundClip)
+    public void PlaySound(UnityEngine.AudioClip soundClip)
     {
         if (soundClip != null )
         {
