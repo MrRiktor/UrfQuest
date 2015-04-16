@@ -245,7 +245,7 @@
       <Enemies>
         <Enemy id="0" BeingName="Rivington">
           <!-- Lower Attack/Higher Health Pool -->
-          <AttackDamage>85</AttackDamage>
+          <AttackDamage>102</AttackDamage>
           <HealthPool>1750</HealthPool>
           <MovementSpeed>344</MovementSpeed>
           <IconPath>Icons/enemy/Riot</IconPath>
@@ -264,7 +264,7 @@
         <Enemy id="2" BeingName="Phreak">
           <!-- SUPER SLOW - Guaranteed One Shot/Low Health Pool -->
           <AttackDamage>9001</AttackDamage>
-          <HealthPool>666</HealthPool>
+          <HealthPool>900</HealthPool>
           <MovementSpeed>1</MovementSpeed>
           <IconPath>Icons/enemy/Riot</IconPath>
           <PortraitPath>Images/enemy/loading/stage9/Phreak</PortraitPath>
@@ -272,8 +272,8 @@
         </Enemy>
         <Enemy id="3" BeingName="Kobe">
           <!-- Higher Attack/Lower Health Pool -->
-          <AttackDamage>212</AttackDamage>
-          <HealthPool>975</HealthPool>
+          <AttackDamage>250</AttackDamage>
+          <HealthPool>875</HealthPool>
           <MovementSpeed>339</MovementSpeed>
           <IconPath>Icons/enemy/Riot</IconPath>
           <PortraitPath>Images/enemy/loading/stage9/Kobe</PortraitPath>
@@ -281,7 +281,7 @@
         </Enemy>
         <Enemy id="4" BeingName="Dash">
           <!-- Super Fast - Balanced Attack/ Balanced Health Pool -->
-          <AttackDamage>136</AttackDamage>
+          <AttackDamage>175</AttackDamage>
           <HealthPool>1250</HealthPool>
           <MovementSpeed>400</MovementSpeed>
           <IconPath>Icons/enemy/Riot</IconPath>
