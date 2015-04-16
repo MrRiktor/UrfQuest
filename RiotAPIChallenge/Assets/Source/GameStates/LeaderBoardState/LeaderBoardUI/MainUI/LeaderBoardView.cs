@@ -77,6 +77,8 @@ public class LeaderBoardView : MonoBehaviour
         region = comboBox.SelectedItem.GetText( ).text;
         username = usernameText.text;
         highscore = (int)GameData.Score;
+        InputPanel.SetActive( false );
+        winPanel.SetActive( false );
         StartCoroutine( AddScore( username, region, highscore ) );
     }
 
