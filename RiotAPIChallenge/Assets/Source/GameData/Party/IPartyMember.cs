@@ -37,7 +37,7 @@ public interface IPartyMember
         get;
         set;
     }
-    UnityEngine.AudioClip attackClip
+    UnityEngine.AudioClip AttackClip
     {
         get;
         set;

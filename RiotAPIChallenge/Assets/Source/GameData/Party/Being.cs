@@ -25,6 +25,7 @@ public abstract class Being : IPartyMember
 
     private UnityEngine.Sprite icon;
     private UnityEngine.Sprite portrait;
+    private UnityEngine.AudioClip attackClip;
 
     #endregion
 
@@ -115,7 +116,7 @@ public abstract class Being : IPartyMember
         set { portrait = value; }
     }
 
-    public UnityEngine.AudioClip attackClip
+    public UnityEngine.AudioClip AttackClip
     {
         get
         {
