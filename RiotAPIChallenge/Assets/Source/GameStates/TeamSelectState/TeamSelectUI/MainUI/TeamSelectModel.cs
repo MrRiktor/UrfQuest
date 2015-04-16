@@ -25,8 +25,6 @@ public class TeamSelectModel : FetchMatch
 
     private Int32 selectedPartyMemberIndex = 0;
 
-    private Boolean initFinalized = false;
-
     #endregion
 
     #region Accessors/Mutators
@@ -49,49 +47,11 @@ public class TeamSelectModel : FetchMatch
     /// </summary>
     void Start( )
     {
-        if ( ChampionDBManager.GetInstance( ).ChampionDBReady )
-        {
-            List<long> matchIDs = GrabMatchIDsFromFile.FetchRandomMatchIDs();
+        List<long> matchIDs = GrabMatchIDsFromFile.FetchRandomMatchIDs();
             
-            foreach(long matchID in matchIDs)
-            {
-                AddMatchID(matchID);
-            }
-            /*
-            AddMatchID( 1783499704 );
-            AddMatchID( 1783499709 );
-            AddMatchID( 1783499209 );
-            AddMatchID( 1783517364 );
-
-            AddMatchID( 1787566261 );
-            AddMatchID( 1787568249 );
-            AddMatchID( 1787568426 );
-            AddMatchID( 1787579044 );
-            AddMatchID( 1787608607 );
-            */initFinalized = true;
-        }
-    }
-
-    /// <summary>
-    /// This is temporary until
-    /// we have an intro scene
-    /// </summary>
-    void Update( )
-    {
-        if ( !initFinalized && ChampionDBManager.GetInstance( ).ChampionDBReady )
+        foreach(long matchID in matchIDs)
         {
-            AddMatchID( 1783499038 );
-            AddMatchID( 1783499704 );
-            AddMatchID( 1783499709 );
-            AddMatchID( 1783499209 );
-            AddMatchID( 1783517364 );
-
-            AddMatchID( 1787566261 );
-            AddMatchID( 1787568249 );
-            AddMatchID( 1787568426 );
-            AddMatchID( 1787579044 );
-            AddMatchID( 1787608607 );
-            initFinalized = true;
+            AddMatchID(matchID);
         }
     }
 
