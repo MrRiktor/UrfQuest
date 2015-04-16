@@ -117,8 +117,14 @@ public abstract class Being : IPartyMember
 
     public UnityEngine.AudioClip attackClip
     {
-        get;
-        set;
+        get
+        {
+            return this.attackClip;
+        }
+        set
+        {
+            this.attackClip = value;
+        }
     }
 
     #endregion

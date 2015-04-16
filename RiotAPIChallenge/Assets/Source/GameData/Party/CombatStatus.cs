@@ -71,11 +71,15 @@ public class CombatStatus
             return false;
     }
 
-
-
     public Being.BeingType BeingType
     {
-        get;
-        set;
+        get
+        {
+            return this.beingType;
+        }
+        set
+        {
+            this.beingType = value;
+        }
     }
 }
