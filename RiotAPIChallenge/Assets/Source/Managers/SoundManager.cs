@@ -13,6 +13,7 @@ public class SoundManager : MonoBehaviour
         Victory,
         Defeat,
         exitchampionselect,
+        TargetPing,
     }
 
     [SerializeField] private AudioSource audioSource = null;
@@ -52,6 +53,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(SoundClip soundClip)
     {
+        audioSource.Stop();
         audioSource.clip = Resources.Load<AudioClip>("Sound/" + soundClip.ToString());
         audioSource.Play();
     }

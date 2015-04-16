@@ -54,6 +54,18 @@ public class PartyMemberItem : MonoBehaviour
     [SerializeField] 
     private GameObject attackTauntBar = null;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField]
+    private GameObject targetIcon = null;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField]
+    private GameObject tauntIcon = null;
+
     #endregion
 
     #region Game Information
@@ -69,12 +81,6 @@ public class PartyMemberItem : MonoBehaviour
     private CombatStatus combatStatus = new CombatStatus();
 
     private bool isMitigating = false;
-
-    public bool IsMitigating
-    {
-        get;
-        set;
-    }
 
     #endregion
 
@@ -106,9 +112,28 @@ public class PartyMemberItem : MonoBehaviour
 
     public CombatStates CombatState
     {
-        get;
-        set;
+        get
+        {
+            return this.combatState;
+        }
+        set
+        {
+            this.combatState = value;
+        }
     }
+
+    public bool IsMitigating
+    {
+        get
+        {
+            return this.isMitigating;
+        }
+        set
+        {
+            this.isMitigating = value;
+        }
+    }
+
 
     #endregion
 
@@ -229,6 +254,16 @@ public class PartyMemberItem : MonoBehaviour
         }
     }
 
+    public void SetTargetIconActive( bool isActive )
+    {
+        this.targetIcon.SetActive(isActive);
+    }
+
+    public void SetTauntIconActive( bool isActive )
+    {
+        this.tauntIcon.SetActive(isActive);
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -297,7 +332,7 @@ public class PartyMemberItem : MonoBehaviour
 
         if (target != null)
         {
-            playerState = PlayerStates.MoveToTarget;
+            this.playerState = PlayerStates.MoveToTarget;
 
             //Place attack execution here:
             target.TakeDamage(this.partyMemberData.AttackDamage);
@@ -311,7 +346,7 @@ public class PartyMemberItem : MonoBehaviour
     public void AttackClicked()
     {
         this.CombatState = CombatStates.Attacking;
-        SetAttackTauntBarActive(false);
+        this.SetAttackTauntBarActive(false);
     }
 
     /// <summary>
@@ -319,12 +354,12 @@ public class PartyMemberItem : MonoBehaviour
     /// </summary>
     public void TauntTarget()
     {        
-        if( desiredTarget != null )
+        if( this.desiredTarget != null )
         {
             this.desiredTarget.forcedTarget = this;
             this.playerState = PlayerStates.OnCooldown;
             this.CombatState = CombatStates.Taunting;
-            IsMitigating = true;
+            this.IsMitigating = true;
         }
         else
         {
@@ -336,6 +371,7 @@ public class PartyMemberItem : MonoBehaviour
     {
         if (this.desiredTarget != null && this.desiredTarget.CombatStatus.IsAlive() == true)
         {
+            SetTauntIconActive(true);
             this.CombatState = PartyMemberItem.CombatStates.Taunting;
             SetAttackTauntBarActive(false);
         }

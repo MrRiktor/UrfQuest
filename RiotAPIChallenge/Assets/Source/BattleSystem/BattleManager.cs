@@ -186,7 +186,13 @@ public class BattleManager : MonoBehaviour
     {
         if (target.CombatStatus.BeingType == Being.BeingType.Enemy)
         {
+            if (BattleManager.GetInstance().playerTarget != null)
+            {
+                BattleManager.GetInstance().playerTarget.SetTargetIconActive(false);
+                SoundManager.GetInstance().PlaySound(SoundManager.SoundClip.TargetPing);
+            }
             BattleManager.GetInstance().playerTarget = target;
+            target.SetTargetIconActive(true);
         }
         else
         {
@@ -290,9 +296,14 @@ public class BattleManager : MonoBehaviour
                             BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState = PartyMemberItem.CombatStates.Ready;
                         }
 
-                        if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState == PartyMemberItem.CombatStates.Attacking)
+                        if( BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState == PartyMemberItem.CombatStates.Ready )
                         {
                             BattleManager.GetInstance().AttackQueue[attackQueueIndex].IsMitigating = false;
+                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTauntIconActive(false);
+                        }
+
+                        if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState == PartyMemberItem.CombatStates.Attacking)
+                        {
                             if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].GetAttackTarget() == null)
                             {
                                 BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(target);
