@@ -11,7 +11,7 @@
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/minion</IconPath>
           <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="1" BeingName="Minion">
           <AttackDamage>16</AttackDamage>
@@ -19,7 +19,7 @@
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/minion</IconPath>
           <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="2" BeingName="Minion">
           <AttackDamage>16</AttackDamage>
@@ -27,7 +27,7 @@
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/minion</IconPath>
           <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="3" BeingName="Minion">
           <AttackDamage>16</AttackDamage>
@@ -35,7 +35,7 @@
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/minion</IconPath>
           <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="4" BeingName="Minion">
           <AttackDamage>16</AttackDamage>
@@ -43,7 +43,7 @@
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/minion</IconPath>
           <PortraitPath>Images/enemy/loading/stage0/minion</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
       </Enemies>
     </Stage>
@@ -57,7 +57,7 @@
           <MovementSpeed>340</MovementSpeed>
           <IconPath>Icons/enemy/MurkWolf</IconPath>
           <PortraitPath>Images/enemy/loading/stage1/MurkWolf</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="1" BeingName="Greater Murk Wolf">
           <AttackDamage>42</AttackDamage>
@@ -65,7 +65,7 @@
           <MovementSpeed>349</MovementSpeed>
           <IconPath>Icons/enemy/GreaterMurkWolf</IconPath>
           <PortraitPath>Images/enemy/loading/stage1/GreaterMurkWolf</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="2" BeingName="Murk Wolf">
           <AttackDamage>16</AttackDamage>
@@ -73,7 +73,7 @@
           <MovementSpeed>340</MovementSpeed>
           <IconPath>Icons/enemy/MurkWolf</IconPath>
           <PortraitPath>Images/enemy/loading/stage1/MurkWolf</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
       </Enemies>
     </Stage>
@@ -87,7 +87,7 @@
           <MovementSpeed>349</MovementSpeed>
           <IconPath>Icons/enemy/CrimsonRaptor</IconPath>
           <PortraitPath>Images/enemy/loading/stage2/CrimsonRaptor</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="1" BeingName="Raptor">
           <AttackDamage>16</AttackDamage>
@@ -95,7 +95,7 @@
           <MovementSpeed>354</MovementSpeed>
           <IconPath>Icons/enemy/Raptor</IconPath>
           <PortraitPath>Images/enemy/loading/stage2/Raptor</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="2" BeingName="Raptor">
           <AttackDamage>16</AttackDamage>
@@ -103,7 +103,7 @@
           <MovementSpeed>354</MovementSpeed>
           <IconPath>Icons/enemy/Raptor</IconPath>
           <PortraitPath>Images/enemy/loading/stage2/Raptor</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="3" BeingName="Raptor">
           <AttackDamage>16</AttackDamage>
@@ -111,7 +111,7 @@
           <MovementSpeed>354</MovementSpeed>
           <IconPath>Icons/enemy/Raptor</IconPath>
           <PortraitPath>Images/enemy/loading/stage2/Raptor</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
       </Enemies>
     </Stage>
@@ -125,7 +125,7 @@
           <MovementSpeed>334</MovementSpeed>
           <IconPath>Icons/enemy/AncientKrug</IconPath>
           <PortraitPath>Images/enemy/loading/stage3/AncientKrug</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="1" BeingName="Krug">
           <AttackDamage>70</AttackDamage>
@@ -133,7 +133,7 @@
           <MovementSpeed>344</MovementSpeed>
           <IconPath>Icons/enemy/Krug</IconPath>
           <PortraitPath>Images/enemy/loading/stage3/Krug</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
       </Enemies>
     </Stage>
@@ -147,7 +147,7 @@
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/Gromp</IconPath>
           <PortraitPath>Images/enemy/loading/stage4/Gromp</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
       </Enemies>
     </Stage>
@@ -161,7 +161,7 @@
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/BlueSentry</IconPath>
           <PortraitPath>Images/enemy/loading/stage5/BlueSentry</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="1" BeingName="Blue Sentinel">
           <AttackDamage>146</AttackDamage>
@@ -169,7 +169,7 @@
           <MovementSpeed>334</MovementSpeed>
           <IconPath>Icons/enemy/BlueSentinel</IconPath>
           <PortraitPath>Images/enemy/loading/stage5/BlueSentinel</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="2" BeingName="Blue Sentry">
           <AttackDamage>48</AttackDamage>
@@ -177,7 +177,7 @@
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/BlueSentry</IconPath>
           <PortraitPath>Images/enemy/loading/stage5/BlueSentry</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
       </Enemies>
     </Stage>
@@ -191,7 +191,7 @@
           <MovementSpeed>339</MovementSpeed>
           <IconPath>Icons/enemy/Cinderling</IconPath>
           <PortraitPath>Images/enemy/loading/stage6/Cinderling</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="1" BeingName="Red Brambleback">
           <AttackDamage>146</AttackDamage>
@@ -199,7 +199,7 @@
           <MovementSpeed>334</MovementSpeed>
           <IconPath>Icons/enemy/RedBrambleback</IconPath>
           <PortraitPath>Images/enemy/loading/stage6/RedBrambleback</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
         <Enemy id="2" BeingName="Cinderling">
           <AttackDamage>48</AttackDamage>
@@ -207,7 +207,7 @@
           <MovementSpeed>339</MovementSpeed>
           <IconPath>Icons/enemy/Cinderling</IconPath>
           <PortraitPath>Images/enemy/loading/stage6/Cinderling</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
       </Enemies>
     </Stage>
@@ -221,7 +221,7 @@
           <MovementSpeed>334</MovementSpeed>
           <IconPath>Icons/enemy/Dragon</IconPath>
           <PortraitPath>Images/enemy/loading/stage7/Dragon</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
       </Enemies>
     </Stage>
@@ -235,7 +235,7 @@
           <MovementSpeed>324</MovementSpeed>
           <IconPath>Icons/enemy/Baron</IconPath>
           <PortraitPath>Images/enemy/loading/stage8/Baron</PortraitPath>
-		  <SoundClipPath>/Sound/Attack</SoundClipPath>
+		  <SoundClipPath>Sound/Attack</SoundClipPath>
         </Enemy>
       </Enemies>
     </Stage>
@@ -250,7 +250,7 @@
           <MovementSpeed>344</MovementSpeed>
           <IconPath>Icons/enemy/Riot</IconPath>
           <PortraitPath>Images/enemy/loading/stage9/Rivington</PortraitPath>
-		  <SoundClipPath>/Sound/Rivington</SoundClipPath>
+		  <SoundClipPath>Sound/Rivington</SoundClipPath>
         </Enemy>
         <Enemy id="1" BeingName="Jatt">
           <!-- TANK - Low Attack/Highest Health Pool -->
@@ -259,7 +259,7 @@
           <MovementSpeed>329</MovementSpeed>
           <IconPath>Icons/enemy/Riot</IconPath>
           <PortraitPath>Images/enemy/loading/stage9/Jatt</PortraitPath>
-		  <SoundClipPath>/Sound/Jatt</SoundClipPath>
+		  <SoundClipPath>Sound/Jatt</SoundClipPath>
         </Enemy>
         <Enemy id="2" BeingName="Phreak">
           <!-- SUPER SLOW - Guaranteed One Shot/Low Health Pool -->
@@ -268,7 +268,7 @@
           <MovementSpeed>1</MovementSpeed>
           <IconPath>Icons/enemy/Riot</IconPath>
           <PortraitPath>Images/enemy/loading/stage9/Phreak</PortraitPath>
-		  <SoundClipPath>/Sound/Phreak</SoundClipPath>
+		  <SoundClipPath>Sound/Phreak</SoundClipPath>
         </Enemy>
         <Enemy id="3" BeingName="Kobe">
           <!-- Higher Attack/Lower Health Pool -->
@@ -277,7 +277,7 @@
           <MovementSpeed>339</MovementSpeed>
           <IconPath>Icons/enemy/Riot</IconPath>
           <PortraitPath>Images/enemy/loading/stage9/Kobe</PortraitPath>
-		  <SoundClipPath>/Sound/Kobe</SoundClipPath>
+		  <SoundClipPath>Sound/Kobe</SoundClipPath>
         </Enemy>
         <Enemy id="4" BeingName="Dash">
           <!-- Super Fast - Balanced Attack/ Balanced Health Pool -->
@@ -286,7 +286,7 @@
           <MovementSpeed>400</MovementSpeed>
           <IconPath>Icons/enemy/Riot</IconPath>
           <PortraitPath>Images/enemy/loading/stage9/Dash</PortraitPath>
-		  <SoundClipPath>/Sound/Dash</SoundClipPath>
+		  <SoundClipPath>Sound/Dash</SoundClipPath>
         </Enemy>
       </Enemies>
     </Stage>
@@ -300,7 +300,7 @@
           <MovementSpeed>1</MovementSpeed>
           <IconPath>Icons/enemy/Urf</IconPath>
           <PortraitPath>Images/enemy/loading/stage10/Urf</PortraitPath>
-		  <SoundClipPath>/Sound/Urf</SoundClipPath>
+		  <SoundClipPath>Sound/Urf</SoundClipPath>
         </Enemy>
       </Enemies>
     </Stage>

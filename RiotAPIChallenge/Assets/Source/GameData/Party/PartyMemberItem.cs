@@ -443,6 +443,7 @@ public class PartyMemberItem : MonoBehaviour
         if (rate >= 0.75f)
         {
             rate = 0;
+            SoundManager.GetInstance().PlaySound(this.PartyMemberData.AttackClip);
             playerState = PlayerStates.ReturnToOrigin;
         }
     }
