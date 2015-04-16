@@ -1403,7 +1403,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 22456732}
   m_Direction: 2
   m_Value: 0
-  m_Size: .999999464
+  m_Size: .99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1769,7 +1769,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 13.0999756, y: -48}
+  m_AnchoredPosition: {x: 13.0999756, y: -41}
   m_SizeDelta: {x: 75, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22422560
@@ -1805,10 +1805,10 @@ RectTransform:
   - {fileID: 22468660}
   m_Father: {fileID: 22436620}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 192, y: 50}
-  m_SizeDelta: {x: -548, y: -694}
+  m_SizeDelta: {x: 476, y: 74}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22427506
 RectTransform:
@@ -1914,10 +1914,10 @@ RectTransform:
   - {fileID: 22416190}
   m_Father: {fileID: 22422560}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 192, y: 106}
-  m_SizeDelta: {x: -546.369995, y: -708}
+  m_SizeDelta: {x: 477.630005, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22456732
 RectTransform:
@@ -2145,10 +2145,10 @@ RectTransform:
   - {fileID: 22440266}
   m_Father: {fileID: 22436620}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 192, y: -43}
-  m_SizeDelta: {x: -548, y: -715}
+  m_SizeDelta: {x: 476, y: 53}
   m_Pivot: {x: .5, y: .5}
 --- !u!225 &22557820
 CanvasGroup:
