@@ -24,17 +24,7 @@ public static class GrabMatchIDsFromFile
         {
             for (int i = 0; i < numberOfMatchIds; ++i)
             {
-                long matchID = long.Parse(allMatchIds[Random.Range(0, (allMatchIds.Length - 1))]);
-
-                if(listToReturn.Contains(matchID))
-                {
-                    --i;
-                    continue;
-                }
-                else
-                {
-                    listToReturn.Add( matchID );
-                }
+                listToReturn.Add(long.Parse(allMatchIds[Random.Range(0, (allMatchIds.Length - 1))]));
             }
         }
         else
