@@ -35,7 +35,7 @@ public class LeaderBoardView : MonoBehaviour
     public StyledComboBox comboBox;
 
     ///Fill in your server data here.
-    private string privateKey = "e733fdbe-1b86-406c-88fc-c8aa9c874679";
+    private string privateKey = "KEY_USED_IN_DB";
     private string TopScoresURL = "http://urfquest.lolinactive.com/TopScores.php";
 
     //Don't forget the question marks!
