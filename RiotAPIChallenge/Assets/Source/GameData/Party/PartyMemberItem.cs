@@ -400,7 +400,7 @@ public class PartyMemberItem : MonoBehaviour
         if (this.desiredTarget != null && this.desiredTarget.CombatStatus.IsAlive() == true)
         {
             SetTauntIconActive(true);
-            SoundManager.GetInstance().PlaySound(SoundManager.SoundClip.TauntSound);
+            SoundManager.GetInstance().PlayPrioritySound(SoundManager.SoundClip.TauntSound);
             this.CombatState = PartyMemberItem.CombatStates.Taunting;
             SetAttackTauntBarActive(false);
         }
@@ -477,7 +477,7 @@ public class PartyMemberItem : MonoBehaviour
         if (rate >= 0.75f)
         {
             rate = 0;
-            SoundManager.GetInstance().PlaySound(this.PartyMemberData.AttackClip);
+            SoundManager.GetInstance().PlayPrioritySound(this.PartyMemberData.AttackClip);
             playerState = PlayerStates.ReturnToOrigin;
         }
     }
@@ -490,7 +490,7 @@ public class PartyMemberItem : MonoBehaviour
         rate += Time.deltaTime * interpolationSpeed;
         this.transform.GetChild(1).position = Vector3.Lerp(this.transform.GetChild(1).position, this.transform.position, rate);
 
-        if (rate >= 1)
+        if (rate >= 1 && !SoundManager.GetInstance().IsPriorityClipPlaying())
         {
             rate = 0;
             playerState = PlayerStates.OnCooldown;
