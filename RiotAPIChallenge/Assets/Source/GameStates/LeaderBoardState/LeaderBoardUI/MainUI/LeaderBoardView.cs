@@ -78,9 +78,6 @@ public class LeaderBoardView : MonoBehaviour
         username = usernameText.text;
         highscore = (int)GameData.Score;
         StartCoroutine( AddScore( username, region, highscore ) );
-        GameData.Score = 0;
-        GameData.CurrentLevel = 0;
-        GameData.Victorious = false;
     }
 
     ///Our IEnumerators

@@ -35,6 +35,9 @@ public class IntroView : MonoBehaviour
     {
         loadingImage.sprite = imgAnim [ imgIndx ];
         championDBManager = ChampionDBManager.GetInstance( );
+        GameData.Score = 0;
+        GameData.CurrentLevel = 0;
+        GameData.Victorious = false;
     }
 
     void Update()

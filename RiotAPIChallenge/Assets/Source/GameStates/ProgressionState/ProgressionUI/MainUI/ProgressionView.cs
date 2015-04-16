@@ -32,8 +32,12 @@ public class ProgressionView : MonoBehaviour
     [SerializeField]
     private GridLayoutGroup progressGrid;
 
+    [SerializeField]
+    private Text scoreText;
+
     void Start( )
     {
+        scoreText.text = GameData.Score.ToString();
         Stage curStage = GameData.StageMap.Stages [ GameData.CurrentLevel ];
 
         mainImage.sprite = Resources.Load<Sprite>( curStage.StageImage );
@@ -80,5 +84,10 @@ public class ProgressionView : MonoBehaviour
     public void OnContinueHandler( )
     {
         Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.BATTLE );
+    }
+
+    public void OnQuitHandler( )
+    {
+        Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.INTRO );
     }
 }
