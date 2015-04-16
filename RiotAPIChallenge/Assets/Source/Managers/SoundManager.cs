@@ -20,6 +20,7 @@ public class SoundManager : MonoBehaviour
     }
 
     [SerializeField] private AudioSource audioSource = null;
+    [SerializeField] private AudioSource priorityAudioSource = null;
 
     private SoundClip lastSoundPlayed = SoundClip.None;
 
@@ -53,6 +54,23 @@ public class SoundManager : MonoBehaviour
     {
 	
 	}
+
+    public void PlayPrioritySound(SoundClip soundClip)
+    {
+        priorityAudioSource.Stop();
+        priorityAudioSource.clip = Resources.Load<AudioClip>("Sound/" + soundClip.ToString());
+        priorityAudioSource.Play();
+    }
+
+    public void PlayPrioritySound(UnityEngine.AudioClip soundClip)
+    {
+        if (soundClip != null)
+        {
+            priorityAudioSource.Stop();
+            priorityAudioSource.clip = soundClip;
+            priorityAudioSource.Play();
+        }
+    }
 
     public void PlaySound(SoundClip soundClip)
     {
@@ -95,5 +113,10 @@ public class SoundManager : MonoBehaviour
     public bool IsClipPlaying()
     {
         return audioSource.isPlaying;
+    }
+
+    public bool IsPriorityClipPlaying()
+    {
+        return priorityAudioSource.isPlaying;
     }
 }

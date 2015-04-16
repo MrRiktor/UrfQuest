@@ -270,9 +270,20 @@ public class PartyMemberItem : MonoBehaviour
 
     public void OnHover(bool isActive)
     {
-        if (this.borderPanel != null && this.CombatStatus.BeingType == Being.BeingType.Enemy && this.CombatStatus.IsAlive())
+        if (this.borderPanel != null && this.CombatStatus.BeingType == Being.BeingType.Enemy)
         {
-            this.borderPanel.SetActive(isActive);
+            if (this.playerState == PlayerStates.MoveToTarget || this.playerState == PlayerStates.ReturnToOrigin)
+            {
+                this.borderPanel.SetActive(false);
+            }
+            else if ( this.CombatStatus.IsAlive() )
+            {
+                this.borderPanel.SetActive(isActive);
+            }
+            else
+            {
+                this.borderPanel.SetActive(false);
+            }
         }
     }
 
@@ -389,7 +400,7 @@ public class PartyMemberItem : MonoBehaviour
         if (this.desiredTarget != null && this.desiredTarget.CombatStatus.IsAlive() == true)
         {
             SetTauntIconActive(true);
-            SoundManager.GetInstance().PlaySound(SoundManager.SoundClip.TauntSound);
+            SoundManager.GetInstance().PlayPrioritySound(SoundManager.SoundClip.TauntSound);
             this.CombatState = PartyMemberItem.CombatStates.Taunting;
             SetAttackTauntBarActive(false);
         }
@@ -466,7 +477,7 @@ public class PartyMemberItem : MonoBehaviour
         if (rate >= 0.75f)
         {
             rate = 0;
-            SoundManager.GetInstance().PlaySound(this.PartyMemberData.AttackClip);
+            SoundManager.GetInstance().PlayPrioritySound(this.PartyMemberData.AttackClip);
             playerState = PlayerStates.ReturnToOrigin;
         }
     }
@@ -479,7 +490,7 @@ public class PartyMemberItem : MonoBehaviour
         rate += Time.deltaTime * interpolationSpeed;
         this.transform.GetChild(1).position = Vector3.Lerp(this.transform.GetChild(1).position, this.transform.position, rate);
 
-        if (rate >= 1)
+        if (rate >= 1 && !SoundManager.GetInstance().IsPriorityClipPlaying())
         {
             rate = 0;
             playerState = PlayerStates.OnCooldown;
@@ -489,6 +500,7 @@ public class PartyMemberItem : MonoBehaviour
             if (target.combatStatus.HealthState == CombatStatus.HealthStates.Dying)
             {
                 target.portrait.color = Color.red;
+                SetBorderPanelActive(false);
                 target.SetTargetIconActive(false);
                 target.combatStatus.HealthState = CombatStatus.HealthStates.Dead;
             }

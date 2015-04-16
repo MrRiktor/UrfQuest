@@ -319,13 +319,16 @@ public class BattleManager : MonoBehaviour
                         }
                         else if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState == PartyMemberItem.CombatStates.Taunting)
                         {
-                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetBorderPanelActive(false);
-                            if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].GetTauntTarget() == null)
+                            if (!SoundManager.GetInstance().IsPriorityClipPlaying())
                             {
-                                BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(target);
-                            }
+                                BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetBorderPanelActive(false);
+                                if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].GetTauntTarget() == null)
+                                {
+                                    BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(target);
+                                }
 
-                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].TauntTarget();
+                                BattleManager.GetInstance().AttackQueue[attackQueueIndex].TauntTarget();
+                            }
                         }
                     }
                 }
