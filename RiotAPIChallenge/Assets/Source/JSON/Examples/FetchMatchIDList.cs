@@ -2,9 +2,6 @@
 using System.Collections;
 using System.IO;
 
-public delegate void CallbackSuccessHandler( object Object );
-public delegate void CallbackFailureHandler(string errorMessage);
-public delegate object RawResponse( object obj );
 
 
 public class FetchMatchIDList : MonoBehaviour 

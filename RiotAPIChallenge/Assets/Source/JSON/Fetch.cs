@@ -1,9 +1,10 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using JsonFx.Json;
+
+public delegate void CallbackSuccessHandler(object Object);
+public delegate void CallbackFailureHandler(string errorMessage);
+public delegate object RawResponse(object obj);
 
 public class Fetch
 {
