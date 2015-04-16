@@ -11,6 +11,7 @@ public class Enemy : Being
     private int partyMemberId;
     private String iconPath;
     private String portraitPath;
+    private String soundClipPath;
 
     #endregion
 
@@ -73,6 +74,29 @@ public class Enemy : Being
             }
         }
     }
+
+    public String SoundClipPath
+    {
+        get
+        {
+            return this.soundClipPath;
+        }
+        set
+        {
+            this.soundClipPath = value;
+            
+            if (this.AttackClip == null)
+            {
+                UnityEngine.AudioClip audioClip = UnityEngine.Resources.Load<UnityEngine.AudioClip>(soundClipPath);
+
+                if (audioClip != null)
+                {
+                    this.AttackClip = audioClip;
+                }
+            }
+        }
+    }
+
 
     #endregion
     
