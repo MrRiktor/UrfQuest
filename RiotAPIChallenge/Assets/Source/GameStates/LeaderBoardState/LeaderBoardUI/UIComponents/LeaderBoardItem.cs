@@ -26,6 +26,14 @@ public class LeaderBoardItem : MonoBehaviour
 
     public void OnClick( )
     {
-        Application.OpenURL( "http://www.lolking.net/search?name="+summonerName.text+"&region="+region.text );
+        if ( Application.isWebPlayer )
+        {
+            string urlScript = "window.open('" + "http://www.lolking.net/search?name=" + summonerName.text + "&region=" + region.text + "','_blank')";
+            Application.ExternalEval( urlScript );
+        }
+        else
+        {
+            Application.OpenURL( "http://www.lolking.net/search?name=" + summonerName.text + "&region=" + region.text );
+        }
     }
 }
