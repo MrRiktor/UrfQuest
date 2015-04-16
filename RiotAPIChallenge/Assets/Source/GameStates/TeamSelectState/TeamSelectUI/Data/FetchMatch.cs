@@ -50,7 +50,7 @@ public class FetchMatch : MonoBehaviour
         {
             match = ( obj as MatchDetail );
 
-            Debug.LogError( "Match ID: " + match.MatchId.ToString( ) );
+           // Debug.LogError( "Match ID: " + match.MatchId.ToString( ) );
 
             Party party = new Party( );
 
@@ -62,13 +62,13 @@ public class FetchMatch : MonoBehaviour
                 {
                     PartyMember partyMember = new PartyMember( p );
 
-                    Debug.Log( "Name: " + partyMember.BeingName + " Attack: " + partyMember.AttackDamage + " | Health: " + partyMember.HealthPool + " | MovementSpeed: " + partyMember.MovementSpeed );
+                   // Debug.Log( "Name: " + partyMember.BeingName + " Attack: " + partyMember.AttackDamage + " | Health: " + partyMember.HealthPool + " | MovementSpeed: " + partyMember.MovementSpeed );
 
                     party.AddPartyMember( partyMember );
                 }
             }
 
-            Debug.LogWarning( "Party Averages - Attack: " + party.AttackAverage + " | Health: " + party.HealthAverage + " | MovementSpeed: " + party.MovementSpeedAverage );
+           // Debug.LogWarning( "Party Averages - Attack: " + party.AttackAverage + " | Health: " + party.HealthAverage + " | MovementSpeed: " + party.MovementSpeedAverage );
             parties.Add( party );
             CalculateMaxStats( );
             Messenger<Party>.Broadcast( MessengerEventTypes.TSUI_ADD_PARTY, party );

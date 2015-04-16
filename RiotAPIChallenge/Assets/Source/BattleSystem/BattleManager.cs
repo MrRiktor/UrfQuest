@@ -294,6 +294,9 @@ public class BattleManager : MonoBehaviour
                         if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState == PartyMemberItem.CombatStates.None)
                         {
                             BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetAttackTauntBarActive(true);
+                            SoundManager.GetInstance().PlaySound(SoundManager.SoundClip.PlayerTurn);
+
+                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetBorderPanelActive(true);
                             BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState = PartyMemberItem.CombatStates.Ready;
                         }
 
@@ -305,6 +308,7 @@ public class BattleManager : MonoBehaviour
 
                         if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState == PartyMemberItem.CombatStates.Attacking)
                         {
+                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetBorderPanelActive(false);
                             if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].GetAttackTarget() == null)
                             {
                                 BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(target);
@@ -315,6 +319,7 @@ public class BattleManager : MonoBehaviour
                         }
                         else if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].CombatState == PartyMemberItem.CombatStates.Taunting)
                         {
+                            BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetBorderPanelActive(false);
                             if (BattleManager.GetInstance().AttackQueue[attackQueueIndex].GetTauntTarget() == null)
                             {
                                 BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(target);

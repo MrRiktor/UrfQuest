@@ -15,6 +15,8 @@ public class SoundManager : MonoBehaviour
         exitchampionselect,
         TargetPing,
         TauntSound,
+        PlayerTurn,
+        FailClick,
     }
 
     [SerializeField] private AudioSource audioSource = null;
@@ -55,6 +57,8 @@ public class SoundManager : MonoBehaviour
     public void PlaySound(SoundClip soundClip)
     {
         audioSource.Stop();
+        audioSource.clip = null;
+
         audioSource.clip = Resources.Load<AudioClip>("Sound/" + soundClip.ToString());
         audioSource.Play();
     }

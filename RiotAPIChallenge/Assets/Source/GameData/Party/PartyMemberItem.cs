@@ -66,6 +66,12 @@ public class PartyMemberItem : MonoBehaviour
     [SerializeField]
     private GameObject tauntIcon = null;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField]
+    private GameObject borderPanel = null;
+
     #endregion
 
     #region Game Information
@@ -254,6 +260,22 @@ public class PartyMemberItem : MonoBehaviour
         }
     }
 
+    public void SetBorderPanelActive( bool isActive )
+    {
+        if (this.borderPanel != null)
+        {
+            this.borderPanel.SetActive(isActive);
+        }
+    }
+
+    public void OnHover(bool isActive)
+    {
+        if (this.borderPanel != null && this.CombatStatus.BeingType == Being.BeingType.Enemy && this.CombatStatus.IsAlive())
+        {
+            this.borderPanel.SetActive(isActive);
+        }
+    }
+
     public void SetTargetIconActive( bool isActive )
     {
         this.targetIcon.SetActive(isActive);
@@ -353,18 +375,13 @@ public class PartyMemberItem : MonoBehaviour
     /// 
     /// </summary>
     public void TauntTarget()
-    {        
-        if( this.desiredTarget != null )
+    {
+        if (this.desiredTarget != null)
         {
             this.desiredTarget.forcedTarget = this;
             this.playerState = PlayerStates.OnCooldown;
             this.CombatState = CombatStates.Taunting;
             this.IsMitigating = true;
-        }
-        else
-        {
-            //TODO: Add a UI element for this warning. OR a sound feedback.
-            Debug.Log("You must pick a target to taunt.");
         }
     }
     public void TauntClicked()
@@ -375,6 +392,12 @@ public class PartyMemberItem : MonoBehaviour
             SoundManager.GetInstance().PlaySound(SoundManager.SoundClip.TauntSound);
             this.CombatState = PartyMemberItem.CombatStates.Taunting;
             SetAttackTauntBarActive(false);
+        }
+        else
+        {
+            SoundManager.GetInstance().PlaySound(SoundManager.SoundClip.FailClick);
+            //TODO: Add a UI element for this warning. OR a sound feedback.
+            //Debug.Log("You must pick a target to taunt.");
         }
     }
 
@@ -438,7 +461,7 @@ public class PartyMemberItem : MonoBehaviour
         // It looks ugly but I can't think of another way to access what I need.
         this.transform.parent.transform.parent.SetAsLastSibling();
 
-        this.transform.GetChild(0).position = Vector3.Lerp( this.transform.GetChild(0).position, target.transform.position, rate);
+        this.transform.GetChild(1).position = Vector3.Lerp( this.transform.GetChild(1).position, target.transform.position, rate);
 
         if (rate >= 0.75f)
         {
@@ -454,7 +477,7 @@ public class PartyMemberItem : MonoBehaviour
     private void ReturnToOrigin()
     {
         rate += Time.deltaTime * interpolationSpeed;
-        this.transform.GetChild(0).position = Vector3.Lerp(this.transform.GetChild(0).position, this.transform.position, rate);
+        this.transform.GetChild(1).position = Vector3.Lerp(this.transform.GetChild(1).position, this.transform.position, rate);
 
         if (rate >= 1)
         {
