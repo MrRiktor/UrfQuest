@@ -17,6 +17,8 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
+using System;
 
 #endregion
 
@@ -73,6 +75,20 @@ public class LeaderBoardView : MonoBehaviour
     /// </summary>
     [SerializeField]
     GameObject winPanel;
+
+    /// <summary>
+    /// The Input field for entering
+    /// your name
+    /// </summary>
+    [SerializeField]
+    InputField inputField;
+
+    /// <summary>
+    /// The button for submitting
+    /// your high score
+    /// </summary>
+    [SerializeField]
+    Button submitButton;
 
     #endregion
 
@@ -144,18 +160,19 @@ public class LeaderBoardView : MonoBehaviour
     /// </summary>
     void Start( )
     {
-        if ( GameData.Score == 0.0f )
-        {
-            ScoreBoardPanel.SetActive( true );
-            InputPanel.SetActive( false );
-            winPanel.SetActive( false );
-            StartCoroutine( GetTopScores( ) );
-        }
-        else
+        //if ( GameData.Score == 0.0f )
+        //{
+        //    ScoreBoardPanel.SetActive( true );
+        //    InputPanel.SetActive( false );
+        //    winPanel.SetActive( false );
+       //     StartCoroutine( GetTopScores( ) );
+       // }
+       // else
         {
             ScoreBoardPanel.SetActive( false );
             InputPanel.SetActive( true );
             winPanel.SetActive( true );
+            submitButton.interactable = false;
             winText.text = GameData.Victorious ? WIN_TEXT : LOSE_TEXT;
             scoreText.text = ((int)GameData.Score).ToString();
             comboBox.AddItems( "NA", "EUW", "EUNE", "BR", "TR", "RU", "LAN", "LAS", "OCE", "KR" );
@@ -204,7 +221,8 @@ public class LeaderBoardView : MonoBehaviour
     {
         string hash = Md5Sum( name + region + score + privateKey );
 
-        WWW ScorePost = new WWW( AddScoreURL + "name=" + WWW.EscapeURL( name ) + "&region=" + WWW.EscapeURL( region ) + "&score=" + score + "&hash=" + hash ); //Post our score
+
+        WWW ScorePost = new WWW( AddScoreURL + "name=" +  name  + "&region=" + WWW.EscapeURL( region ) + "&score=" + score + "&hash=" + hash ); //Post our score
         yield return ScorePost; // The function halts until the score is posted.
 
         if ( ScorePost.error == null )
@@ -256,6 +274,7 @@ public class LeaderBoardView : MonoBehaviour
         }
         else
         {
+            Debug.Log( GetScoresAttempt.text );
             //Collect up all our data
             string [] textlist = GetScoresAttempt.text.Split( new string [] { "\n", "\t" }, System.StringSplitOptions.RemoveEmptyEntries );
 
@@ -321,6 +340,22 @@ public class LeaderBoardView : MonoBehaviour
         }
 
         return hashString.PadLeft( 32, '0' );
+    }
+
+    /// <summary>
+    /// User to fix proper input
+    /// </summary>
+    public void FixInputValue( )
+    {
+        inputField.text = Regex.Replace( inputField.text, "[^a-zA-Z0-9âãäåæçèéêëìíîïðñòóôõøùúûüýþÿı]+", "", RegexOptions.IgnoreCase );
+        if ( inputField.text == "" )
+        {
+            submitButton.interactable = false;
+        }
+        else
+        {
+            submitButton.interactable = true;
+        }
     }
 
     #endregion

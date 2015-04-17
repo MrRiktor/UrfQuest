@@ -82,6 +82,9 @@ public class ButtonSounds : Button
     /// <param name="eventData"></param>
     public override void OnPointerEnter( PointerEventData eventData )
     {
+        if ( !IsInteractable() )
+            return;
+
         if ( audioSource == null )
             InitAudioSource( );
 
@@ -98,6 +101,9 @@ public class ButtonSounds : Button
     /// <param name="eventData"></param>
     public override void OnPointerExit( PointerEventData eventData )
     {
+        if ( !IsInteractable( ) )
+            return;
+
         if(image.color != colorException)
             image.color = originColor;
     }
@@ -108,6 +114,9 @@ public class ButtonSounds : Button
     /// <param name="eventData"></param>
     public override void OnPointerDown( PointerEventData eventData )
     {
+        if ( !IsInteractable( ) )
+            return;
+
         if(image.color != colorException)
             image.color = colors.pressedColor;
 
