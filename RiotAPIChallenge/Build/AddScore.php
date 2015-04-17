@@ -92,8 +92,8 @@ function sanitize($string)
     //$string = str_replace("'","&rsquo;",$string);
     //$string = str_replace("\"","&rdquo;",$string);
     //$string = str_replace('#','&pound;',$string); // special case
-    $string = my_utf8($string);
-    $string = safe_typing($string);
+    //$string = my_utf8($string);
+    //$string = safe_typing($string);
     return trim($string);
 }
 ?>
