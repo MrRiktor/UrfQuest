@@ -1,18 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: InitBattleState.cs
+ * Date Created: 4/12/2015 8:28PM EST
+ * 
+ * Description: This state initializes the battle system.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/14/2015 12:02 AM
+ *              - Modified: Matthew "Riktor" Baker - 4/16/2015 9:07 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
 
 public class InitBattleState : BattleState
-{
+{    
+    #region Constructor
+
     /// <summary>
-    /// Default Constructor
+    /// Default Constructor - sets this states BattleStateType.
     /// </summary>
     public InitBattleState()
     {
         this.StateType = BattleState.BattleStateType.InitBattleState;
         OnEnter();
     }
+
+    #endregion
+
+    #region Public Methods
 
     /// <summary>
     /// Occurs when this state is entered from another state.
@@ -48,4 +64,6 @@ public class InitBattleState : BattleState
             }
         }
     }
+
+    #endregion
 }

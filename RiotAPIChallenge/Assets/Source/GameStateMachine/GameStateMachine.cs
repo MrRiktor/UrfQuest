@@ -1,17 +1,24 @@
 ﻿#region File Header
 
-/**
- *   File Name:                 GameStateMachine.cs
- *   Author:                    Vincent Biancardi
- *   Creation Date:             April 8, 2015
- */
+/*******************************************************************************
+ * Author:  Vincent "Sabin" Biancardi
+ * Filename: GameStateMachine.cs
+ * Date Created: 4/8/2015 4:58PM EST
+ * 
+ * Description: The state machine that drives our battle system.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
 
 #endregion
 
+#region Using Directives
+
 using UnityEngine;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+
+#endregion
 
 public class GameStateMachine : MonoBehaviour
 {
