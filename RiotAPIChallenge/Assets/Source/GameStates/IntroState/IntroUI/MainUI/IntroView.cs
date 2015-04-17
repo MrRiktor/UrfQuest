@@ -99,6 +99,7 @@ public class IntroView : MonoBehaviour
         championDBManager = ChampionDBManager.GetInstance( );
         GameData.Score = 0;
         GameData.CurrentLevel = 0;
+        GameData.Strikes = 0;
         GameData.Victorious = false;
     }
 
