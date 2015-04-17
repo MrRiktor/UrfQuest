@@ -112,7 +112,7 @@ public class LeaderBoardView : MonoBehaviour
     /// <summary>
     /// Fill in your server data here.
     /// </summary>
-    private string privateKey = "KEY_USED_IN_DB";
+    private string privateKey = "";
     
     /// <summary>
     /// The top score url
@@ -160,14 +160,14 @@ public class LeaderBoardView : MonoBehaviour
     /// </summary>
     void Start( )
     {
-        //if ( GameData.Score == 0.0f )
-        //{
-        //    ScoreBoardPanel.SetActive( true );
-        //    InputPanel.SetActive( false );
-        //    winPanel.SetActive( false );
-       //     StartCoroutine( GetTopScores( ) );
-       // }
-       // else
+        if ( GameData.Score == 0.0f )
+        {
+            ScoreBoardPanel.SetActive( true );
+            InputPanel.SetActive( false );
+            winPanel.SetActive( false );
+            StartCoroutine( GetTopScores( ) );
+        }
+        else
         {
             ScoreBoardPanel.SetActive( false );
             InputPanel.SetActive( true );
