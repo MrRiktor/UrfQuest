@@ -1,22 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: Enemy.cs
+ * Date Created: 4/11/2015 3:14AM EST
+ * 
+ * Description: The Enemy data class.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 12:56 AM
+ *              - Modified: Matthew "Riktor" Baker - 4/16/2015 6:46 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using System;
 using System.Xml.Serialization;
+
+#endregion
 
 public class Enemy : Being
 {
     #region Private Member Variables
 
+    /// <summary>
+    /// The id of the party member (0-4).
+    /// </summary>
     private int partyMemberId;
+    
+    /// <summary>
+    /// The path to the icon in the Resources folder.
+    /// </summary>
     private String iconPath;
+    
+    /// <summary>
+    /// The path to the portrait in the Resources folder.
+    /// </summary>
     private String portraitPath;
+    
+    /// <summary>
+    /// The path to the attack sound clip in the Resources folder.
+    /// </summary>
     private String soundClipPath;
 
     #endregion
 
     #region Accessors/Modifiers
 
+    /// <summary>
+    /// Accessor/Modifier for the partymemberId member variable
+    /// </summary>
     [XmlAttribute("id")]
     public int PartyMemberId
     {
@@ -29,7 +63,13 @@ public class Enemy : Being
             this.partyMemberId = value;
         }
     }
-
+    
+    /// <summary>
+    /// Accessor/Modifier for the iconPath member variable.
+    /// 
+    /// Note: When the setter of this function is called, we load the icon 
+    /// sprite from the resources folder and assign it to our inherited Icon variable.
+    /// </summary>
     public String IconPath
     {
         get 
@@ -52,7 +92,12 @@ public class Enemy : Being
         }
     }
 
-
+    /// <summary>
+    /// Accessor/Modifier for the portraitPath member variable.
+    /// 
+    /// Note: When the setter of this function is called, we load the portrait 
+    /// sprite from the resources folder and assign it to our inherited Portrait variable.
+    /// </summary>
     public String PortraitPath
     {
         get 
@@ -75,6 +120,12 @@ public class Enemy : Being
         }
     }
 
+    /// <summary>
+    /// Accessor/Modifier for the soundClipPath member variable.
+    /// 
+    /// Note: When the setter of this function is called, we load the soundClipPath 
+    /// AudioClip from the resources folder and assign it to our inherited AttackClip variable.
+    /// </summary>
     public String SoundClipPath
     {
         get
@@ -96,28 +147,18 @@ public class Enemy : Being
             }
         }
     }
-
-
+    
     #endregion
     
+    #region Constructor
+
+    /// <summary>
+    /// Default Constructor
+    /// </summary>
     public Enemy()
     {
 
     }
     
-   /* public Enemy( EnemyData enemyData )
-    {
-        Champion champion = ChampionDBManager.GetInstance().ChampionDB.GetChampionByID(participant.ChampionId);
-
-        beingName = champion.Name;
-        attackDamage = (long)BattleStatCalculator.DamageCalculation(participant.Stats.TotalDamageDealtToChampions,
-                                                                participant.Stats.Kills,
-                                                                participant.Stats.Assists);
-        healthPool = (long)BattleStatCalculator.HealthCalculation( participant.Stats.TotalDamageTaken, participant.Stats.Deaths );
-        movementSpeed = (long)champion.Stats.Movespeed;
-        
-        icon = champion.Image.Icon;
-
-        portrait = champion.Image.Portrait;
-    }    */
+    #endregion
 }

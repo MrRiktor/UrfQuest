@@ -1,11 +1,32 @@
-﻿using UnityEngine;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: BattleManager.cs
+ * Date Created: 4/11/2015 1:49AM EST
+ * 
+ * Description: This is the main combat handler, the hub that all combat functionality passes through.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 3:55 AM
+ *              - Modified: Matthew "Riktor" Baker - 4/16/2015 6:46 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using UnityEngine;
 using System.Collections.Generic;
+
+#endregion
 
 public class BattleManager : MonoBehaviour
 {
-
     #region Public Enum
 
+    /// <summary>
+    /// Enum that defines what team a PartyMember belongs to.
+    /// </summary>
     public enum Team
     {
         None,
@@ -14,14 +35,19 @@ public class BattleManager : MonoBehaviour
     };
 
     #endregion
-
-
+    
     #region Private Member Variables
+
+    #region Instance of BattleManager
 
     /// <summary>
     /// The singleton instance of this manager.
     /// </summary>
     private static BattleManager instance = null;
+
+    #endregion
+
+    #region SerializeField Variables
 
     /// <summary>
     /// The Gameobject that acts as a container and holds the Enemy party members. 
@@ -35,8 +61,17 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     [SerializeField] private GameObject playerParty = null;
 
+    /// <summary>
+    /// The victory screen UI GameObject.
+    /// </summary>
     [SerializeField] private GameObject victoryPrefab = null;
+
+    /// <summary>
+    /// The defeat screen UI GameObject.
+    /// </summary>
     [SerializeField] private GameObject defeatPrefab = null;
+
+    #endregion
 
     /// <summary>
     /// A Boolean defining whether or not the visual team items have been setup.
@@ -49,23 +84,24 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private List<PartyMemberItem> attackQueue = new List<PartyMemberItem>();
 
-    public List<PartyMemberItem> AttackQueue
-    {
-        get
-        {
-            return this.attackQueue;
-        }
-    }
-
+    /// <summary>
+    /// Global index of the attackQueue.
+    /// </summary>
     private static int attackQueueIndex = 0;
 
+    /// <summary>
+    /// A boolean determining whether autobattle is turned on or off. ( Default: OFF)
+    /// </summary>
     private bool autoBattleEnabled = false;
 
-    private List<PartyMemberItem> enemyTeam = new List<PartyMemberItem>();
-    private List<PartyMemberItem> playerTeam = new List<PartyMemberItem>();
-
+    /// <summary>
+    /// The instance of the currently selected target.
+    /// </summary>
     private PartyMemberItem playerTarget = null;
 
+    /// <summary>
+    /// The winning team object. 
+    /// </summary>
     private Team winningTeam = Team.None;
 
     /// <summary>
@@ -78,7 +114,7 @@ public class BattleManager : MonoBehaviour
     #region Accessors/Modifiers
 
     /// <summary>
-    /// 
+    /// Accessor for the DefeatPrefab GameObject.
     /// </summary>
     public GameObject DefeatPrefab
     {
@@ -89,7 +125,7 @@ public class BattleManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Accessor for the VictoryPrefab GameObject.
     /// </summary>
     public GameObject VictoryPrefab
     {
@@ -98,26 +134,26 @@ public class BattleManager : MonoBehaviour
             return victoryPrefab;
         }
     }
+    
+    /// <summary>
+    /// Accessor for the AttackQueue List.
+    /// </summary>
+    public List<PartyMemberItem> AttackQueue
+    {
+        get
+        {
+            return this.attackQueue;
+        }
+    }
 
     /// <summary>
-    /// 
+    /// Accessor for the WinningTeam object.
     /// </summary>
     public Team WinningTeam
     {
         get
         {
             return this.winningTeam;
-        }
-    }
-
-    /// <summary>
-    /// A Boolean defining whether or not the visual team items have been setup.
-    /// </summary>
-    public bool AreTeamsInitialized
-    {
-        get
-        {
-            return areTeamsInitialized;
         }
     }
 
@@ -182,6 +218,21 @@ public class BattleManager : MonoBehaviour
         return instance;
     }
 
+    /// <summary>
+    /// A Boolean defining whether or not the visual team items have been setup.
+    /// </summary>
+    public bool AreTeamsInitialized
+    {
+        get
+        {
+            return areTeamsInitialized;
+        }
+    }
+
+    /// <summary>
+    /// Set's the players current target if it is valid.
+    /// </summary>
+    /// <param name="target"> the target we wish to make the players target. </param>
     public void SetPlayerTarget(PartyMemberItem target)
     {
         if (target.CombatStatus.BeingType == Being.BeingType.Enemy && target.CombatStatus.IsAlive())
@@ -201,18 +252,27 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handler for the when the attack button is clicked.
+    /// </summary>
     public void AttackClicked()
     {
         BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(playerTarget);
         BattleManager.GetInstance().AttackQueue[attackQueueIndex].AttackClicked();
     }
 
+    /// <summary>
+    /// Handler for when the taunt button is clicked.
+    /// </summary>
     public void TauntClicked()
     {
         BattleManager.GetInstance().AttackQueue[attackQueueIndex].SetTarget(playerTarget);
         BattleManager.GetInstance().AttackQueue[attackQueueIndex].TauntClicked();
     }
     
+    /// <summary>
+    /// Resets the state of the attack queue and the partymember inside.
+    /// </summary>
     public void ResetAttackQueue()
     {
         attackQueueIndex = 0;
@@ -229,8 +289,8 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     public void InitializeTeams()
     {
-        playerTeam = playerParty.GetComponent<SetupParty>().SetupTheParty(GameData.CurrentParty);
-        enemyTeam = enemyParty.GetComponent<SetupParty>().SetupTheParty(GameData.StageMap.Stages[GameData.CurrentLevel].Enemies);
+        List<PartyMemberItem> playerTeam = playerParty.GetComponent<SetupParty>().SetupTheParty(GameData.CurrentParty);
+        List<PartyMemberItem> enemyTeam = enemyParty.GetComponent<SetupParty>().SetupTheParty(GameData.StageMap.Stages[GameData.CurrentLevel].Enemies);
 
         BattleManager.GetInstance().AttackQueue.AddRange(playerTeam);
         BattleManager.GetInstance().AttackQueue.AddRange(enemyTeam);
@@ -240,6 +300,9 @@ public class BattleManager : MonoBehaviour
         areTeamsInitialized = true;
     }
 
+    /// <summary>
+    /// Called by BattleStateMachine's CombatState's Update(). The main logic of the battle system is done here. 
+    /// </summary>
     public void Fight()
     {
         if (attackQueueIndex >= (BattleManager.GetInstance().AttackQueue.Count) || !winningTeam.Equals(Team.None))
