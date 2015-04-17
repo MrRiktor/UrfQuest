@@ -1,7 +1,27 @@
-﻿using System;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: Champion.cs
+ * Date Created: 4/11/2015 8:28PM EST
+ * 
+ * Description: Champion Data Class
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+#endregion
+
+#region ChampData Public Enumerator
 
 public enum ChampData
 {
@@ -22,6 +42,8 @@ public enum ChampData
     stats,
     tags,
 };
+
+#endregion
 
 public class Champion
 {

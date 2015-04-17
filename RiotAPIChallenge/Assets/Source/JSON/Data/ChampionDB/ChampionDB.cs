@@ -1,7 +1,23 @@
-﻿using System;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: ChampionDB.cs
+ * Date Created: 4/11/2015 8:28PM EST
+ * 
+ * Description: ChampionDB Data Class
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
+#endregion
 
 public class ChampionDB
 {
@@ -126,6 +142,8 @@ public class ChampionDB
 
     #endregion
 
+    #region Public Methods
+
     /// <summary>
     /// 
     /// </summary>
@@ -152,7 +170,7 @@ public class ChampionDB
             throw new IndexOutOfRangeException(ChampionID + " is not a valid ChampionID.");
         }
     }
-
+    
     /// <summary>
     /// 
     /// </summary>
@@ -174,4 +192,5 @@ public class ChampionDB
         return new ChampionDB();
     }
 
+    #endregion
 }

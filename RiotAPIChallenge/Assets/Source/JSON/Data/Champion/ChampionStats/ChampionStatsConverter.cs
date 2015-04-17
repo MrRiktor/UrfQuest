@@ -1,6 +1,24 @@
-﻿using System;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: ChampionStatsConverter.cs
+ * Date Created: 4/11/2015 8:28PM EST
+ * 
+ * Description: Converter for Champion Stats Data Class
+ * 
+ * Changelog: - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using System;
 using System.Collections.Generic;
 using JsonFx.Json;
+
+#endregion
 
 public class ChampionStatsConverter : JsonConverter
 {

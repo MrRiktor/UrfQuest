@@ -1,4 +1,22 @@
-﻿using System;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: RiotImage.cs
+ * Date Created: 4/12/2015 8:28PM EST
+ * 
+ * Description: Image Data Class
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using System;
+
+#endregion
 
 public class RiotImage
 {

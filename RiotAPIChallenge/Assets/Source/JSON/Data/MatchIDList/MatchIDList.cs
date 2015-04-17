@@ -1,5 +1,23 @@
-﻿using System;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: MatchIDList.cs
+ * Date Created: 4/11/2015 8:28PM EST
+ * 
+ * Description: MatchIDList Data Class
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using System;
 using System.Collections.Generic;
+
+#endregion
 
 public class MatchIDList
 {

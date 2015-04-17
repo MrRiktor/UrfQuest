@@ -1,9 +1,31 @@
-﻿using System;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: Participant.cs
+ * Date Created: 4/11/2015 8:28PM EST
+ * 
+ * Description: Converter for Participant Data Class
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using System;
 using System.Collections.Generic;
 using JsonFx.Json;
 
+#endregion
+
 public class ParticipantConverter : JsonConverter
 {
+    #region Public Methods
+
+    #region Converters
+
     /// <summary>
     /// 
     /// </summary>
@@ -123,6 +145,8 @@ public class ParticipantConverter : JsonConverter
         return propToValueMap;
     }
 
+    #endregion
+
     #region Json Converter Inherited Methods
 
     /// <summary>
@@ -174,6 +198,8 @@ public class ParticipantConverter : JsonConverter
         Participant participant = (Participant)value;
         return ParticipantToDictionary( participant );
     }
+
+    #endregion
 
     #endregion
 }

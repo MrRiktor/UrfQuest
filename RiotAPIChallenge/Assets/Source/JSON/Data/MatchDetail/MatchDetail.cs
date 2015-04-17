@@ -1,5 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: MatchDetail.cs
+ * Date Created: 4/11/2015 8:28PM EST
+ * 
+ * Description: MatchDetail Data Class
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using System;
+
+#endregion
 
 public class MatchDetail
 {
