@@ -1,10 +1,33 @@
-﻿using UnityEngine;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: PartyMemberItem.cs
+ * Date Created: 4/14/2015 12:37PM EST
+ * 
+ * Description: PartyMemberItem is the monobehavior that is attached to the PartyMember GameObject.
+ *              This class handles all of the interaction between the party members objects.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 3:56 AM
+ *              - Modified: Matthew "Riktor" Baker - 4/16/2015 8:37 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using UnityEngine;
 using UnityEngine.UI;
+
+#endregion
 
 public class PartyMemberItem : MonoBehaviour
 {
     #region Private Variables
 
+    /// <summary>
+    /// The state of the party member concerning combat.
+    /// </summary>
     public enum CombatStates
     {
         None,
@@ -12,7 +35,10 @@ public class PartyMemberItem : MonoBehaviour
         Attacking,
         Taunting,
     };
-
+    
+    /// <summary>
+    /// The state of the party member concerning physical movement.
+    /// </summary>
     private enum PlayerStates
     {
         Waiting,
@@ -172,6 +198,9 @@ public class PartyMemberItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Accessor for the combatstatus data.
+    /// </summary>
     public CombatStatus CombatStatus
     {
         get
@@ -192,12 +221,6 @@ public class PartyMemberItem : MonoBehaviour
         this.combatStatus.CurrentHealth = partyMemberData.HealthPool;
     }
 
-    public void ResetState()
-    {
-        this.CombatState = CombatStates.None;
-        this.playerState = PlayerStates.Waiting;
-    }
-
     /// <summary>
     /// 
     /// </summary>
@@ -216,7 +239,7 @@ public class PartyMemberItem : MonoBehaviour
     #endregion
 
     #region Public Methods
-
+   
     #region Initialization
 
     /// <summary>
@@ -232,26 +255,39 @@ public class PartyMemberItem : MonoBehaviour
         portrait.sprite = partyMemberData.Portrait;
     }
 
+    /// <summary>
+    /// Resets the states of the PartyMember
+    /// </summary>
+    public void ResetState()
+    {
+        this.CombatState = CombatStates.None;
+        this.playerState = PlayerStates.Waiting;
+    }
+
     #endregion
 
     /// <summary>
-    /// 
+    /// Returns whether the party member is waiting to move or not.
     /// </summary>
-    /// <returns></returns>
+    /// <returns> If the party member is waiting to attack this turn. </returns>
     public bool IsWaiting()
     {
         return (this.playerState.Equals(PlayerStates.Waiting)) ? true : false;
     }
 
     /// <summary>
-    /// 
+    /// Returns whether the party member is on cooldown or not.
     /// </summary>
-    /// <returns></returns>
+    /// <returns> If the party member has already attacked this turn. </returns>
     public bool IsOnCooldown()
     {
         return (this.playerState.Equals(PlayerStates.OnCooldown)) ? true : false;
     }
 
+    /// <summary>
+    /// Sets the Active state of the attack/taunt bar GameObject.
+    /// </summary>
+    /// <param name="isActive"> The intended state of the attack/taunt bar </param>
     public void SetAttackTauntBarActive( bool isActive )
     {
         if (this.attackTauntBar != null)
@@ -260,6 +296,10 @@ public class PartyMemberItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the Active state of the border panel GameObject
+    /// </summary>
+    /// <param name="isActive"> The intended state of the border panel. </param>
     public void SetBorderPanelActive( bool isActive )
     {
         if (this.borderPanel != null)
@@ -268,6 +308,11 @@ public class PartyMemberItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the mouse pointer hovers over the PartyMember's gameObject,
+    /// is called from the EventTriggers OnPointerEnter and OnPointerExit.
+    /// </summary>
+    /// <param name="isActive"> The intended state of the border panel. </param>
     public void OnHover(bool isActive)
     {
         if (this.borderPanel != null && this.CombatStatus.BeingType == Being.BeingType.Enemy)
@@ -287,20 +332,28 @@ public class PartyMemberItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the Active state of the target icon GameObject
+    /// </summary>
+    /// <param name="isActive"> The intended state of the target icon. </param>
     public void SetTargetIconActive( bool isActive )
     {
         this.targetIcon.SetActive(isActive);
     }
 
+    /// <summary>
+    /// Sets the Active state of the taunt icon GameObject
+    /// </summary>
+    /// <param name="isActive"> The intended state of the taunt icon. </param>
     public void SetTauntIconActive( bool isActive )
     {
         this.tauntIcon.SetActive(isActive);
     }
 
     /// <summary>
-    /// 
+    /// Is called on a PartyMember when they take damage from another PartyMember object.
     /// </summary>
-    /// <param name="Damage"></param>
+    /// <param name="Damage"> the amount of damage to be taken. </param>
     public void TakeDamage( long incomingDamage )
     {
         float modifiedDamage = Mathf.Round(ApplyDamageReduction(incomingDamage));
@@ -318,13 +371,18 @@ public class PartyMemberItem : MonoBehaviour
         this.healthBarText.text = (this.CombatStatus.CurrentHealth > 0 ? this.CombatStatus.CurrentHealth.ToString() : "0");
     }
     
+    /// <summary>
+    /// Updates the game score based upon the damage taken or dealt.
+    /// </summary>
+    /// <param name="damageDone"> the damage done to this PartyMember. </param>
     private void UpdateScore( float damageDone )
     {
+        //If the player attacked an enemy.
         if (this.CombatStatus.BeingType == Being.BeingType.Enemy)
         {
             GameData.Score += damageDone;
         }
-       else
+        else // An enemy attacked a player
         {
             float healthDifference = Mathf.Round(this.CombatStatus.CurrentHealth - damageDone);
 
@@ -338,10 +396,10 @@ public class PartyMemberItem : MonoBehaviour
             }
         }
     }
-
-
+    
     /// <summary>
-    /// Can be used in the future if we want to apply more damage reduction from items or other things.
+    /// Calculates a mitigated damage based upon the Damage value passed in.
+    /// Note: Can be used in the future if we want to apply more damage reduction from items or other things.
     /// </summary>
     /// <param name="Damage"></param>
     /// <returns></returns>
@@ -376,6 +434,10 @@ public class PartyMemberItem : MonoBehaviour
             Debug.LogError("PartyMemberItem::AttackTarget() - target was null");
         }
     }
+   
+    /// <summary>
+    /// Called by BattleManager when the attack button for this PartyMember is clicked.
+    /// </summary>
     public void AttackClicked()
     {
         this.CombatState = CombatStates.Attacking;
@@ -383,7 +445,7 @@ public class PartyMemberItem : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Command to Taunt the current target.
     /// </summary>
     public void TauntTarget()
     {
@@ -395,6 +457,10 @@ public class PartyMemberItem : MonoBehaviour
             this.IsMitigating = true;
         }
     }
+
+    /// <summary>
+    /// Called by BattleManager when the taunt button for this PartyMember is clicked.
+    /// </summary>
     public void TauntClicked()
     {
         if (this.desiredTarget != null && this.desiredTarget.CombatStatus.IsAlive() == true)
@@ -444,6 +510,10 @@ public class PartyMemberItem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Returns the taunt target of this PartyMemberItem.
+    /// </summary>
+    /// <returns> the taunted target. </returns>
     public PartyMemberItem GetTauntTarget()
     {
         if (this.desiredTarget != null && this.desiredTarget.CombatStatus.IsAlive() == true)
@@ -455,14 +525,13 @@ public class PartyMemberItem : MonoBehaviour
             return null;
         }
     }
-
-    
+        
     #endregion
 
     #region Private Methods
     
     /// <summary>
-    /// Moves the PartyMemberItem a target location
+    /// Translates the PartyMemberItem GameObject to a target location
     /// </summary>
     private void MoveToTarget( PartyMemberItem target )
     {
@@ -483,7 +552,7 @@ public class PartyMemberItem : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Returns the PartyMemberItem GameObject to its original position.
     /// </summary>
     private void ReturnToOrigin()
     {

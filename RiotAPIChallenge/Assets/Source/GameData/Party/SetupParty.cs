@@ -1,28 +1,44 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: SetupParty.cs
+ * Date Created: 4/14/2015 12:37AM EST
+ * 
+ * Description: Responsible for setting up the Party GameObjects
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/14/2015 7:23 PM
+ *              - Modified: Matthew "Riktor" Baker - 4/16/2015 8:50 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using UnityEngine;
 using System.Collections.Generic;
 
-public class SetupParty : MonoBehaviour 
-{
-    [SerializeField]
-    private GameObject partyMemberPrefab;
-    
-	// Use this for initialization
-	void Start () 
-    {
+#endregion
 
-	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
-	
-	}
+public class SetupParty : MonoBehaviour
+{
+    #region Private Member Variables
 
     /// <summary>
-    /// 
+    /// The PartyMember GameObject prefab instance.
     /// </summary>
-    /// <param name="party"></param>
+    [SerializeField]
+    private GameObject partyMemberPrefab;
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Sets up the players party. Instantiating 5 instances of the Partymember GameObject.
+    /// </summary>
+    /// <param name="party"> The Party we are setting up. </param>
+    /// <returns> the list of party member's created. </returns>
     public List<PartyMemberItem> SetupTheParty( Party partyData )
     {
         List<PartyMemberItem> party = new List<PartyMemberItem>(); ;
@@ -44,6 +60,11 @@ public class SetupParty : MonoBehaviour
         return party;
     }
 
+    /// <summary>
+    /// Sets up the enemy's party. Instantiating 5 instances of the Partymember GameObject.
+    /// </summary>
+    /// <param name="party"> The Party we are setting up. </param>
+    /// <returns>the list of enemy party member's created. </returns>
     public List<PartyMemberItem> SetupTheParty(Enemy[] enemies)
     {
         List<PartyMemberItem> party = new List<PartyMemberItem>(); ;
@@ -65,4 +86,5 @@ public class SetupParty : MonoBehaviour
         return party;
     }
 
+    #endregion
 }
