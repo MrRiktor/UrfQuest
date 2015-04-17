@@ -1,7 +1,26 @@
-﻿using System;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: DateMath.cs
+ * 
+ * Description: Static class used when writing our fetch match ID's functionality.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using System;
+
+#endregion
 
 public class DateMath
 {
+    #region Public Methods
+
     /// <summary>
     /// A Math Function that rounds the epoch time to either 5 or 0 so that 
     /// it conforms to riots API challenge match list call standard.
@@ -22,5 +41,7 @@ public class DateMath
         }
 
         return date;
-    }    
+    }
+
+    #endregion
 }

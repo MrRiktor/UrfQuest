@@ -1,9 +1,28 @@
-﻿using UnityEngine;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: GrabMatchIDsFromFile.cs
+ * Date Created: 4/15/2015
+ * 
+ * Description: A static class used for fetching matchID's from our text file.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using UnityEngine;
 using System.Collections.Generic;
-using System.IO;
+
+#endregion
 
 public static class GrabMatchIDsFromFile
 {
+    #region Public Methods
+
     /// <summary>
     /// Parses a text document that holds our stored list of urf match id's and returns a random number of them based upon parameters.
     /// </summary>
@@ -13,14 +32,7 @@ public static class GrabMatchIDsFromFile
     {
         List<long> listToReturn = new List<long>();
 
-        /*if (!File.Exists(@"Assets/Resources/MatchIDList/MatchIDList.txt"))
-        {
-            File.Create(@"Assets/Resources/MatchIDList/MatchIDList.txt");
-        }*/
-
         TextAsset text = Resources.Load<TextAsset>("MatchIDList/MatchIDList");
-        
-        //string [] allMatchIds = File.ReadAllLines(@"Assets/Resources/MatchIDList/MatchIDList.txt");
 
         string[] delims = { "\r\n" };
 
@@ -38,7 +50,9 @@ public static class GrabMatchIDsFromFile
             Debug.LogError("Failed to read matchID's from file or file is empty.");
         }
 
-        return listToReturn;            
+        return listToReturn;
     }
+
+    #endregion
 }
 

@@ -1,8 +1,32 @@
-﻿using UnityEngine;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: BattleResultClickHandler.cs
+ * Date Created: 4/11/2015 8:28PM EST
+ * 
+ * Description: Converter for Image Data Class
+ * 
+ * Changelog: - Modified: Vincent "Sabin" Biancardi
+ *            - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using UnityEngine;
 using System.Collections;
 
-public class BattleResultClickHandler : MonoBehaviour 
+#endregion
+
+public class BattleResultClickHandler : MonoBehaviour
 {
+    #region Public Methods
+
+    /// <summary>
+    /// Occurs when the victory/Defeat screen's continue button is clicked.
+    /// </summary>
     public void OnContinueClick()
     {
         if (BattleManager.GetInstance().WinningTeam == BattleManager.Team.Enemy)
@@ -32,4 +56,6 @@ public class BattleResultClickHandler : MonoBehaviour
 
         }
     }
+
+    #endregion
 }
