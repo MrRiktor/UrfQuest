@@ -1,40 +1,100 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Vincent "Sabin" Biancardi
+ * Filename: ProgressionView.cs
+ * Date Created: 4/11/2015 6:50PM EST
+ * 
+ * Description: The progression view of the game.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 10:13 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+#endregion
+
 public class ProgressionView : MonoBehaviour
 {
+    #region Private Variables
+
+    #region SerializeFields
+
+    /// <summary>
+    /// The mainImage gameobject
+    /// </summary>
     [SerializeField]
     private Image mainImage;
 
+    /// <summary>
+    /// the enemyportrait item game object
+    /// </summary>
     [SerializeField]
     private GameObject EnemyPortraiItem;
 
+    /// <summary>
+    ///  The gridlayoutgroup of the enemy portraits.
+    /// </summary>
     [SerializeField]
     private GridLayoutGroup grid;
 
+    /// <summary>
+    /// the story text gameobject
+    /// </summary>
     [SerializeField]
     private Text StoryText;
 
+    /// <summary>
+    /// the scroll bar of the story text
+    /// </summary>
     [SerializeField]
     private Scrollbar scrollBar;
 
+    /// <summary>
+    /// the try 1 gameobject
+    /// </summary>
     [SerializeField]
     private Image trys1;
 
+    /// <summary>
+    /// the try 2 gameobject
+    /// </summary>
     [SerializeField]
     private Image trys2;
 
+    /// <summary>
+    /// The try 3 gameobject
+    /// </summary>
     [SerializeField]
     private Sprite failed;
 
+    /// <summary>
+    /// the progress bar gridlayoutgroup
+    /// </summary>
     [SerializeField]
     private GridLayoutGroup progressGrid;
 
+    /// <summary>
+    /// the score text 
+    /// </summary>
     [SerializeField]
     private Text scoreText;
 
+    #endregion
+
+    #endregion
+
+    #region Native Unity Functionality
+
+    /// <summary>
+    /// used to initialize this Monobehaviour.
+    /// </summary>
     void Start( )
     {
         scoreText.text = GameData.Score.ToString();
@@ -78,6 +138,10 @@ public class ProgressionView : MonoBehaviour
 
     }
 
+    #endregion
+
+    #region Public Methods
+
     /// <summary>
     /// Handles the play button press
     /// </summary>
@@ -86,8 +150,13 @@ public class ProgressionView : MonoBehaviour
         Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.BATTLE );
     }
 
+    /// <summary>
+    /// Handles the quit button press.
+    /// </summary>
     public void OnQuitHandler( )
     {
         Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.INTRO );
     }
+
+    #endregion
 }

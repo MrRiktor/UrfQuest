@@ -1,23 +1,26 @@
 ﻿#region File Header
 
-/**
- *   File Name:                 TeamSelectItemView.cs
- *   Author:                    Vincent Biancardi
- *   Creation Date:             April 8, 2015
- */
+/*******************************************************************************
+ * Author: Vincent "Sabin" Biancardi
+ * Filename: TeamSelectItemView.cs
+ * Date Created: 4/11/2015 6:50PM EST
+ * 
+ * Description: A UI Team Item that gets dynamically created when the users needs to 
+ *              select a team from random match ID's
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 8:13 PM - Added Comments
+ *******************************************************************************/
 
 #endregion
 
+#region Using Directives
+
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using System;
 
-/// <summary>
-/// A UI Team Item that gets dynamically created when the users
-/// needs to select a team from random match ID's
-/// </summary>
+#endregion
+
 public class TeamSelectItem : MonoBehaviour
 {
     #region variables
@@ -125,5 +128,4 @@ public class TeamSelectItem : MonoBehaviour
     }
 
     #endregion
-
 }

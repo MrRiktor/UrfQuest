@@ -1,32 +1,46 @@
 ﻿#region File Header
 
-/**
- *   File Name:                 TeamSelectData.cs
- *   Author:                    Vincent Biancardi
- *   Creation Date:             April 8, 2015
- */
+/*******************************************************************************
+ * Author: Vincent "Sabin" Biancardi
+ * Filename: TeamSelectData.cs
+ * Date Created: 4/8/2015 10:26 PM EST
+ * 
+ * Description: The data class used to initilize a TeamSelectItem
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 8:13 PM - Added Comments
+ *******************************************************************************/
 
 #endregion
+
+#region Using Directives
 
 using UnityEngine;
 using System.Collections;
 using System;
 
-/// <summary>
-/// The data class used to initilize a TeamSelectItem
-/// </summary>
+#endregion
+
 public class TeamSelectData
 {
-    #region Variables
+    #region Private Variables
 
+    /// <summary>
+    /// The match ID
+    /// </summary>
     private Int64 matchID;
 
+    /// <summary>
+    /// The champion string list.
+    /// </summary>
     private String [] champions = new String [ 5 ];
 
     #endregion
 
     #region Accessor/Mutatots
 
+    /// <summary>
+    /// Accessor for the matchId
+    /// </summary>
     public Int64 MatchId
     {
         get
@@ -39,8 +53,12 @@ public class TeamSelectData
             matchID = value;
         }
     }
-
-    //Gets the name of a champion in index 0->4
+        
+    /// <summary>
+    /// Gets the name of a champion in index 0->4
+    /// </summary>
+    /// <param name="index"> the index </param>
+    /// <returns> return a champion name. </returns>
     public String GetChampion( Int32 index )
     {
         if ( index < 0 || index > 4 )
@@ -48,8 +66,12 @@ public class TeamSelectData
 
         return champions [ index ];
     }
-
-    //Sets the name of a champion in index 0->4
+        
+    /// <summary>
+    /// Sets the name of a champion in index 0->4
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="name"></param>
     public void SetChampion( Int32 index, String name )
     {
         if ( index < 0 || index > 4 )

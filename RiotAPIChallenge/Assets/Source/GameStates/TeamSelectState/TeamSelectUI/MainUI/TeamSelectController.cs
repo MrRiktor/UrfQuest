@@ -1,24 +1,38 @@
 ﻿#region File Header
 
-/**
- *   File Name:                 TeamSelectController.cs
- *   Author:                    Vincent Biancardi
- *   Creation Date:             April 8, 2015
- */
+/*******************************************************************************
+ * Author: Vincent "Sabin" Biancardi
+ * Filename: TeamSelectController.cs
+ * Date Created: 4/8/2015 10:26 PM EST
+ * 
+ * Description: The team select's MVC controller
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 8:13 PM - Added Comments
+ *******************************************************************************/
 
 #endregion
+
+#region Using Directives
 
 using UnityEngine;
 using System.Collections;
 using System;
 
+#endregion
+
 public class TeamSelectController : MonoBehaviour
 {
-    #region Variables
+    #region Private Variables
 
+    /// <summary>
+    /// The model of the MVC
+    /// </summary>
     [SerializeField]
     private TeamSelectModel model;
 
+    /// <summary>
+    /// the view of the MVC
+    /// </summary>
     [SerializeField]
     private TeamSelectView view;
 
@@ -117,5 +131,4 @@ public class TeamSelectController : MonoBehaviour
     }
 
     #endregion
-
 }

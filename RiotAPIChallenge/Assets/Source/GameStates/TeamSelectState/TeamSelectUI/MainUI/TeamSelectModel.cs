@@ -1,22 +1,25 @@
 ﻿#region File Header
 
-/**
- *   File Name:                 IGameStat.cs
- *   Author:                    Vincent Biancardi
- *   Creation Date:             April 8, 2015
- */
+/*******************************************************************************
+ * Author: Vincent "Sabin" Biancardi
+ * Filename: TeamSelectModel.cs
+ * Date Created: 4/8/2015 10:26 PM EST
+ * 
+ * Description: The team select's MVC model - Maintains the data that 
+ *              controls the TeamSelectView.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 8:13 PM - Added Comments
+ *******************************************************************************/
 
 #endregion
 
-using UnityEngine;
-using System.Collections;
+#region Using Directives
+
 using System.Collections.Generic;
 using System;
 
-/// <summary>
-/// Maintains the data that controlls
-/// the TeamSelectView
-/// </summary>
+#endregion
+
 public class TeamSelectModel : FetchMatch
 {
     #region Variables
@@ -101,6 +104,10 @@ public class TeamSelectModel : FetchMatch
         }
     }
 
+    /// <summary>
+    /// Called when the party member tab is changed.
+    /// </summary>
+    /// <param name="playerIndex"></param>
     public void PartyMemberChange( Int32 playerIndex )
     {
         selectedPartyMemberIndex = playerIndex;
@@ -108,5 +115,4 @@ public class TeamSelectModel : FetchMatch
     }
 
     #endregion
-
 }

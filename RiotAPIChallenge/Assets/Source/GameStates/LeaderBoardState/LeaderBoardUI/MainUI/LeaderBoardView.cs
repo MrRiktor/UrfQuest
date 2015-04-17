@@ -1,52 +1,147 @@
-﻿using UnityEngine;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Vincent "Sabin" Biancardi
+ * Filename: LeaderBoardView.cs
+ * Date Created: 4/14/2015 4:05PM EST
+ * 
+ * Description: The leaderboard view.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 8:13 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
+#endregion
+
 public class LeaderBoardView : MonoBehaviour
 {
+    #region Public Variables
 
+    #region SerializeFields
+
+    /// <summary>
+    /// the grid gameobject
+    /// </summary>
     [SerializeField]
     GridLayoutGroup grid;
 
+    /// <summary>
+    /// the leaderboard item game object
+    /// </summary>
     [SerializeField]
     GameObject LEADERBOARDITEM;
 
+    /// <summary>
+    /// the scoreboard panel gameobject
+    /// </summary>
     [SerializeField]
     GameObject ScoreBoardPanel;
 
+    /// <summary>
+    /// The input panel gameobject
+    /// </summary>
     [SerializeField]
     GameObject InputPanel;
 
+    /// <summary>
+    /// The username text gameobject
+    /// </summary>
     [SerializeField]
     Text usernameText;
 
+    /// <summary>
+    /// The score text gameobject
+    /// </summary>
     [SerializeField]
     Text scoreText;
 
+    /// <summary>
+    /// The win text gameobject
+    /// </summary>
     [SerializeField]
     Text winText;
 
+    /// <summary>
+    /// The win panel gameobject
+    /// </summary>
     [SerializeField]
     GameObject winPanel;
 
+    #endregion
+
+    /// <summary>
+    /// The text when you win.
+    /// </summary>
     private const string WIN_TEXT = "You have defeated Urf and brought normalcy back to Summoner's Rift!  Way to ruin a great game type newb…";
+    
+    /// <summary>
+    /// The text when you lose.
+    /// </summary>
     private const string LOSE_TEXT = "Wow... you my friend do not deal TONS OF DAMAGE on a daily basis. Urf is still rampant!";
 
+    /// <summary>
+    /// 
+    /// </summary>
     public StyledComboBox comboBox;
 
-    ///Fill in your server data here.
+    #region Database
+
+    /// <summary>
+    /// Fill in your server data here.
+    /// </summary>
     private string privateKey = "KEY_USED_IN_DB";
+    
+    /// <summary>
+    /// The top score url
+    /// </summary>
     private string TopScoresURL = "http://urfquest.lolinactive.com/TopScores.php";
 
-    //Don't forget the question marks!
+    /// <summary>
+    /// The add score url - Don't forget the question marks!
+    /// </summary>
     private string AddScoreURL = "http://urfquest.lolinactive.com/AddScore.php?";
-    private string RankURL = "http://urfquest.lolinactive.com/GetRank.php?";
     
+    /// <summary>
+    /// The rank url - Don't forget the question marks!
+    /// </summary>
+    private string RankURL = "http://urfquest.lolinactive.com/GetRank.php?";
+
+    #endregion
+
+    /// <summary>
+    /// the user name on the high score
+    /// </summary>
     private string username;
+   
+    /// <summary>
+    /// the region the summoner belongs to
+    /// </summary>
     private string region;
+    
+    /// <summary>
+    /// the players score.
+    /// </summary>
     private int highscore;
+    
+    /// <summary>
+    /// the rank they achieved in the high score table.
+    /// </summary>
     private int rank;
 
+    #endregion
+
+    #region Native Unity Functionality
+
+    /// <summary>
+    /// Used for initialization.
+    /// </summary>
     void Start( )
     {
         if ( GameData.Score == 0.0f )
@@ -67,11 +162,21 @@ public class LeaderBoardView : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// handles the back button click.
+    /// </summary>
     public void HandleBack( )
     {
         Messenger<GameStateTypes>.Broadcast( MessengerEventTypes.GAME_STATE_CHANGE, GameStateTypes.INTRO );
     }
 
+    /// <summary>
+    /// Handle the submit button click
+    /// </summary>
     public void HandleSubmit( )
     {
         region = comboBox.SelectedItem.GetText( ).text;
@@ -82,8 +187,20 @@ public class LeaderBoardView : MonoBehaviour
         StartCoroutine( AddScore( username, region, highscore ) );
     }
 
-    ///Our IEnumerators
-    IEnumerator AddScore( string name, string region, int score )
+    #endregion
+
+    #region Private Methods
+
+    #region IEnumerators
+
+    /// <summary>
+    /// Adds the score to the DB
+    /// </summary>
+    /// <param name="name"> Summoner name </param>
+    /// <param name="region"> Summoner's Region </param>
+    /// <param name="score"> Player's Score </param>
+    /// <returns></returns>
+    private IEnumerator AddScore( string name, string region, int score )
     {
         string hash = Md5Sum( name + region + score + privateKey );
 
@@ -101,7 +218,12 @@ public class LeaderBoardView : MonoBehaviour
         }
     }
 
-    IEnumerator GrabRank( string name, string region )
+    /// <summary>
+    /// grabs the rank from the DB
+    /// </summary>
+    /// <param name="name"> Summoner name </param>
+    /// <param name="region"> Summoner's region </param>
+    private IEnumerator GrabRank( string name, string region )
     {
         //Try and grab the Rank
         WWW RankGrabAttempt = new WWW( RankURL + "name=" + WWW.EscapeURL( name ) + "&region=" + WWW.EscapeURL( region ) );
@@ -120,7 +242,10 @@ public class LeaderBoardView : MonoBehaviour
         }
     }
 
-    IEnumerator GetTopScores( )
+    /// <summary>
+    /// Retrieves the top scores from the DB
+    /// </summary>
+    private IEnumerator GetTopScores( )
     {
         WWW GetScoresAttempt = new WWW( TopScoresURL );
         yield return GetScoresAttempt;
@@ -173,6 +298,13 @@ public class LeaderBoardView : MonoBehaviour
         }
     }
 
+    #endregion
+
+    /// <summary>
+    /// Calculates and verifies 128-bit MD5 hashes
+    /// </summary>
+    /// <param name="strToEncrypt"> The string to encrypt. </param>
+    /// <returns></returns>
     private string Md5Sum( string strToEncrypt )
     {
         System.Text.UTF8Encoding ue = new System.Text.UTF8Encoding( );
@@ -190,4 +322,6 @@ public class LeaderBoardView : MonoBehaviour
 
         return hashString.PadLeft( 32, '0' );
     }
+
+    #endregion
 }

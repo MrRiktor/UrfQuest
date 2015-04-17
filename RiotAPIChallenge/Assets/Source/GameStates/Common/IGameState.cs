@@ -1,17 +1,17 @@
 ﻿#region File Header
 
-/**
- *   File Name:                 IGameStat.cs
- *   Author:                    Vincent Biancardi
- *   Creation Date:             April 8, 2015
- */
+/*******************************************************************************
+ * Author: Vincent "Sabin" Biancardi
+ * Filename: IGameState.cs
+ * Date Created: 4/8/2015 6:50PM EST
+ * 
+ * Description: Interface used to initialize and clean up a Game State
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 8:13 PM - Added Comments
+ *******************************************************************************/
 
 #endregion
 
-/// <summary>
-/// Interface used to initialize
-/// and clean up a Game State
-/// </summary>
 public interface IGameState
 {
     /// <summary>

@@ -1,10 +1,14 @@
 ﻿#region File Header
 
-/**
- *   File Name:                 GameStateTypes.cs
- *   Author:                    Vincent Biancardi
- *   Creation Date:             April 8, 2015
- */
+/*******************************************************************************
+ * Author: Vincent "Sabin" Biancardi
+ * Filename: GameStateTypes.cs
+ * Date Created: 4/8/2015 EST
+ * 
+ * Description: The game state types public enum.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 8:13 PM - Added Comments
+ *******************************************************************************/
 
 #endregion
 

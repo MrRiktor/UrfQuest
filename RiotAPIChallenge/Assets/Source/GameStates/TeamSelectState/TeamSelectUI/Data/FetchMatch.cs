@@ -1,13 +1,52 @@
-﻿using System;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Vincent "Sabin" Biancardi
+ * Filename: FetchMatch.cs
+ * Date Created: 4/10/2015 10:26 PM EST
+ * 
+ * Description: Makes the calls to grab the match data from JSON
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 8:13 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#endregion
+
 public class FetchMatch : MonoBehaviour
 {
+    #region Private Variables
+
+    /// <summary>
+    /// The list of match IDs
+    /// </summary>
     private List<Int64> matchIDs = new List<Int64>( );
+
+    #endregion
+
+    #region Protected Variables
+
+    /// <summary>
+    /// The parties from the match ids
+    /// </summary>
     protected List<Party> parties = new List<Party>( );
+    
+    /// <summary>
+    /// the maximum party stats.
+    /// </summary>
     protected MaxPartyStats maxPartyStats = new MaxPartyStats( );
+
+    #endregion
+
+    #region Public Methods
 
     /// <summary>
     /// Adds a match ID and Fetches the 
@@ -42,6 +81,14 @@ public class FetchMatch : MonoBehaviour
         return fetch.WaitForUrlData( );
     }
 
+    #endregion
+
+    #region Private Methods
+
+    /// <summary>
+    /// Success handler for grabbing a match.
+    /// </summary>
+    /// <param name="obj"> the matches MatchDetail object </param>
     private void MatchGrabSuccess( object obj )
     {
         MatchDetail match = null;
@@ -75,11 +122,18 @@ public class FetchMatch : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The failure callback for the fetching of matches.
+    /// </summary>
+    /// <param name="message">the failure message </param>
     private void failure( string message )
     {
         Debug.LogError( message );
     }
 
+    /// <summary>
+    /// Calculates the maximum stats of the team and party members
+    /// </summary>
     private void CalculateMaxStats( )
     {
         for ( Int32 i = 0; i < parties.Count; i++ )
@@ -114,4 +168,6 @@ public class FetchMatch : MonoBehaviour
         }
         Messenger<MaxPartyStats>.Broadcast( MessengerEventTypes.TSUI_MAX_PARTY_STATS_UPDATE, maxPartyStats );
     }
+
+    #endregion
 }
