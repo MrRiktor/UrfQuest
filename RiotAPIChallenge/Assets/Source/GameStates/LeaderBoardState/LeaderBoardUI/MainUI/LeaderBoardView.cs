@@ -348,6 +348,12 @@ public class LeaderBoardView : MonoBehaviour
     public void FixInputValue( )
     {
         inputField.text = Regex.Replace( inputField.text, "[^a-zA-Z0-9âãäåæçèéêëìíîïðñòóôõøùúûüýþÿı]+", "", RegexOptions.IgnoreCase );
+        
+        if ( inputField.text.Length >= 17 )
+        {
+            inputField.text = inputField.text.Remove( 16 );
+        }
+
         if ( inputField.text == "" )
         {
             submitButton.interactable = false;

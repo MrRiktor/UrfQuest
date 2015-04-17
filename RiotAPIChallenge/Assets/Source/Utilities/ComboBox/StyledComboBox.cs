@@ -70,9 +70,11 @@ public class StyledComboBox : StyledItem
 			float sizeY = pos.y - corners[2].y;
 			pos.y = items.Count * sizeY;
 			StyledItem styledItem = Instantiate(itemPrefab, pos, root.itemRoot.rotation) as StyledItem;
+            styledItem.transform.localScale = new Vector3( 1.0f, 1.0f, 1.0f );
 			RectTransform trans = styledItem.GetComponent<RectTransform>();
 			styledItem.Populate(data);
             trans.SetParent( root.itemRoot.transform );
+            styledItem.transform.localScale = new Vector3( 1.0f, 1.0f, 1.0f );
 
 			trans.pivot = new Vector2(0,1);
 			trans.anchorMin = new Vector2(0,1);
@@ -134,8 +136,9 @@ public class StyledComboBox : StyledItem
 			// create 
 			RectTransform own = GetComponent<RectTransform>();
 			root = Instantiate(containerPrefab, own.position, own.rotation) as StyledComboBoxPrefab;
+            root.transform.localScale = new Vector3( 1.0f, 1.0f, 1.0f );
             root.transform.SetParent( this.transform );
-
+            root.transform.localScale = new Vector3( 1.0f, 1.0f, 1.0f );
 			RectTransform rt = root.GetComponent<RectTransform>();
 			rt.pivot = new Vector2(0.5f, 0.0f);
 			//root.anchoredPosition = Vector2.zero;
@@ -164,7 +167,9 @@ public class StyledComboBox : StyledItem
 		if (toCreate != null && root.menuItem != null)
 		{
 			StyledItem menuItem = Instantiate(toCreate) as StyledItem;
+            menuItem.transform.localScale = new Vector3( 1.0f, 1.0f, 1.0f );
 			menuItem.transform.SetParent( root.menuItem.transform );
+            menuItem.transform.localScale = new Vector3( 1.0f, 1.0f, 1.0f );
 			RectTransform mt = menuItem.GetComponent<RectTransform>();
 			mt.pivot = new Vector2(0.5f, 0.5f);
 			mt.anchorMin = Vector2.zero;
