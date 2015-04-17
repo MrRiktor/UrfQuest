@@ -1,13 +1,31 @@
-﻿using System.Collections;
+﻿#region File Header
+
+/*******************************************************************************
+ * Author: Matthew "Riktor" Baker
+ * Filename: ChampionDBManager.cs
+ * Date Created: 4/11/2015 8:28PM EST
+ * 
+ * Description: A runtime database of all champion data.
+ * 
+ * Changelog:   - Modified: Matthew "Riktor" Baker - 4/16/2015 9:01 PM - Added Comments
+ *******************************************************************************/
+
+#endregion
+
+#region Using Directives
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+#endregion
 
 public sealed class ChampionDBManager : MonoBehaviour
 {
     #region Singleton
 
     /// <summary>
-    /// 
+    /// The instance of CHampionDBManager
     /// </summary>
     private static ChampionDBManager instance;
 
@@ -30,7 +48,7 @@ public sealed class ChampionDBManager : MonoBehaviour
     #region Private Member Variables
 
     /// <summary>
-    /// 
+    /// The champion DB data object
     /// </summary>
     private ChampionDB championDB;
 
@@ -54,7 +72,7 @@ public sealed class ChampionDBManager : MonoBehaviour
     #region Accessors/Modifiers
 
     /// <summary>
-    /// 
+    /// Accessor/Modifier for the championDB data object
     /// </summary>
     public ChampionDB ChampionDB
     {
@@ -69,7 +87,7 @@ public sealed class ChampionDBManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Accessor for whether the champion db is ready for use.
     /// </summary>
     public bool ChampionDBReady
     {
@@ -84,7 +102,7 @@ public sealed class ChampionDBManager : MonoBehaviour
     #region Native Unity Methods
 
     /// <summary>
-    /// 
+    /// Happens before the first frame... use this to create our singleton game object.
     /// </summary>
     void Awake()
     {
@@ -96,7 +114,7 @@ public sealed class ChampionDBManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// USe for initialization of the champion db
     /// </summary>
     void Start()
     {
@@ -104,7 +122,7 @@ public sealed class ChampionDBManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// happens every frame.
     /// </summary>
     void Update()
     {
@@ -119,7 +137,7 @@ public sealed class ChampionDBManager : MonoBehaviour
     #region Private Methods
 
     /// <summary>
-    /// 
+    /// Success handler for the DB initialization.
     /// </summary>
     /// <param name="obj"></param>
     private void InitializationSuccess(object obj)
@@ -130,7 +148,7 @@ public sealed class ChampionDBManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Failure handler for the db initialization
     /// </summary>
     /// <param name="message"></param>
     private void InitializationFailure(string message)
@@ -142,7 +160,7 @@ public sealed class ChampionDBManager : MonoBehaviour
     }
     
     /// <summary>
-    /// 
+    /// The coroutine method used to fetch the champion database.
     /// </summary>
     /// <param name="region"></param>
     /// <param name="champData"></param>
